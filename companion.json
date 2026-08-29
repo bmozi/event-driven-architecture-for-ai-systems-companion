@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "title": "Architecting with Events in the Age of AI Companion",
+  "book_repository": "https://github.com/bmozi/architecting-with-events-in-the-age-of-ai",
+  "source_commit": "659b5eb",
+  "required_files": [
+    "README.md",
+    "START-HERE.md",
+    "INDEX.md",
+    "BOOK-TO-COMPANION-MAP.md",
+    "LICENSE-STATUS.md",
+    "PROVENANCE.md",
+    "VALIDATION.md"
+  ],
+  "gateway_assets": [
+    {
+      "path": "event-meaning-and-authority-record.md",
+      "first_pass": "Ten-minute first pass",
+      "required_language": ["Plain-language vocabulary", "outside"],
+      "examples": ["examples/northbridge-events-integrated-example.md"]
+    }
+  ]
+}
