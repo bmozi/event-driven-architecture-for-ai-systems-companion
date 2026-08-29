@@ -22,4 +22,15 @@
 - **AI or automation builder:** add implementation constraints, tool authority,
   action budgets, loop prevention, and receipts.
 
+Use [Role-Based Paths](ROLE-BASED-PATHS.md) for developer, architect, manager,
+and executive journeys.
+
+## Lead a decision
+
+- [Team Workshop](TEAM-WORKSHOP.md)
+- [Value and Evidence Ledger](VALUE-AND-EVIDENCE-LEDGER.md)
+- [Executive Decision Brief](EXECUTIVE-DECISION-BRIEF.md)
+- [Failure Lab](FAILURE-LAB.md)
+- [Pilot and Usability Route](PILOT-AND-USABILITY.md)
+
 See [BOOK-TO-COMPANION-MAP.md](BOOK-TO-COMPANION-MAP.md) for chapter routing.
