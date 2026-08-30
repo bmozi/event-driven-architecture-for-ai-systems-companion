@@ -67,3 +67,18 @@ and which validation or usability state actually changed.
 - **Execution state:** `PREPARED/UNRUN`; no human participant result exists
 - **Boundary:** Source protocol hardening only; it does not establish usability,
   event correctness, loop safety, readiness, or business value
+
+## 2026-08-29 temporal freeze protocol repair v1.2.1
+
+- **Authority:** Static temporal-order audit across the reader-value packet
+- **Changed:** Every initial, revised, handoff, and Stage B freeze now completes
+  governed artifact bytes first, creates a non-self-listing manifest second,
+  verifies that manifest third, and creates a detached verification record only
+  after the observed event. Each next-phase sealed input manifest hashes the
+  artifacts, governing manifest, and later record.
+- **Correction rule:** Any post-freeze byte change requires new immutable
+  artifact bytes, a new governing manifest, and a new detached verification
+  record; prior evidence is retained.
+- **Execution state:** `PREPARED/UNRUN`; no human participant result exists.
+- **Boundary:** Static protocol coherence only; it does not establish human
+  comprehension, event correctness, loop safety, readiness, or business value.

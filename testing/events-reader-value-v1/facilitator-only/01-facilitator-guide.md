@@ -1,11 +1,11 @@
 # Facilitator Guide
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
 **Status:** Facilitator-only; prepared and unrun
 
-**Revision note:** Version 1.2.0 strengthens exact-file transfer, freeze
-provenance, and staged decision evidence after synthetic protocol audit; it has
-no human or practitioner validation.
+**Revision note:** Version 1.2.1 makes every freeze temporally ordered and
+non-self-referential after static protocol review; it has no human or
+practitioner validation.
 
 ## Purpose
 
@@ -49,11 +49,20 @@ and verify a run-specific delivery manifest before scored work and log each
 later staged release. A manifest hashes other files; it never lists or hashes
 itself. Do not rely on repository-relative paths.
 
+Every freeze uses four ordered operations: finish artifact bytes with
+ID/version, completion timestamp/timezone, and complete pre-hash state; create
+a manifest that hashes only those artifacts; verify it and observe the exact
+verification timestamp/timezone; then create a detached record of that observed
+event. The record is later than, and excluded from, the manifest it describes.
+The next phase's sealed input manifest hashes the artifacts, governing manifest,
+and detached record. Never require an artifact, manifest, or record to contain
+its own hash or a future verification time.
+
 The planned live update creates the first revised set. It is not a correction
 of already frozen revised bytes. A later correction must preserve the old
 artifact and create exact new immutable filename, ID/version, hash, reason,
-correction timestamp/timezone, replacement freeze record, and replacement
-manifest. Never overwrite or reuse the old filename.
+correction timestamp/timezone, replacement detached verification record, and
+replacement manifest. Never overwrite or reuse the old filename.
 
 ## No-coaching rule
 
@@ -72,9 +81,16 @@ Record every intervention.
    Northbridge miniature embedded in the supplied record and generic examples
    already visible in supplied files are allowed; do not allow linked
    comprehensive or completed examples.
-4. Freeze the initial workbook and detailed artifacts before the update. Record
-   immutable filenames, IDs/versions, timestamps/timezones, hashes, and
-   manifest.
+4. Complete the initial workbook and detailed artifacts as
+   `EVT-A-INITIAL-WORKBOOK-v1.md`,
+   `EVT-A-INITIAL-MEANING-AUTHORITY-v1.md`,
+   `EVT-A-INITIAL-MULTIPLIER-v1.md`, and
+   `EVT-A-INITIAL-LOOP-CHECK-v1.md`, each with ID/version, completion
+   timestamp/timezone, and `INITIAL COMPLETE` state. Hash only those completed
+   artifacts in `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt`, verify it, and
+   then create `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md`. Before the update,
+   verify a revision-phase input manifest that hashes the artifacts, governing
+   manifest, and detached record.
 5. Read the live update:
 
 > The same high-temperature reading was delivered three times. Two workers
@@ -100,35 +116,51 @@ Record every intervention.
    self-declaration of `FROZEN`. Create
    `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`; it hashes the four details and
    does not hash itself.
-9. Complete `EVT-A-REVISED-FREEZE-RECORD-v1.md` with exact freeze
-   timestamp/timezone, literal filenames, IDs/versions, completion
-   timestamps/timezones, pre-hash states, hashes, and governing manifest
-   filename/hash. The verified manifest and detached record establish
-   `FROZEN`; verify them before opening the handoff.
-10. Only then supply `05-one-screen-handoff.md`. Ensure its inventory matches
-    the detached record and manifest, complete it as
-    `EVT-A-ONE-SCREEN-HANDOFF-v1.md`, and freeze it separately.
+9. Verify that governing manifest and observe the exact verification
+   timestamp/timezone. Only then complete
+   `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` with the observed event, literal
+   filenames, IDs/versions, completion metadata, artifact hashes, and governing
+   manifest filename/hash. Do not add this later record to the manifest it
+   describes.
+10. Verify a handoff-phase input manifest that hashes the four revised
+    artifacts, governing manifest, and detached record. Only then supply
+    `05-one-screen-handoff.md`. Ensure its inventory matches, complete it as
+    `EVT-A-ONE-SCREEN-HANDOFF-v1.md` with ID/version, completion
+    timestamp/timezone, and `HANDOFF COMPLETE`, hash only that completed handoff
+    in `EVT-A-HANDOFF-SHA256SUMS-v1.txt`, verify the manifest, and then create
+    `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md`.
 11. Preserve initial, revised, record, manifest, and handoff bytes without
     alteration.
 
 ## Stage B sequence
 
 1. Use a participant who did not create the Stage A artifact, obtain separate
-   consent, verify the sealed Stage B manifest, and record exact Stage B start
+   consent, verify the phase-1 input manifest over the handoff, its governing
+   manifest, and detached verification record, and record exact Stage B start
    and timezone before opening the route.
 2. Supply the route, `EVT-A-ONE-SCREEN-HANDOFF-v1.md` as first substantive
-   content, and the decision-owner workbook. Freeze
-   `EVT-B-SECTION-1-SCAN-v1.md` before any scenario or detail opens.
-3. Supply `02-scenario-and-task.md`, the detached freeze record, its governing
+   content, and the decision-owner workbook. Complete
+   `EVT-B-SECTION-1-SCAN-v1.md` with ID/version, completion timestamp/timezone,
+   and `SECTION COMPLETE`; hash only that export, verify its governing manifest,
+   and then create its detached verification record before any scenario or
+   detail opens.
+3. Verify the phase-2 input manifest over that Section 1 trilogy and every newly
+   released file. Supply `02-scenario-and-task.md`, the detached verification record, its governing
    revised manifest, and all four exact handoff-linked revised details. Verify
    literal filenames, IDs/versions, completion timestamps/timezones, pre-hash
    `REVISED COMPLETE` states, hashes, and detached-record `FROZEN` conditions. A rename,
    regenerated copy, summary, substitution, omission, mismatch, or missing
    record/manifest stops detailed read-back.
-4. Freeze `EVT-B-SECTION-2-DETAIL-v1.md` before supplying
-   `EXECUTIVE-DECISION-BRIEF.md`, then `VALUE-AND-EVIDENCE-LEDGER.md`.
-5. Freeze `EVT-B-SECTIONS-3-5-DECISION-v1.md`. Keep Section 6 closed until all
-   three freezes verify and scoring ends.
+4. Complete `EVT-B-SECTION-2-DETAIL-v1.md` with ID/version, completion
+   timestamp/timezone, and `SECTION COMPLETE`; hash only that export, verify its
+   governing manifest, and then create its detached verification record.
+5. Verify the phase-3 input manifest over that Section 2 trilogy and the newly
+   released `EXECUTIVE-DECISION-BRIEF.md` and
+   `VALUE-AND-EVIDENCE-LEDGER.md`. Complete
+   `EVT-B-SECTIONS-3-5-DECISION-v1.md` with completion metadata, hash only that
+   export, verify its governing manifest, and then create its detached record.
+   Keep Section 6 closed until a debrief-phase input manifest hashes the last
+   export, governing manifest, and detached record and scoring ends.
 6. Keep the Stage A participant unavailable until then. End scoring before
    allowing explanation or repair. Record exact Stage B end and timezone.
 

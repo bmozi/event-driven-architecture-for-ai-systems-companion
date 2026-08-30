@@ -1,10 +1,10 @@
 # Participant Consent and Privacy Notice
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
 **Status:** Blank; no consent has been obtained
 
-**Revision note:** Version 1.2.0 strengthens protocol provenance after
-synthetic audit; it has no human or practitioner validation.
+**Revision note:** Version 1.2.1 makes freeze evidence temporally ordered after
+static protocol review; it has no human or practitioner validation.
 
 ## Purpose
 

@@ -1,63 +1,75 @@
-# Revised Artifact Freeze Record
+# Revised Artifact Freeze-Verification Record
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
-**Status:** Blank detached record; complete and verify before the one-screen
-handoff opens
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
+**Status:** Blank detached record; create only after the revised governing
+manifest has been created and verified
 
-This record governs the first revised artifact set created by the planned live
-update. That planned revision is not a correction of already frozen revised
-bytes.
+This record describes an already observed verification event for the first
+revised artifact set created by the planned live update. The planned revision
+is not a correction of previously frozen revised bytes.
 
-- Completed record exact local filename: `EVT-A-REVISED-FREEZE-RECORD-v1.md`
-- Freeze timestamp and timezone:
+Save the completed record as exactly
+`EVT-A-REVISED-FREEZE-VERIFICATION-v1.md`.
+
+## Temporal-order evidence
+
+- Verification-record ID/version:
+- Manifest verification timestamp and timezone, observed before this record
+  was created:
+- Verification method and result:
+- Verified by and relationship:
 - Governing manifest exact local filename:
   `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`
 - Governing manifest SHA-256:
-- Manifest verification timestamp and timezone:
-- Planned live-update revision complete: yes / no
+- Manifest excludes itself: yes / no
+- Manifest excludes this later detached record: yes / no
+- Planned live-update revision complete before manifest creation: yes / no
 
-The governing manifest hashes only the four revised detail files below. It does
-not list or hash itself. A later Stage B delivery manifest may hash this
-completed record and the governing manifest as supplied files.
+The governing manifest hashes only the four completed revised artifacts below.
+It cannot hash this later record because this record did not exist when the
+manifest verification event occurred. This record does not claim its own hash.
+The sealed handoff-phase input manifest will hash the artifacts, governing
+manifest, and this completed record after all of those bytes exist.
 
 ## Exact revised-detail inventory
 
-Every row is required. Before hashing, each artifact must contain the same
-artifact ID/version, completion timestamp/timezone, and pre-hash state
-`REVISED COMPLETE`. It must not self-declare `FROZEN`. A blank, `DRAFT`,
-`PENDING`, `PENDING FREEZE`, `AWAITING FREEZE`, or equivalent state fails this
-record. Matching hashes in the governing manifest plus this verified detached
-record establish the later `FROZEN` condition.
+Every row is required. Before the governing manifest was created, each artifact
+must already have contained the same artifact ID/version, completion
+timestamp/timezone, and pre-hash state `REVISED COMPLETE`. It must not
+self-declare `FROZEN`.
 
-| Exact immutable local filename | Artifact ID/version | Completion timestamp/timezone | Pre-hash state | SHA-256 | Matches governing manifest | Freeze status established by this record |
-| --- | --- | --- | --- | --- | --- | --- |
-| `EVT-A-REVISED-WORKBOOK-v1.md` | | | `REVISED COMPLETE` | | yes / no | `FROZEN` / not established |
-| `EVT-A-REVISED-MEANING-AUTHORITY-v1.md` | | | `REVISED COMPLETE` | | yes / no | `FROZEN` / not established |
-| `EVT-A-REVISED-MULTIPLIER-v1.md` | | | `REVISED COMPLETE` | | yes / no | `FROZEN` / not established |
-| `EVT-A-REVISED-LOOP-CHECK-v1.md` | | | `REVISED COMPLETE` | | yes / no | `FROZEN` / not established |
+| Exact immutable local filename | Artifact ID/version | Completion timestamp/timezone | Pre-hash state | SHA-256 | Matches governing manifest |
+| --- | --- | --- | --- | --- | --- |
+| `EVT-A-REVISED-WORKBOOK-v1.md` | | | `REVISED COMPLETE` | | yes / no |
+| `EVT-A-REVISED-MEANING-AUTHORITY-v1.md` | | | `REVISED COMPLETE` | | yes / no |
+| `EVT-A-REVISED-MULTIPLIER-v1.md` | | | `REVISED COMPLETE` | | yes / no |
+| `EVT-A-REVISED-LOOP-CHECK-v1.md` | | | `REVISED COMPLETE` | | yes / no |
 
-## Verification before handoff
+## Release gate
 
-- All revised work is complete: yes / no
+- All revised work was complete before hashing: yes / no
 - All literal filenames match the governing manifest: yes / no
 - All IDs, versions, completion timestamps/timezones, pre-hash states, and
   hashes match: yes / no
 - No incomplete-state marker or premature self-declared `FROZEN` remains:
   yes / no
-- This record establishes `FROZEN` for all four verified hashes: yes / no
-- Record completed and verified before `05-one-screen-handoff.md` opened:
+- Blank handoff remained unopened through the observed verification event:
   yes / no
-- Verified by, relationship, timestamp, and timezone:
+- This record was completed only after that event: yes / no
+- Freeze state for the listed verified hashes: `FROZEN` / not established
 
 Any `no`, blank required field, mismatch, rename, regenerated copy, summary,
-substitution, or omission stops the handoff.
+substitution, or omission stops the handoff. Do not repair frozen bytes in
+place.
 
 ## Post-freeze correction, only if required
 
-Do not enter the planned live-update revision here. If any already frozen byte
-later changes, preserve the prior artifact and complete a new correction record
-and replacement freeze. Never overwrite or reuse the old filename.
+Do not enter the planned live-update revision here. If a verified artifact byte
+later changes, preserve the prior artifact, manifest, and detached record. Give
+the correction a new immutable filename and version, create a new governing
+manifest over the completed replacement bytes, verify it, and only then create
+a new detached verification record. Never overwrite or reuse the old filename.
 
-| Correction ID | Reason | Correction timestamp/timezone | Exact old filename, ID/version, SHA-256, manifest | Exact new filename, ID/version, SHA-256, manifest | Replacement freeze record |
+| Correction ID | Reason | Correction timestamp/timezone | Exact old filename, ID/version, SHA-256, manifest, verification record | Exact new filename, ID/version, SHA-256, manifest | Replacement detached verification record |
 | --- | --- | --- | --- | --- | --- |
 | | | | | | |

@@ -1,11 +1,11 @@
 # Observation and Scoring Rubric
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
 **Status:** Predetermined, blank, and unrun
 
-**Revision note:** Version 1.2.0 strengthens exact-file transfer, freeze
-provenance, and staged decision evidence after synthetic protocol audit; it has
-no human or practitioner validation.
+**Revision note:** Version 1.2.1 makes every freeze temporally ordered and
+non-self-referential after static protocol review; it has no human or
+practitioner validation.
 
 Score retained behavior, not agreement with preferred vocabulary.
 
@@ -44,10 +44,12 @@ Mark `clear`, `unclear`, `unsafe`, or `contaminated`:
 | Causality and duplication | One business condition survives redelivery, workers, retries, and message IDs | | |
 | Multiplication and loop | Reconstructs fan-out, detects feedback, names budgets and a breaker, and names an authorized stop owner or explicit `UNASSIGNED` state with assignment authority/trigger | | |
 | Outcome evidence | Reroute, stock, credit, case, notification, and final store outcome can be reconciled | | |
-| Revised-detail freeze integrity | Each revised detail reaches pre-hash `REVISED COMPLETE` with ID/version and completion timestamp/timezone; the manifest hashes those bytes without hashing itself; before handoff, the detached record matches filenames, IDs/versions, completion metadata, states, and hashes and establishes `FROZEN`; no artifact prematurely self-declares `FROZEN` | | |
-| Stage B exact transfer | Stage B receives the detached record, governing manifest, and every handoff-linked revised detail under the same literal filename with matching ID/version, completion metadata, pre-hash state, hash, and detached freeze status; no rename, regeneration, summary, substitution, or omission occurs | | |
-| Stage B sequencing | Sections 1, 2, and 3-5 are separately exported and checksum-frozen at the required gates; Section 6 remains closed until scoring ends | | |
-| Revision/correction provenance | The planned live-update revision is distinct from a later correction of frozen revised bytes; every correction preserves old/new immutable filenames, IDs/versions, hashes, reason, timestamp/timezone, replacement freeze record, and replacement manifest | | |
+| Revised-detail freeze integrity | Each revised detail reaches pre-hash `REVISED COMPLETE` with ID/version and completion timestamp/timezone; the governing manifest then hashes only those bytes; verification occurs next; and only afterward does the detached record describe the observed timestamp/timezone, artifact identities/hashes, and manifest filename/hash. The manifest hashes neither itself nor the later record, and the record claims no self-hash | | |
+| Handoff freeze integrity | The handoff reaches `HANDOFF COMPLETE` before its manifest is created; verification precedes its detached record; the Stage B phase-1 input manifest hashes the handoff, governing manifest, and detached record | | |
+| Stage B exact transfer | Stage B receives the detached revised verification record, governing manifest, and every handoff-linked revised detail under the same literal filename with matching ID/version, completion metadata, pre-hash state, and hash; no rename, regeneration, summary, substitution, or omission occurs | | |
+| Stage B sequencing | Sections 1, 2, and 3-5 each reach `SECTION COMPLETE`, receive a governing manifest, undergo verification, and only then receive a detached record. Each next-phase input manifest hashes the prior export, manifest, and record; Section 6 remains closed until the final debrief-phase manifest verifies and scoring ends | | |
+| Temporal non-self-reference | No governed artifact embeds its own hash or later freeze time; no governing manifest lists itself or the later verification record; no detached record claims its own hash; every record timestamp describes an event that already occurred | | |
+| Revision/correction provenance | The planned live-update revision is distinct from a later correction of frozen revised bytes; every correction preserves old/new immutable filenames, IDs/versions, hashes, reason, timestamp/timezone, replacement detached verification record, and replacement manifest | | |
 
 Any unsafe critical gate blocks a favorable interpretation regardless of total.
 

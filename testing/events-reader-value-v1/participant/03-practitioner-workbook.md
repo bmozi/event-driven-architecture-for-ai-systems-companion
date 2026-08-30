@@ -1,11 +1,11 @@
 # Stage A Practitioner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
 **Status:** Blank participant record
 
-**Revision note:** Version 1.2.0 strengthens exact-file transfer and freeze
-provenance after synthetic protocol audit; it has no human or practitioner
-validation.
+**Revision note:** Version 1.2.1 makes every freeze temporally ordered and
+non-self-referential after static protocol review; it has no human or
+practitioner validation.
 
 - Participant code:
 - Broad role and experience band, optional:
@@ -87,9 +87,11 @@ Each file must record an artifact ID, version, completion timestamp/timezone,
 and pre-hash state `REVISED COMPLETE`. Do not make the artifact self-declare
 `FROZEN`. Create
 `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt` without listing or hashing the
-manifest itself. Complete and verify
-`EVT-A-REVISED-FREEZE-RECORD-v1.md` from the detached record template before
-opening the blank handoff.
+manifest itself. Verify that manifest and capture the exact verification
+timestamp/timezone. Only then complete
+`EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` from the detached record template.
+The later record describes the observed event; it is not governed by the
+manifest it describes and does not claim its own hash.
 
 | Exact revised filename | Artifact ID/version | Completion timestamp/timezone | Pre-hash state |
 | --- | --- | --- | --- |
@@ -98,25 +100,31 @@ opening the blank handoff.
 | `EVT-A-REVISED-MULTIPLIER-v1.md` | | | `REVISED COMPLETE` |
 | `EVT-A-REVISED-LOOP-CHECK-v1.md` | | | `REVISED COMPLETE` |
 
-- Revised freeze timestamp and timezone:
-- Governing manifest filename/hash:
-- Detached freeze-record filename/hash:
-- Detached record confirms all hashes and establishes `FROZEN`: yes / no
+- Governing manifest filename:
+  `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`
+- Detached verification record to inspect after these artifacts are hashed:
+  `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md`
+- Do not enter the later verification time, this workbook's hash, the manifest
+  hash, or the record hash inside this governed workbook.
 - No `DRAFT`, `PENDING`, `PENDING FREEZE`, `AWAITING FREEZE`, blank, or
   equivalent incomplete state remains: yes / no
 
-Only after those checks, complete [the One-Screen Stage A
+Only after the manifest has verified, the detached record has been created,
+and a sealed handoff-phase input manifest hashes the four revised artifacts,
+their governing manifest, and that record, complete [the One-Screen Stage A
 Handoff](05-one-screen-handoff.md) as
 `EVT-A-ONE-SCREEN-HANDOFF-v1.md`. Link the literal filenames, IDs, versions,
 and hashes. If no accountable owner is authorized, record `UNASSIGNED` and
 name the authority or trigger needed to assign one. Use either a justified
 calendar date or an evidence-based reconsideration trigger; do not invent one.
 
-- Handoff freeze timestamp/timezone, ID/version, hash, and manifest reference:
+- Handoff freeze evidence: see the later detached
+  `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md`, governed for the next phase by the
+  next sealed input manifest.
 
 If any revised frozen byte later changes, preserve the old file and record the
 exact old/new immutable filenames, IDs/versions, hashes, reason, correction
-timestamp/timezone, replacement freeze record, and replacement manifest. Do
+timestamp/timezone, replacement detached verification record, and replacement manifest. Do
 not describe that post-freeze correction as the planned live-update revision.
 
 ## 7. Material feedback

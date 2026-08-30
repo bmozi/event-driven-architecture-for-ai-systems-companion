@@ -1,20 +1,25 @@
 # One-Screen Stage A Handoff
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
-**Status:** Blank; open only after the revised-detail freeze record verifies
-**Revision note:** Version 1.2.0 strengthens exact-file transfer and freeze
-provenance after synthetic protocol audit; it has no human or practitioner
-validation.
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
+**Status:** Blank; open only after the revised-detail governing manifest has
+verified, its detached verification record exists, and the handoff-phase input
+manifest verifies
+**Revision note:** Version 1.2.1 makes handoff freeze evidence temporally
+ordered and non-self-referential after static protocol review; it has no human
+or practitioner validation.
 
 Keep this handoff to one page. Link detail instead of repeating it. Use
 `UNKNOWN` rather than guessing. An owner may be `UNASSIGNED`; do not invent an
 assignment or date. Complete this as `EVT-A-ONE-SCREEN-HANDOFF-v1.md` only
-after `EVT-A-REVISED-FREEZE-RECORD-v1.md` verifies.
+after `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` exists and the sealed
+handoff-phase input manifest verifies.
 
 - Handoff ID/version:
+- Handoff completion timestamp/timezone:
+- Handoff pre-hash state: `HANDOFF COMPLETE` / invalid
 - Linked scenario and input-template IDs/versions:
-- Detached revised freeze record exact local filename/hash:
-  `EVT-A-REVISED-FREEZE-RECORD-v1.md` /
+- Detached revised freeze-verification record exact local filename/hash:
+  `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` /
 - Governing revised-artifact manifest exact local filename/hash:
   `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt` /
 
@@ -52,5 +57,10 @@ verification stops detailed read-back.
 - Interim store/customer instruction:
 - Authority and evidence for that instruction:
 - Review date **or** evidence-based reconsideration trigger:
-- Separate handoff freeze timestamp/timezone, ID/version, SHA-256, and manifest
-  reference:
+
+After every field is final, retain `HANDOFF COMPLETE`, hash this handoff alone
+in `EVT-A-HANDOFF-SHA256SUMS-v1.txt`, verify that manifest, and only then create
+`EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md`. Do not put this handoff's later
+verification timestamp, its own SHA-256, the manifest hash, or the detached
+record hash inside this governed handoff. The Stage B phase-1 input manifest
+hashes the handoff, governing manifest, and detached record.

@@ -1,10 +1,10 @@
 # Exact Participant Route
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
 **Human execution:** `PREPARED/UNRUN`
-**Revision note:** Version 1.2.0 strengthens exact-file transfer and freeze
-provenance after synthetic protocol audit; it has no human or practitioner
-validation.
+**Revision note:** Version 1.2.1 makes every freeze temporally ordered and
+non-self-referential after static protocol review; it has no human or
+practitioner validation.
 
 Use only the exact local files in the sealed flat input. Do not search the repository
 or open a link to an unlisted full worked or comprehensive example, completed
@@ -30,9 +30,17 @@ pause, question, intervention, filename, and staged release is recorded.
 5. Open `event-meaning-and-authority-record.md` and create the detailed record.
 6. Open `traffic-cost-action-multiplier-calculator.md`, then
    `event-loop-prevention-checklist.md`; revise the detail if needed.
-7. Complete workbook Sections 2-4. Freeze the initial workbook, event record,
-   multiplier, and loop check under immutable filenames with IDs, versions,
-   timestamps/timezones, hashes, and a detached manifest.
+7. Complete workbook Sections 2-4. Save the initial workbook, event record,
+   multiplier, and loop check as `EVT-A-INITIAL-WORKBOOK-v1.md`,
+   `EVT-A-INITIAL-MEANING-AUTHORITY-v1.md`,
+   `EVT-A-INITIAL-MULTIPLIER-v1.md`, and
+   `EVT-A-INITIAL-LOOP-CHECK-v1.md`. Put an ID/version, completion
+   timestamp/timezone, and `INITIAL COMPLETE` state inside each artifact before
+   hashing. Create `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt` over only those
+   completed artifacts, verify it, and only then create
+   `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md`. Before the update opens, seal an
+   input manifest that hashes the artifacts, governing manifest, and detached
+   verification record.
 8. Receive the live update. This planned revision creates the first revised
    set; it is not a correction of frozen revised bytes. Complete workbook
    Section 5, including the incident sequence, and save exactly
@@ -46,33 +54,47 @@ pause, question, intervention, filename, and staged release is recorded.
    or equivalent incomplete state. Do not make an artifact self-declare
    `FROZEN`.
 10. Create `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, hashing those four
-    revised artifacts but not the manifest itself. Open
+    revised artifacts but not the manifest itself. Verify it and capture the
+    exact verification timestamp/timezone. Only afterward open
     `06-revised-artifact-freeze-record.md` and complete it as
-    `EVT-A-REVISED-FREEZE-RECORD-v1.md` with exact freeze timestamp/timezone,
-    filenames, IDs/versions, completion timestamps/timezones, pre-hash states,
-    hashes, and governing manifest filename/hash. Only the verified manifest
-    and detached record establish the later `FROZEN` condition.
-11. Only after that detached record verifies, open blank
-    `05-one-screen-handoff.md`. List those same literal revised filenames and
-    complete it as `EVT-A-ONE-SCREEN-HANDOFF-v1.md`. Freeze it separately.
+    `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md`. Record that observed
+    verification event, literal filenames, IDs/versions, completion metadata,
+    artifact hashes, and governing manifest filename/hash. This later record is
+    not governed by the manifest it describes and does not claim its own hash.
+11. Create and verify `EVT-A-HANDOFF-PHASE-INPUT-SHA256SUMS-v1.txt` over the four
+    revised artifacts, governing manifest, and detached verification record.
+    Only then open blank `05-one-screen-handoff.md`. List those same literal
+    revised filenames and complete `EVT-A-ONE-SCREEN-HANDOFF-v1.md` with an
+    ID/version, completion timestamp/timezone, and `HANDOFF COMPLETE` state.
+    Hash only that completed handoff in `EVT-A-HANDOFF-SHA256SUMS-v1.txt`,
+    verify it, and then create
+    `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md`.
 12. Complete workbook Sections 6-7.
 
 If a revised frozen byte changes after step 10, do not overwrite or reuse its
 filename. Preserve the old file and record exact old/new immutable filenames,
-IDs/versions, hashes, reason, correction timestamp/timezone, replacement freeze
-record, and replacement manifest before any corrected set may continue.
+IDs/versions, hashes, reason, correction timestamp/timezone, replacement
+detached verification record, and replacement manifest before any corrected set
+may continue.
 
 ## Stage B order
 
 After separate consent, the facilitator records Stage B start and timezone
 before opening this route.
 
-1. Open this route, then `EVT-A-ONE-SCREEN-HANDOFF-v1.md` as the first
-   substantive artifact.
+1. Verify the phase-1 input manifest over `EVT-A-ONE-SCREEN-HANDOFF-v1.md`,
+   `EVT-A-HANDOFF-SHA256SUMS-v1.txt`, and
+   `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md`; then open this route and the
+   handoff as the first substantive artifact.
 2. Open `04-decision-owner-workbook.md`, complete Section 1 from the handoff
-   alone, export it as `EVT-B-SECTION-1-SCAN-v1.md`, and checksum-freeze it.
-3. Open `02-scenario-and-task.md`,
-   `EVT-A-REVISED-FREEZE-RECORD-v1.md`, and
+   alone, and export it as `EVT-B-SECTION-1-SCAN-v1.md` with ID/version,
+   completion timestamp/timezone, and `SECTION COMPLETE` state. Hash only that
+   export in `EVT-B-SECTION-1-SHA256SUMS-v1.txt`, verify it, and then create
+   `EVT-B-SECTION-1-FREEZE-VERIFICATION-v1.md`.
+3. Verify a phase-2 input manifest that hashes the Section 1 export, its
+   governing manifest, and detached verification record, plus every newly
+   released file. Then open `02-scenario-and-task.md`,
+   `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md`, and
    `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`.
 4. Verify that the handoff, detached record, governing manifest, and delivered
    `EVT-A-REVISED-WORKBOOK-v1.md`,
@@ -82,14 +104,26 @@ before opening this route.
    completion timestamp/timezone, pre-hash `REVISED COMPLETE` state, hash, and
    detached-record `FROZEN` condition. Do not accept a rename, regenerated
    copy, summary, substitution, omission, or mismatch.
-5. Complete Section 2, export it as `EVT-B-SECTION-2-DETAIL-v1.md`, and
-   checksum-freeze it before opening decision aids.
-6. Open `EXECUTIVE-DECISION-BRIEF.md`, then
-   `VALUE-AND-EVIDENCE-LEDGER.md`. Complete Sections 3-5, export them as
-   `EVT-B-SECTIONS-3-5-DECISION-v1.md`, and checksum-freeze them.
-7. Keep Section 6 closed until scoring ends and all three Stage B freezes
-   verify. Only then may Stage A explanation or repair begin.
+5. Complete Section 2 and export it as
+   `EVT-B-SECTION-2-DETAIL-v1.md` with ID/version, completion
+   timestamp/timezone, and `SECTION COMPLETE` state. Hash only that export in
+   `EVT-B-SECTION-2-SHA256SUMS-v1.txt`, verify it, and then create
+   `EVT-B-SECTION-2-FREEZE-VERIFICATION-v1.md`.
+6. Verify a phase-3 input manifest that hashes the Section 2 export, its
+   governing manifest, and detached verification record, plus the newly
+   released executive files. Then open `EXECUTIVE-DECISION-BRIEF.md`, followed
+   by `VALUE-AND-EVIDENCE-LEDGER.md`. Complete Sections 3-5 and export them as
+   `EVT-B-SECTIONS-3-5-DECISION-v1.md` with ID/version, completion
+   timestamp/timezone, and `SECTION COMPLETE` state. Hash only that export in
+   `EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt`, verify it, and then create
+   `EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md`.
+7. Keep Section 6 closed until scoring ends and a debrief-phase input manifest
+   hashes the Sections 3-5 export, governing manifest, and detached verification
+   record. Only then may Stage A explanation or repair begin.
 
-Every freeze records timestamp, timezone, artifact ID/version, exact immutable
-filename, SHA-256, and manifest reference. A route or provenance mismatch is a
-stop and recorded deviation, not permission to repair in place.
+For every freeze, the artifact records completion metadata before hashing; the
+governing manifest hashes only completed artifacts; and a later detached record
+records the observed verification timestamp/timezone, literal identities,
+hashes, and manifest filename/hash. No artifact or manifest records its own
+future hash. A route or provenance mismatch is a stop and recorded deviation,
+not permission to repair in place.

@@ -1,10 +1,10 @@
 # Pine Hollow Scenario: Protect One Refrigerated Shipment
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
 **Status:** Fictional, prepared, and unrun
 
-**Revision note:** Version 1.2.0 strengthens protocol provenance after
-synthetic audit; it has no human or practitioner validation.
+**Revision note:** Version 1.2.1 makes freeze evidence temporally ordered after
+static protocol review; it has no human or practitioner validation.
 
 Pine Hollow Foods ships refrigerated products to grocery stores. The business
 wants faster intervention when a shipment may be warming. The proposed design

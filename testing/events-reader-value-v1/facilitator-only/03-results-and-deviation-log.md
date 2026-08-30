@@ -1,11 +1,11 @@
 # Results and Deviation Log
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.1
 **Status:** Blank controlled record; no result exists
 
-**Revision note:** Version 1.2.0 strengthens exact-file transfer, freeze
-provenance, and staged decision evidence after synthetic protocol audit; it has
-no human or practitioner validation.
+**Revision note:** Version 1.2.1 makes every freeze temporally ordered and
+non-self-referential after static protocol review; it has no human or
+practitioner validation.
 
 ## Run identity
 
@@ -29,46 +29,55 @@ no human or practitioner validation.
 - Prepared-source manifest match:
 - Supplied and withheld materials correct: yes / no / deviation
 - Confidentiality or privacy concern:
-- Initial Stage A outputs frozen at with timezone, exact filenames,
-  IDs/versions, hashes, and manifest:
-- Revised Stage A outputs frozen at with timezone:
-- One-screen handoff frozen at with timezone, ID/version, exact filename, hash,
-  and manifest:
+- Initial Stage A artifacts completed before manifest creation: yes / no /
+  deviation; IDs/versions and completion timestamps/timezones:
+- Initial governing manifest filename/hash and observed verification
+  timestamp/timezone:
+- Initial detached verification record filename:
+  `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md`
+- Revision-phase input manifest hashes initial artifacts, governing manifest,
+  and detached record: yes / no / deviation
 
 ## Revised-detail and Stage B transfer verification
 
-- Detached freeze record completed before handoff opened: yes / no / deviation
-- Detached record exact filename/hash: `EVT-A-REVISED-FREEZE-RECORD-v1.md` /
+- Revised artifacts completed before governing manifest creation: yes / no /
+  deviation
+- Revised detached record created only after manifest verification: yes / no /
+  deviation
+- Detached record exact filename/hash:
+  `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` /
 - Revised governing manifest exact filename/hash:
   `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt` /
-- Manifest verified and does not list/hash itself: yes / no / deviation
+- Manifest observed verification timestamp/timezone:
+- Manifest verified and lists neither itself nor the later record: yes / no /
+  deviation
+- Detached record claims no self-hash or future event: yes / no / deviation
+- Handoff-phase input manifest hashes revised artifacts, governing manifest,
+  and detached record: yes / no / deviation
 - Any incomplete state or premature artifact self-declaration of `FROZEN`:
   none / deviation
 
-| Handoff-linked exact local filename | Artifact ID/version | Completion timestamp/timezone | Pre-hash state | SHA-256 | Detached freeze status | Matched record/manifest | Supplied to Stage B under same filename |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `EVT-A-REVISED-WORKBOOK-v1.md` | | | `REVISED COMPLETE` | | `FROZEN` | | |
-| `EVT-A-REVISED-MEANING-AUTHORITY-v1.md` | | | `REVISED COMPLETE` | | `FROZEN` | | |
-| `EVT-A-REVISED-MULTIPLIER-v1.md` | | | `REVISED COMPLETE` | | `FROZEN` | | |
-| `EVT-A-REVISED-LOOP-CHECK-v1.md` | | | `REVISED COMPLETE` | | `FROZEN` | | |
+| Handoff-linked exact local filename | Artifact ID/version | Completion timestamp/timezone | Pre-hash state | SHA-256 | Matched later record/manifest | Supplied to Stage B under same filename |
+| --- | --- | --- | --- | --- | --- | --- |
+| `EVT-A-REVISED-WORKBOOK-v1.md` | | | `REVISED COMPLETE` | | | |
+| `EVT-A-REVISED-MEANING-AUTHORITY-v1.md` | | | `REVISED COMPLETE` | | | |
+| `EVT-A-REVISED-MULTIPLIER-v1.md` | | | `REVISED COMPLETE` | | | |
+| `EVT-A-REVISED-LOOP-CHECK-v1.md` | | | `REVISED COMPLETE` | | | |
 
 A rename, regenerated copy, summary, substitution, omission, missing record or
-manifest, mismatch, wrong pre-hash state, or missing detached `FROZEN` status
+manifest, mismatch, wrong pre-hash state, or missing detached verification
 stops detailed read-back.
 
 ## Artifact freezes
 
-| Freeze | Exact immutable filename | Artifact ID/version | Exact timestamp/timezone | SHA-256 or manifest reference | Preserved location |
-| --- | --- | --- | --- | --- | --- |
-| Stage A revised workbook | `EVT-A-REVISED-WORKBOOK-v1.md` | | | | |
-| Stage A revised meaning/authority record | `EVT-A-REVISED-MEANING-AUTHORITY-v1.md` | | | | |
-| Stage A revised multiplier | `EVT-A-REVISED-MULTIPLIER-v1.md` | | | | |
-| Stage A revised loop check | `EVT-A-REVISED-LOOP-CHECK-v1.md` | | | | |
-| Stage A detached revised freeze record | `EVT-A-REVISED-FREEZE-RECORD-v1.md` | | | | |
-| Stage A one-screen handoff | `EVT-A-ONE-SCREEN-HANDOFF-v1.md` | | | | |
-| Stage B Section 1 scan | `EVT-B-SECTION-1-SCAN-v1.md` | | | | |
-| Stage B Section 2 detail | `EVT-B-SECTION-2-DETAIL-v1.md` | | | | |
-| Stage B Sections 3-5 decision | `EVT-B-SECTIONS-3-5-DECISION-v1.md` | | | | |
+| Freeze | Governed artifact exact filename and pre-hash state | Governing manifest filename/hash | Observed manifest-verification timestamp/timezone | Later detached verification-record filename | Next-phase input manifest filename/hash | Preserved location |
+| --- | --- | --- | --- | --- | --- | --- |
+| Stage A initial | `EVT-A-INITIAL-WORKBOOK-v1.md`; `EVT-A-INITIAL-MEANING-AUTHORITY-v1.md`; `EVT-A-INITIAL-MULTIPLIER-v1.md`; `EVT-A-INITIAL-LOOP-CHECK-v1.md`; `INITIAL COMPLETE` | `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt` / | | `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md` | `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` / | |
+| Stage A revised | `EVT-A-REVISED-WORKBOOK-v1.md`; `EVT-A-REVISED-MEANING-AUTHORITY-v1.md`; `EVT-A-REVISED-MULTIPLIER-v1.md`; `EVT-A-REVISED-LOOP-CHECK-v1.md`; `REVISED COMPLETE` | `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt` / | | `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` | `EVT-A-HANDOFF-PHASE-INPUT-SHA256SUMS-v1.txt` / | |
+| Stage A handoff | `EVT-A-ONE-SCREEN-HANDOFF-v1.md`; `HANDOFF COMPLETE` | `EVT-A-HANDOFF-SHA256SUMS-v1.txt` / | | `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-1-INPUT-SHA256SUMS-v1.txt` / | |
+| Stage B Section 1 | `EVT-B-SECTION-1-SCAN-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-1-SHA256SUMS-v1.txt` / | | `EVT-B-SECTION-1-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-2-INPUT-SHA256SUMS-v1.txt` / | |
+| Stage B Section 2 | `EVT-B-SECTION-2-DETAIL-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-2-SHA256SUMS-v1.txt` / | | `EVT-B-SECTION-2-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-3-INPUT-SHA256SUMS-v1.txt` / | |
+| Stage B Sections 3-5 | `EVT-B-SECTIONS-3-5-DECISION-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt` / | | `EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt` / | |
 
 ## Timing and interventions
 
@@ -124,7 +133,7 @@ The planned live-update revision is not a correction of frozen revised bytes.
 For every later correction, retain both old and new immutable artifacts and
 their governing records.
 
-| ID | Condition/reason | Correction timestamp/timezone | Exact old filename, ID/version, SHA-256, manifest | Exact new filename, ID/version, SHA-256, manifest | Replacement freeze record | Action/effect |
+| ID | Condition/reason | Correction timestamp/timezone | Exact old filename, ID/version, SHA-256, manifest, verification record | Exact new filename, ID/version, SHA-256, manifest | Replacement detached verification record | Action/effect |
 | --- | --- | --- | --- | --- | --- | --- |
 | | | | | | | |
 
