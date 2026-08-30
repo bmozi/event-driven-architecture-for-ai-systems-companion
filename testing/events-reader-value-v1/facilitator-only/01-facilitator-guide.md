@@ -1,11 +1,11 @@
 # Facilitator Guide
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.3
+**Packet:** EVT-RV-PILOT-001 version 1.2.4
 **Status:** Facilitator-only; prepared and unrun
 
-**Revision note:** Version 1.2.3 adds machine-enforced replay identity,
-verification-command evidence, record-completion chronology, and external
-access logging; it has no human or practitioner validation.
+**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
+the exact immutable `EVT-A-LIVE-UPDATE-v1.md` into the verified revision-phase
+input; it has no human or practitioner validation.
 
 ## Purpose
 
@@ -107,18 +107,23 @@ Record every intervention.
    timestamp/timezone, and `INITIAL COMPLETE` state. Hash only those completed
    artifacts in `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt`, verify it, and
    then create `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md`. Before the update,
-   verify a revision-phase input manifest that hashes the artifacts, governing
-   manifest, and detached record.
-5. Read the live update:
+   verify `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` over the artifacts,
+   governing manifest, detached record, and exact immutable
+   `EVT-A-LIVE-UPDATE-v1.md`.
+5. Only after that manifest verifies, open `EVT-A-LIVE-UPDATE-v1.md` and read
+   its update exactly. Do not deliver the update from memory or substitute a
+   verbal, renamed, regenerated, summarized, omitted, or unmanifested copy.
 
-> The same high-temperature reading was delivered three times. Two workers
-> each produced `ShipmentAtRisk`, and every event triggered a carrier request,
-> stock reservation, provisional credit, service case, and notification job.
-> One carrier request was accepted but not decided. Its proposed
-> `ShipmentRerouted` event caused the store to be told a replacement was
-> coming. A late route update triggered the risk service again. Pine Hollow
-> now has six risk events, six carrier requests, six reservations, and no
-> verified reroute, replacement, or stop owner.
+<!-- EVT-A-LIVE-UPDATE-v1 CANONICAL START -->
+> The same high-temperature reading was delivered three times. Two workers each
+> produced `ShipmentAtRisk`, and every event triggered a carrier request, stock
+> reservation, provisional credit, service case, and notification job. One
+> carrier request was accepted but not decided. Its proposed `ShipmentRerouted`
+> event caused the store to be told a replacement was coming. A late route
+> update triggered the risk service again. Pine Hollow now has six risk events,
+> six carrier requests, six reservations, and no verified reroute, replacement,
+> or stop owner.
+<!-- EVT-A-LIVE-UPDATE-v1 CANONICAL END -->
 
 6. Ask only: “What can each party safely say or do now, and what changes in
    your artifacts?”

@@ -1,17 +1,23 @@
 # Events Reader-Value Pilot Packet
 
 **Packet ID:** EVT-RV-PILOT-001
-**Version:** 1.2.3
+**Version:** 1.2.4
 **Status:** `PREPARED/UNRUN` for human participants; no participant recruited or
 consented
 **Scenario:** Pine Hollow Foods, entirely fictional
 
-Version 1.2.3 preserves the non-self-referential freeze sequence and adds an
-auditable facilitator-side execution history. Detached records now require the
-attempt, phase, actors, facilitator, exact manifest-verification
-command/output/exit/time/timezone, and a later record-completion
-timestamp/timezone. That internal work was not a human or practitioner session
-and provides no usability, safety, architecture, or business-value validation.
+Version 1.2.4 preserves the v1.2.3 non-self-referential freeze and auditable
+facilitator-side execution history, and repairs the Stage A revision gate. The
+exact fictional update is now the immutable route-declared input
+`EVT-A-LIVE-UPDATE-v1.md`; the revision-phase input manifest must hash it with
+the completed initial artifacts, their governing manifest, and their detached
+verification record before it opens. This protocol repair was not a human or
+practitioner session and provides no usability, safety, architecture, or
+business-value validation.
+
+Detached records still require attempt, phase, actors, facilitator, exact
+manifest-verification command/output/exit/time/timezone, and a separately
+recorded later record-completion timestamp/timezone.
 
 The normative release inventory and invariants are in
 [`temporal-protocol.json`](temporal-protocol.json). The human instructions must
@@ -82,8 +88,11 @@ is opened and follow its exact order. Supply only these exact local filenames:
 6. `event-meaning-and-authority-record.md`
 7. `traffic-cost-action-multiplier-calculator.md`
 8. `event-loop-prevention-checklist.md`
-9. after the live-update revision, `06-revised-artifact-freeze-record.md`; and
-10. only after that record verifies, the blank `05-one-screen-handoff.md`.
+9. after the initial freeze and revision-phase input-manifest verification,
+   `EVT-A-LIVE-UPDATE-v1.md`;
+10. after the live-update revision,
+    `06-revised-artifact-freeze-record.md`; and
+11. only after that record verifies, the blank `05-one-screen-handoff.md`.
 
 The Northbridge miniature embedded in the supplied meaning-and-authority record
 and short generic examples already visible in supplied files are allowed. Do
@@ -99,8 +108,10 @@ meaning/authority record, multiplier, and loop check as
 an ID/version and completion timestamp/timezone. Govern them with
 `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt`, verify it, and only then create
 `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md`. The sealed revision-phase manifest
-must hash the four artifacts, governing manifest, and detached record before
-the live update is delivered.
+must hash the four artifacts, governing manifest, detached record, and exact
+immutable `EVT-A-LIVE-UPDATE-v1.md` before that file is opened. A verbal,
+remembered, renamed, regenerated, summarized, substituted, omitted, or
+unmanifested update is a deviation and stop.
 
 The required revised detail filenames are:
 

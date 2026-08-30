@@ -109,3 +109,20 @@ and which validation or usability state actually changed.
   including omissions that refresh surrounding hashes
 - **Execution state:** `PREPARED/UNRUN`; static and synthetic defect-finding is
   not human usability, event correctness, loop safety, or business-value evidence
+
+## 2026-08-29 revision-input binding repair v1.2.4
+
+- **Authority:** Synthetic preflight finding against the prepared v1.2.3
+  temporal route
+- **Defect repaired:** The exact Stage A live update had existed only as
+  facilitator-guide prose. It was not exported as a route-declared immutable
+  run input and was not a required member of the revision-phase input manifest.
+- **Changed:** Added exact `EVT-A-LIVE-UPDATE-v1.md` prepared bytes, declared
+  the file in the participant route and packet inventories, bound it into
+  `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt`, and added structured
+  schema-3 validation plus member-omission, rename, route-omission,
+  unbound-input, and exact-wording-drift mutation tests. The exported bytes
+  must exactly equal the marked canonical facilitator block.
+- **Preserved:** Version 1.2.3 provenance and all prior human-evidence
+  boundaries. No human session, participant observation, execution result,
+  usability finding, safety finding, or business-value result is claimed.

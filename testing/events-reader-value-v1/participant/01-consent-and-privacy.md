@@ -1,11 +1,11 @@
 # Participant Consent and Privacy Notice
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.3
+**Packet:** EVT-RV-PILOT-001 version 1.2.4
 **Status:** Blank; no consent has been obtained
 
-**Revision note:** Version 1.2.3 adds replay identity, verification-command
-evidence, completion chronology, and external access logging; it remains
-unrun with people.
+**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
+the exact immutable live-update file into the verified revision-phase input;
+it remains unrun with people.
 
 ## Purpose
 

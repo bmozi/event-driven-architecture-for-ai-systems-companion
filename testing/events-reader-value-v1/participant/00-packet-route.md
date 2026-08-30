@@ -1,10 +1,10 @@
 # Exact Participant Route
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.3
+**Packet:** EVT-RV-PILOT-001 version 1.2.4
 **Human execution:** `PREPARED/UNRUN`
-**Revision note:** Version 1.2.3 adds machine-enforced replay identity,
-verification-command evidence, record-completion chronology, and external
-access logging; it has no human or practitioner validation.
+**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
+the exact immutable `EVT-A-LIVE-UPDATE-v1.md` into the verified revision-phase
+input; it has no human or practitioner validation.
 
 Use only the exact local files in the sealed flat input. Do not search the repository
 or open a link to an unlisted full worked or comprehensive example, completed
@@ -52,10 +52,13 @@ or missing chronological separation prevents `FROZEN` and stops release.
    hashing. Create `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt` over only those
    completed artifacts, verify it, and only then create
    `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md`. Before the update opens, seal an
-   input manifest that hashes the artifacts, governing manifest, and detached
-   verification record.
-8. Receive the live update. This planned revision creates the first revised
-   set; it is not a correction of frozen revised bytes. Complete workbook
+   input manifest that hashes the artifacts, governing manifest, detached
+   verification record, and exact immutable `EVT-A-LIVE-UPDATE-v1.md`.
+8. After that revision-phase input manifest verifies, open exactly
+   `EVT-A-LIVE-UPDATE-v1.md` and receive its update. Do not accept a verbal,
+   remembered, renamed, regenerated, summarized, substituted, omitted, or
+   unmanifested update. This planned revision creates the first revised set;
+   it is not a correction of frozen revised bytes. Complete workbook
    Section 5, including the incident sequence, and save exactly
    `EVT-A-REVISED-WORKBOOK-v1.md`,
    `EVT-A-REVISED-MEANING-AUTHORITY-v1.md`,

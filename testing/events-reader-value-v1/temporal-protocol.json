@@ -1,8 +1,8 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "protocol_id": "RV-TEMPORAL-FREEZE-001",
   "packet_id": "EVT-RV-PILOT-001",
-  "packet_version": "1.2.3",
+  "packet_version": "1.2.4",
   "causal_order": [
     "completed_artifacts",
     "artifact_only_manifest",
@@ -112,6 +112,30 @@
       "detached_verification_record"
     ]
   },
+  "revision_phase_input": {
+    "id": "stage_a_revision",
+    "prior_release": "stage_a_initial",
+    "opens_release": "stage_a_revised",
+    "manifest": "EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt",
+    "manifest_verified_before_open": true,
+    "required_members": [
+      "EVT-A-INITIAL-WORKBOOK-v1.md",
+      "EVT-A-INITIAL-MEANING-AUTHORITY-v1.md",
+      "EVT-A-INITIAL-MULTIPLIER-v1.md",
+      "EVT-A-INITIAL-LOOP-CHECK-v1.md",
+      "EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt",
+      "EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md",
+      "EVT-A-LIVE-UPDATE-v1.md"
+    ],
+    "immutable_participant_input": {
+      "filename": "EVT-A-LIVE-UPDATE-v1.md",
+      "path": "participant/EVT-A-LIVE-UPDATE-v1.md",
+      "sha256": "7ce0434cac756037d0a50969298419bc12c4358eb52d3c186e4c47a481338af4",
+      "canonical_facilitator_source": "facilitator-only/01-facilitator-guide.md",
+      "canonical_start_marker": "<!-- EVT-A-LIVE-UPDATE-v1 CANONICAL START -->",
+      "canonical_end_marker": "<!-- EVT-A-LIVE-UPDATE-v1 CANONICAL END -->"
+    }
+  },
   "results_log": "facilitator-only/03-results-and-deviation-log.md",
   "static_inventory": "facilitator-only/04-temporal-freeze-protocol-and-record-templates.md",
   "governed_templates": [
@@ -143,7 +167,10 @@
       ],
       "governing_manifest": "EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt",
       "detached_record": "EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md",
-      "next_release_manifest": "EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt"
+      "next_release_manifest": "EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt",
+      "next_release_additional_inputs": [
+        "EVT-A-LIVE-UPDATE-v1.md"
+      ]
     },
     {
       "id": "stage_a_revised",
@@ -226,55 +253,59 @@
   "critical_documents": [
     {
       "path": "README.md",
-      "sha256": "c4f68f7896df7dffb30aa4b04227e8a3db25a5d307a2d0e60b82a71f6bbdfb06"
+      "sha256": "7aba33bcd3fe645fa26356a868a90aacb720c65e0ae2964459992d8aa76e69a1"
     },
     {
       "path": "facilitator-only/01-facilitator-guide.md",
-      "sha256": "971a91f3536e97bb64347ac9081cf79e59093a427a4b523bfd3894415527cd1e"
+      "sha256": "20deadd0f76a5170064b757e49ff4c9a89d2d79e41edd9eaf3b22083b7932a1b"
     },
     {
       "path": "facilitator-only/02-observation-and-scoring-rubric.md",
-      "sha256": "25b5010a589f8d664fbd6465dd76ee860388589437525e2acea84c71f7824a2d"
+      "sha256": "a460dd88b716a796c00bef259886c680c6463e8778b22ab66be939b6e6af52b5"
     },
     {
       "path": "facilitator-only/03-results-and-deviation-log.md",
-      "sha256": "8e1a8341999c288ca0af843713d61a4828e73b7c4a40309c5e767d0a0adeed07"
+      "sha256": "6ce58e5e8007551b2d786d5319f060941d80de19a3242386d065194f4db5b971"
     },
     {
       "path": "facilitator-only/04-temporal-freeze-protocol-and-record-templates.md",
-      "sha256": "d7d7963330b75acc6c5af58abbbd87318093ea571b57b34de5a77cf698ff1d28"
+      "sha256": "f743fc91f8e26a4061c978b61c290f3e8362e2fb409a71e9c0e5724c9589a463"
     },
     {
       "path": "facilitator-only/05-execution-and-access-log.md",
-      "sha256": "35f33b38557bb1899bb0a6b7df269b41d87b21c6c85be008797cf0dcb97824c7"
+      "sha256": "d8f52fd69e8e45cde70637d3368d80d8b58f9b514311c70647ffaafc018aa675"
     },
     {
       "path": "participant/00-packet-route.md",
-      "sha256": "2ea2b1c9128118d4b4491eb89786e4198f56c2f1e3a6ff3d8ac04e3fa5a52cf7"
+      "sha256": "38ef77ca23f31d00ec0b36fee344d6ea938461ea920ad5b825015e75f27c93de"
     },
     {
       "path": "participant/01-consent-and-privacy.md",
-      "sha256": "428d4229a2d880ae1d6b6f0692a8f447175df3f3a18bf3fb8da990bd1dd61ddb"
+      "sha256": "20cf8bf0c926a7b698990077b2125ffed0277601549b34e058287677c4ea70d4"
     },
     {
       "path": "participant/02-scenario-and-task.md",
-      "sha256": "1e42488f15286bcb4858fe0bb9ba980c912177455d4979c8f536e4425b5d0f19"
+      "sha256": "61441da0b7b8f3657afa572a6c089ff9728cd214a2efbddb69547d7cdf70a25e"
     },
     {
       "path": "participant/03-practitioner-workbook.md",
-      "sha256": "faa9d5f71404ae52119fa82ea5bc2ea8780de064e5ea302cca9a8816b1f54d8a"
+      "sha256": "799a3a619f760923817503635fded814ed4c02a2b30feaf6c1b02defaf882e1a"
     },
     {
       "path": "participant/04-decision-owner-workbook.md",
-      "sha256": "93d87073aa7ee7f91de0cfbae8b4d7fa659871959dfa4b5092e3fd20644ad7da"
+      "sha256": "6fad073cf64b2b76b0514a845a57308ee946e2b1147c4f5b7de31a2edb8a3f3d"
     },
     {
       "path": "participant/05-one-screen-handoff.md",
-      "sha256": "b8ca18ab23db39ac0d80f69f9f1df7884202bc1b6c88b970c8f0832d383d5a00"
+      "sha256": "6c635efc4f657a0a011bf216d8fd644b24e9145cab9694fd706cf60aa3f7eb8a"
     },
     {
       "path": "participant/06-revised-artifact-freeze-record.md",
-      "sha256": "04943ce6ac724c00254435a58f2f98b01e04b7e8f03c8f41ac783d88603498c9"
+      "sha256": "29cdc9737a77a300ae3ee9fcd8da1fb4f9b04854b1853f8f67c011a52b8287d8"
+    },
+    {
+      "path": "participant/EVT-A-LIVE-UPDATE-v1.md",
+      "sha256": "7ce0434cac756037d0a50969298419bc12c4358eb52d3c186e4c47a481338af4"
     }
   ]
 }

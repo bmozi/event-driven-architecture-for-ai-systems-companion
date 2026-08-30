@@ -1,11 +1,11 @@
 # Results and Deviation Log
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.3
+**Packet:** EVT-RV-PILOT-001 version 1.2.4
 **Status:** Blank controlled record; no result exists
 
-**Revision note:** Version 1.2.3 adds machine-enforced replay identity,
-verification-command evidence, record-completion chronology, and external
-access logging; it has no human or practitioner validation.
+**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
+the exact immutable `EVT-A-LIVE-UPDATE-v1.md` into the verified revision-phase
+input; it has no human or practitioner validation.
 
 ## Run identity
 
@@ -40,8 +40,12 @@ access logging; it has no human or practitioner validation.
   timestamp/timezone:
 - Initial detached verification record filename:
   `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md`
-- Revision-phase input manifest hashes initial artifacts, governing manifest,
-  and detached record: yes / no / deviation
+- Revision-phase input manifest
+  `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` hashes initial artifacts,
+  governing manifest, detached record, and exact immutable
+  `EVT-A-LIVE-UPDATE-v1.md`: yes / no / deviation
+- Live-update exact filename/hash, manifest verification event, and first-open
+  event:
 
 ## Revised-detail and Stage B transfer verification
 
@@ -75,9 +79,9 @@ stops detailed read-back.
 
 ## Artifact freezes
 
-| Freeze | Governed artifact exact filename and pre-hash state | Governing manifest filename/hash | Observed manifest-verification timestamp/timezone | Later detached verification-record filename | Next-phase input manifest filename/hash | Preserved location |
+| Freeze | Governed artifact exact filename and pre-hash state | Governing manifest filename/hash | Observed manifest-verification timestamp/timezone | Later detached verification-record filename | Next-phase input manifest filename/hash and required new input | Preserved location |
 | --- | --- | --- | --- | --- | --- | --- |
-| Stage A initial | `EVT-A-INITIAL-WORKBOOK-v1.md`; `EVT-A-INITIAL-MEANING-AUTHORITY-v1.md`; `EVT-A-INITIAL-MULTIPLIER-v1.md`; `EVT-A-INITIAL-LOOP-CHECK-v1.md`; `INITIAL COMPLETE` | `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt` / | | `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md` | `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` / | |
+| Stage A initial | `EVT-A-INITIAL-WORKBOOK-v1.md`; `EVT-A-INITIAL-MEANING-AUTHORITY-v1.md`; `EVT-A-INITIAL-MULTIPLIER-v1.md`; `EVT-A-INITIAL-LOOP-CHECK-v1.md`; `INITIAL COMPLETE` | `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt` / | | `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md` | `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` /; `EVT-A-LIVE-UPDATE-v1.md` / | |
 | Stage A revised | `EVT-A-REVISED-WORKBOOK-v1.md`; `EVT-A-REVISED-MEANING-AUTHORITY-v1.md`; `EVT-A-REVISED-MULTIPLIER-v1.md`; `EVT-A-REVISED-LOOP-CHECK-v1.md`; `REVISED COMPLETE` | `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt` / | | `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` | `EVT-A-HANDOFF-PHASE-INPUT-SHA256SUMS-v1.txt` / | |
 | Stage A handoff | `EVT-A-ONE-SCREEN-HANDOFF-v1.md`; `HANDOFF COMPLETE` | `EVT-A-HANDOFF-SHA256SUMS-v1.txt` / | | `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-1-INPUT-SHA256SUMS-v1.txt` / | |
 | Stage B Section 1 | `EVT-B-SECTION-1-SCAN-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-1-SHA256SUMS-v1.txt` / | | `EVT-B-SECTION-1-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-2-INPUT-SHA256SUMS-v1.txt` / | |

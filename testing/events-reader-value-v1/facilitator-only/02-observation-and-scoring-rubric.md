@@ -1,11 +1,11 @@
 # Observation and Scoring Rubric
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.3
+**Packet:** EVT-RV-PILOT-001 version 1.2.4
 **Status:** Predetermined, blank, and unrun
 
-**Revision note:** Version 1.2.3 adds replay identity, verification-command
-evidence, completion chronology, and external access logging; it remains
-unrun with people.
+**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
+the exact immutable `EVT-A-LIVE-UPDATE-v1.md` into the verified revision-phase
+input; it remains unrun with people.
 
 Score retained behavior, not agreement with preferred vocabulary.
 
@@ -44,6 +44,7 @@ Mark `clear`, `unclear`, `unsafe`, or `contaminated`:
 | Causality and duplication | One business condition survives redelivery, workers, retries, and message IDs | | |
 | Multiplication and loop | Reconstructs fan-out, detects feedback, names budgets and a breaker, and names an authorized stop owner or explicit `UNASSIGNED` state with assignment authority/trigger | | |
 | Outcome evidence | Reroute, stock, credit, case, notification, and final store outcome can be reconciled | | |
+| Revision-phase input integrity | The verified `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` binds the four completed initial artifacts, their governing manifest, their detached record, and exact immutable `EVT-A-LIVE-UPDATE-v1.md` before that file opens; no verbal, renamed, regenerated, summarized, substituted, omitted, or unmanifested update is accepted | | |
 | Revised-detail freeze integrity | Each revised detail reaches pre-hash `REVISED COMPLETE` with ID/version and completion timestamp/timezone; the governing manifest then hashes only those bytes; verification occurs next; and only afterward does the detached record describe the observed timestamp/timezone, artifact identities/hashes, and manifest filename/hash. The manifest hashes neither itself nor the later record, and the record claims no self-hash | | |
 | Handoff freeze integrity | The handoff reaches `HANDOFF COMPLETE` before its manifest is created; verification precedes its detached record; the Stage B phase-1 input manifest hashes the handoff, governing manifest, and detached record | | |
 | Stage B exact transfer | Stage B receives the detached revised verification record, governing manifest, and every handoff-linked revised detail under the same literal filename with matching ID/version, completion metadata, pre-hash state, and hash; no rename, regeneration, summary, substitution, or omission occurs | | |

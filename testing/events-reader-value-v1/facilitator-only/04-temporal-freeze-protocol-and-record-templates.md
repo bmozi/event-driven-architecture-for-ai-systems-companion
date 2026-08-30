@@ -1,14 +1,15 @@
 # Temporal Freeze Protocol and Record Templates
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.3
+**Packet:** EVT-RV-PILOT-001 version 1.2.4
 **Status:** Facilitator-only static validation note and blank run-record schema;
 prepared and unrun
 
-Version 1.2.3 extends the machine-readable protocol and mutation suite to make
-the execution history auditable, not merely the final files. Every detached
-record now requires attempt, phase, actor, facilitator, exact verification
-command/output/exit/time/timezone, and a later record-completion
-timestamp/timezone. The facilitator separately maintains the
+Version 1.2.4 preserves the v1.2.3 auditable execution-history controls and
+adds a machine-enforced revision-phase input binding. The exact immutable
+`EVT-A-LIVE-UPDATE-v1.md` must be hashed with the four completed initial
+artifacts, their governing manifest, and their detached verification record by
+`EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` before the file opens. The
+facilitator separately maintains the
 [`execution and access log`](05-execution-and-access-log.md). Passing static
 checks remains non-human evidence only.
 
@@ -46,17 +47,27 @@ Rules:
    `ORCHESTRATION.md`, run note, hidden prompt, facilitator file, or other
    undeclared control file is prohibited. Facilitation instructions and the
    item-by-item access history stay in the external execution/access log.
+8. The Stage A revision-phase input manifest additionally hashes exact
+   immutable `EVT-A-LIVE-UPDATE-v1.md`; verify that manifest before opening the
+   update. A rename, omission, substitution, summary, or unbound update stops
+   the phase.
 
 ## Exact freeze inventory
 
-| Freeze | Governed artifact(s) and required state | Governing manifest | Later detached verification record | Next-phase input manifest |
+| Freeze | Governed artifact(s) and required state | Governing manifest | Later detached verification record | Next-phase input manifest and required new immutable input |
 | --- | --- | --- | --- | --- |
-| Stage A initial | `EVT-A-INITIAL-WORKBOOK-v1.md`; `EVT-A-INITIAL-MEANING-AUTHORITY-v1.md`; `EVT-A-INITIAL-MULTIPLIER-v1.md`; `EVT-A-INITIAL-LOOP-CHECK-v1.md`; `INITIAL COMPLETE` | `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt` | `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md` | `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` |
+| Stage A initial | `EVT-A-INITIAL-WORKBOOK-v1.md`; `EVT-A-INITIAL-MEANING-AUTHORITY-v1.md`; `EVT-A-INITIAL-MULTIPLIER-v1.md`; `EVT-A-INITIAL-LOOP-CHECK-v1.md`; `INITIAL COMPLETE` | `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt` | `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md` | `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt`; `EVT-A-LIVE-UPDATE-v1.md` |
 | Stage A revised | `EVT-A-REVISED-WORKBOOK-v1.md`; `EVT-A-REVISED-MEANING-AUTHORITY-v1.md`; `EVT-A-REVISED-MULTIPLIER-v1.md`; `EVT-A-REVISED-LOOP-CHECK-v1.md`; `REVISED COMPLETE` | `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt` | `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` | `EVT-A-HANDOFF-PHASE-INPUT-SHA256SUMS-v1.txt` |
 | Stage A handoff | `EVT-A-ONE-SCREEN-HANDOFF-v1.md`; `HANDOFF COMPLETE` | `EVT-A-HANDOFF-SHA256SUMS-v1.txt` | `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-1-INPUT-SHA256SUMS-v1.txt` |
 | Stage B Section 1 | `EVT-B-SECTION-1-SCAN-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-1-SHA256SUMS-v1.txt` | `EVT-B-SECTION-1-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-2-INPUT-SHA256SUMS-v1.txt` |
 | Stage B Section 2 | `EVT-B-SECTION-2-DETAIL-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-2-SHA256SUMS-v1.txt` | `EVT-B-SECTION-2-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-3-INPUT-SHA256SUMS-v1.txt` |
 | Stage B Sections 3-5 | `EVT-B-SECTIONS-3-5-DECISION-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt` | `EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt` |
+
+## Revision-phase sealed-input inventory
+
+| Phase | Prior completed artifacts | Prior governing manifest | Prior detached record | Required new immutable input | Verified input manifest and open gate |
+| --- | --- | --- | --- | --- | --- |
+| Stage A revision | `EVT-A-INITIAL-WORKBOOK-v1.md`; `EVT-A-INITIAL-MEANING-AUTHORITY-v1.md`; `EVT-A-INITIAL-MULTIPLIER-v1.md`; `EVT-A-INITIAL-LOOP-CHECK-v1.md` | `EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt` | `EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md` | `EVT-A-LIVE-UPDATE-v1.md` | Verify `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` over every preceding cell before opening the update |
 
 ## Detached verification-record schema
 

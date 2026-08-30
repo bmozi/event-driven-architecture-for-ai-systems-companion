@@ -245,6 +245,67 @@ def mutate_unmanifested_byte(repo: Path) -> None:
     )
 
 
+def mutate_live_update_member_omission(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["revision_phase_input"]["required_members"].remove(
+        "EVT-A-LIVE-UPDATE-v1.md"
+    )
+    write_protocol(repo, protocol)
+
+
+def mutate_live_update_rename(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["revision_phase_input"]["immutable_participant_input"][
+        "filename"
+    ] = "EVT-A-LIVE-UPDATE-renamed-v1.md"
+    write_protocol(repo, protocol)
+
+
+def mutate_live_update_unbound(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["revision_phase_input"]["opens_release"] = "stage_a_handoff"
+    write_protocol(repo, protocol)
+
+
+def mutate_route_live_update_omission(repo: Path) -> None:
+    update_critical_document(
+        repo,
+        "participant/00-packet-route.md",
+        lambda content: content.replace(
+            "`EVT-A-LIVE-UPDATE-v1.md`", "the live-update file"
+        ),
+    )
+
+
+def mutate_live_update_wording_drift(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    relative = protocol["revision_phase_input"]["immutable_participant_input"][
+        "path"
+    ]
+    packet_dir = protocol_path(repo).parent
+    target = packet_dir / relative
+    original = target.read_text(encoding="utf-8")
+    updated = original.replace(
+        "six risk events,\nsix carrier requests, six reservations",
+        "six risk events,\nsix carrier requests, five reservations",
+    )
+    if updated == original:
+        raise AssertionError("live-update wording mutation did not change input")
+    target.write_text(updated, encoding="utf-8")
+    refresh_packet_checksum(repo, target)
+    updated_hash = sha256(target)
+    protocol["revision_phase_input"]["immutable_participant_input"][
+        "sha256"
+    ] = updated_hash
+    for item in protocol["critical_documents"]:
+        if item["path"] == relative:
+            item["sha256"] = updated_hash
+            break
+    else:
+        raise AssertionError("live-update critical document not found")
+    write_protocol(repo, protocol)
+
+
 def main() -> int:
     baseline = run_validator(ROOT)
     if baseline.returncode != 0:
@@ -328,13 +389,38 @@ def main() -> int:
             mutate_unmanifested_byte,
             "checksum mismatch",
         ),
+        (
+            "live-update-member-omission",
+            mutate_live_update_member_omission,
+            "revision phase input must bind exact prior release and immutable live-update members",
+        ),
+        (
+            "live-update-rename",
+            mutate_live_update_rename,
+            "immutable live-update filename must be EVT-A-LIVE-UPDATE-v1.md",
+        ),
+        (
+            "live-update-unbound",
+            mutate_live_update_unbound,
+            "revision phase input must open stage_a_revised",
+        ),
+        (
+            "route-live-update-omission",
+            mutate_route_live_update_omission,
+            "missing replay-control clause: `EVT-A-LIVE-UPDATE-v1.md`",
+        ),
+        (
+            "live-update-wording-drift",
+            mutate_live_update_wording_drift,
+            "immutable live-update participant input differs from canonical facilitator wording",
+        ),
     ]
     for name, mutation, expected in cases:
         assert_rejected(name, mutation, expected)
 
     print(
         "temporal protocol mutation tests passed: "
-        "1 clean positive control, 16 rejected mutations"
+        "1 clean positive control, 21 rejected mutations"
     )
     return 0
 

@@ -21,6 +21,7 @@
     "testing/events-reader-value-v1/README.md",
     "testing/events-reader-value-v1/SHA256SUMS",
     "testing/events-reader-value-v1/temporal-protocol.json",
+    "testing/events-reader-value-v1/participant/EVT-A-LIVE-UPDATE-v1.md",
     "scripts/test_temporal_protocol.py"
   ],
   "checksum_manifests": [

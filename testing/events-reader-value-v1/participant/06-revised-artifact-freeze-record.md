@@ -1,8 +1,12 @@
 # Revised Artifact Freeze-Verification Record
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.3
+**Packet:** EVT-RV-PILOT-001 version 1.2.4
 **Status:** Blank detached record; create only after the revised governing
 manifest has been created and verified
+
+**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
+the exact immutable live-update file into the verified revision-phase input;
+it remains unrun with people.
 
 This record describes an already observed verification event for the first
 revised artifact set created by the planned live update. The planned revision
