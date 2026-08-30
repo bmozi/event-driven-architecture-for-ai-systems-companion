@@ -1,17 +1,19 @@
 # Stage A Practitioner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.2
+**Packet:** EVT-RV-PILOT-001 version 1.2.3
 **Status:** Blank participant record
 
-**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
-adds machine-enforced protocol checks after independent challenge; it has no
-human or practitioner validation.
+**Revision note:** Version 1.2.3 adds replay identity, verification-command
+evidence, completion chronology, and external access logging; it remains
+unrun with people.
 
 - Participant code:
 - Broad role and experience band, optional:
 - Stage start recorded before first file read, with timezone, and end time:
 - Exact file-open order:
 - Frozen supplied-file manifest:
+- Undeclared orchestration, facilitator, hidden-prompt, or run-note file
+  present: none / stop and deviation
 
 ## 1. Recognition before terminology
 

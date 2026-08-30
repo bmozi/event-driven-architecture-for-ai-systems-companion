@@ -51,6 +51,63 @@ NEXT_RELEASE_BINDINGS = [
     "governing_manifest",
     "detached_verification_record",
 ]
+VERIFICATION_OBSERVATION_FIELDS = [
+    "exact_command",
+    "complete_output",
+    "exit_code",
+    "timestamp",
+    "timezone",
+]
+DETACHED_RECORD_FIELDS = [
+    "attempt_id",
+    "phase",
+    "artifact_actor",
+    "facilitator",
+    "manifest_verifier",
+    "exact_verification_command",
+    "complete_observed_output",
+    "exit_code",
+    "verification_timestamp",
+    "verification_timezone",
+    "record_completing_actor",
+    "record_completion_timestamp",
+    "record_completion_timezone",
+]
+EXECUTION_EVENT_SEQUENCE = [
+    "SEALED_INPUT_MANIFEST_CREATED",
+    "SEALED_INPUT_MANIFEST_VERIFIED",
+    "PHASE_GATE_OPENED",
+    "FILE_OPENED_OR_ACCESS_ATTEMPT_RECORDED",
+    "ARTIFACT_COMPLETED",
+    "GOVERNING_MANIFEST_CREATED",
+    "GOVERNING_MANIFEST_VERIFIED",
+    "DETACHED_RECORD_COMPLETED",
+    "NEXT_RELEASE_MANIFEST_CREATED",
+    "NEXT_RELEASE_MANIFEST_VERIFIED",
+    "NEXT_PHASE_GATE_OPENED",
+]
+EXECUTION_LOG_FIELDS = [
+    "event_id",
+    "prior_event_id",
+    "phase",
+    "event_type",
+    "filename_or_surface",
+    "actor",
+    "facilitator",
+    "timestamp",
+    "timezone",
+    "verification_command",
+    "complete_observed_output",
+    "exit_code",
+    "continuity_binding",
+    "outcome_or_deviation",
+]
+FORBIDDEN_INPUT_EXAMPLES = [
+    "ORCHESTRATION.md",
+    "run note",
+    "hidden prompt",
+    "facilitator file",
+]
 NEW_CORRECTION_IDENTITY = [
     "filename",
     "artifact_id",
@@ -162,8 +219,8 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
         packet_dir = protocol_path.parent
         packet_id = protocol.get("packet_id")
         packet_version = protocol.get("packet_version")
-        if protocol.get("schema_version") != 1:
-            errors.append(f"{prefix} schema_version must be 1")
+        if protocol.get("schema_version") != 2:
+            errors.append(f"{prefix} schema_version must be 2")
         if not isinstance(packet_id, str) or not packet_id:
             errors.append(f"{prefix} packet_id must be a non-empty string")
         if not isinstance(packet_version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", packet_version):
@@ -185,6 +242,11 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 errors.append(f"{prefix} manifest verification must succeed before release")
             if verification.get("observed_timestamp_timezone_required") is not True:
                 errors.append(f"{prefix} verification must record observed timestamp/timezone")
+            if verification.get("required_observation_fields") != VERIFICATION_OBSERVATION_FIELDS:
+                errors.append(
+                    f"{prefix} verification must capture exact command, complete output, "
+                    "exit code, timestamp, and timezone"
+                )
         detached = protocol.get("detached_record")
         if not isinstance(detached, dict):
             errors.append(f"{prefix} detached_record must be an object")
@@ -195,6 +257,43 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 errors.append(f"{prefix} later detached record must be excluded from its manifest")
             if detached.get("claims_self_hash") is not False:
                 errors.append(f"{prefix} detached record must not claim its own hash")
+            if detached.get("required_fields") != DETACHED_RECORD_FIELDS:
+                errors.append(
+                    f"{prefix} detached record must capture attempt, phase, actors, "
+                    "facilitator, complete verification evidence, and record completion"
+                )
+            if detached.get("record_completion_must_follow_verification") is not True:
+                errors.append(
+                    f"{prefix} detached record completion must follow manifest verification"
+                )
+
+        input_policy = protocol.get("participant_input_policy")
+        if not isinstance(input_policy, dict):
+            errors.append(f"{prefix} participant_input_policy must be an object")
+        else:
+            if input_policy.get("declared_route_files_only") is not True:
+                errors.append(f"{prefix} participant input must contain declared route files only")
+            if input_policy.get("undeclared_orchestration_forbidden") is not True:
+                errors.append(f"{prefix} undeclared orchestration must be forbidden")
+            if input_policy.get("forbidden_examples") != FORBIDDEN_INPUT_EXAMPLES:
+                errors.append(f"{prefix} participant input forbidden examples are incomplete")
+
+        execution_log = protocol.get("execution_access_log")
+        if not isinstance(execution_log, dict):
+            errors.append(f"{prefix} execution_access_log must be an object")
+        else:
+            if execution_log.get("path") != "facilitator-only/05-execution-and-access-log.md":
+                errors.append(f"{prefix} execution/access log path is invalid")
+            if execution_log.get("facilitator_only") is not True:
+                errors.append(f"{prefix} execution/access log must be facilitator-only")
+            if execution_log.get("excluded_from_participant_input") is not True:
+                errors.append(f"{prefix} execution/access log must be excluded from participant input")
+            if execution_log.get("continuity_binding_required") is not True:
+                errors.append(f"{prefix} execution/access continuity binding is required")
+            if execution_log.get("required_event_sequence") != EXECUTION_EVENT_SEQUENCE:
+                errors.append(f"{prefix} execution/access event sequence is incomplete or reordered")
+            if execution_log.get("required_row_fields") != EXECUTION_LOG_FIELDS:
+                errors.append(f"{prefix} execution/access log row fields are incomplete")
         if protocol.get("next_release_bindings") != NEXT_RELEASE_BINDINGS:
             errors.append(
                 f"{prefix} next release must bind artifact, governing manifest, and detached record"
@@ -268,6 +367,88 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                     f"{prefix} critical document is not packet Markdown: "
                     f"{extra.relative_to(packet_dir)}"
                 )
+
+        required_document_clauses = {
+            "README.md": [
+                "auditable facilitator-side execution history",
+                "exact manifest-verification command/output/exit/time/timezone",
+                "`ORCHESTRATION.md`",
+                "execution and access log",
+            ],
+            "participant/00-packet-route.md": [
+                "For every detached verification record named below",
+                "exact verification command",
+                "complete observed output",
+                "later record-completion timestamp and timezone",
+                "`ORCHESTRATION.md`",
+            ],
+            "participant/06-revised-artifact-freeze-record.md": [
+                "- Attempt ID:",
+                "- Stage and phase:",
+                "- Artifact-producing actor code:",
+                "- Facilitator name/code:",
+                "- Exact manifest verification command:",
+                "- Complete observed command output:",
+                "- Observed command exit code:",
+                "- Observed manifest verification timestamp:",
+                "- Observed manifest verification timezone:",
+                "- Record-completing actor name/code:",
+                "- Record completion timestamp, explicitly later than manifest verification:",
+                "- Record completion timezone:",
+            ],
+            "facilitator-only/01-facilitator-guide.md": [
+                "execution and access log",
+                "every manifest gate, file open or attempted access, artifact completion",
+                "exact verification command, complete observed output, exit code",
+                "explicit later record-completion timestamp and timezone",
+                "undeclared `ORCHESTRATION.md`",
+            ],
+            "facilitator-only/02-observation-and-scoring-rubric.md": [
+                "Detached-record replay identity",
+                "Execution/access continuity",
+                "participant input contains no undeclared orchestration or facilitator file",
+            ],
+            "facilitator-only/03-results-and-deviation-log.md": [
+                "Facilitator execution/access log exact filename and SHA-256",
+                "Declared participant-input inventory matches item by item",
+                "Detached-record required-field audit",
+                "Complete observed output",
+                "Later record-completion timestamp/timezone",
+            ],
+            "facilitator-only/04-temporal-freeze-protocol-and-record-templates.md": [
+                "- Attempt ID:",
+                "- Stage and phase:",
+                "- Exact manifest-verification command:",
+                "- Complete observed command output:",
+                "- Observed command exit code:",
+                "- Record completion timestamp, explicitly later than verification:",
+                "- Record completion timezone:",
+                "Any blank required field prevents `FROZEN`",
+            ],
+            "facilitator-only/05-execution-and-access-log.md": [
+                "Keep this log outside every sealed participant input",
+                "SEALED_INPUT_MANIFEST_CREATED",
+                "GOVERNING_MANIFEST_VERIFIED",
+                "DETACHED_RECORD_COMPLETED",
+                "NEXT_PHASE_GATE_OPENED",
+                "Complete observed output",
+                "Continuity binding",
+            ],
+        }
+        for document, clauses in required_document_clauses.items():
+            document_path = packet_dir / document
+            if not document_path.is_file():
+                errors.append(f"{prefix} missing required protocol document: {document}")
+                continue
+            normalized_document = re.sub(
+                r"\s+", " ", document_path.read_text(encoding="utf-8")
+            ).casefold()
+            for clause in clauses:
+                normalized_clause = re.sub(r"\s+", " ", clause).casefold()
+                if normalized_clause not in normalized_document:
+                    errors.append(
+                        f"{prefix} {document} missing replay-control clause: {clause}"
+                    )
 
         governed_templates = protocol.get("governed_templates")
         if not isinstance(governed_templates, list) or not governed_templates:

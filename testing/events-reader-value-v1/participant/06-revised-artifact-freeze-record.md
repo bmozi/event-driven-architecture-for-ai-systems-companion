@@ -1,6 +1,6 @@
 # Revised Artifact Freeze-Verification Record
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.2
+**Packet:** EVT-RV-PILOT-001 version 1.2.3
 **Status:** Blank detached record; create only after the revised governing
 manifest has been created and verified
 
@@ -13,11 +13,20 @@ Save the completed record as exactly
 
 ## Temporal-order evidence
 
+- Attempt ID:
+- Stage and phase: `Stage A / revised artifact freeze`
 - Verification-record ID/version:
-- Manifest verification timestamp and timezone, observed before this record
-  was created:
-- Verification method and result:
-- Verified by and relationship:
+- Artifact-producing actor code:
+- Facilitator name/code:
+- Manifest verifier name/code and relationship:
+- Exact manifest verification command:
+- Complete observed command output:
+- Observed command exit code:
+- Observed manifest verification timestamp:
+- Observed manifest verification timezone:
+- Record-completing actor name/code:
+- Record completion timestamp, explicitly later than manifest verification:
+- Record completion timezone:
 - Governing manifest exact local filename:
   `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`
 - Governing manifest SHA-256:
@@ -56,6 +65,9 @@ self-declare `FROZEN`.
 - Blank handoff remained unopened through the observed verification event:
   yes / no
 - This record was completed only after that event: yes / no
+- Attempt ID, phase, actors, facilitator, verification command, complete
+  observed output, exit code, verification timestamp/timezone, and later record
+  completion timestamp/timezone are all present: yes / no
 - Freeze state for the listed verified hashes: `FROZEN` / not established
 
 Any `no`, blank required field, mismatch, rename, regenerated copy, summary,

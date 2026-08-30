@@ -1,11 +1,11 @@
 # Observation and Scoring Rubric
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.2
+**Packet:** EVT-RV-PILOT-001 version 1.2.3
 **Status:** Predetermined, blank, and unrun
 
-**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
-adds machine-enforced protocol checks after independent challenge; it has no
-human or practitioner validation.
+**Revision note:** Version 1.2.3 adds replay identity, verification-command
+evidence, completion chronology, and external access logging; it remains
+unrun with people.
 
 Score retained behavior, not agreement with preferred vocabulary.
 
@@ -49,6 +49,8 @@ Mark `clear`, `unclear`, `unsafe`, or `contaminated`:
 | Stage B exact transfer | Stage B receives the detached revised verification record, governing manifest, and every handoff-linked revised detail under the same literal filename with matching ID/version, completion metadata, pre-hash state, and hash; no rename, regeneration, summary, substitution, or omission occurs | | |
 | Stage B sequencing | Sections 1, 2, and 3-5 each reach `SECTION COMPLETE`, receive a governing manifest, undergo verification, and only then receive a detached record. Each next-phase input manifest hashes the prior export, manifest, and record; Section 6 remains closed until the final debrief-phase manifest verifies and scoring ends | | |
 | Temporal non-self-reference | No governed artifact embeds its own hash or later freeze time; no governing manifest lists itself or the later verification record; no detached record claims its own hash; every record timestamp describes an event that already occurred | | |
+| Detached-record replay identity | Every record contains attempt ID, phase, artifact actor, facilitator, verifier, exact verification command, complete output, exit code, observed verification timestamp/timezone, record-completing actor, and a separately recorded later completion timestamp/timezone; any blank, failure, or reversal blocks `FROZEN` | | |
+| Execution/access continuity | The facilitator-side log records ordered manifest gates, item opens/access attempts, artifact completions, manifest creations/verifications, record completions, and phase opens with filenames, actors, timestamps/timezones, predecessor bindings, and manifest SHA-256; participant input contains no undeclared orchestration or facilitator file | | |
 | Revision/correction provenance | The planned live-update revision is distinct from a later correction of frozen revised bytes; every correction preserves old/new immutable filenames, IDs/versions, hashes, reason, timestamp/timezone, replacement detached verification record, and replacement manifest | | |
 
 Any unsafe critical gate blocks a favorable interpretation regardless of total.

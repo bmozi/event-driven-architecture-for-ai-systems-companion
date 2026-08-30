@@ -1,15 +1,16 @@
 # Temporal Freeze Protocol and Record Templates
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.2
+**Packet:** EVT-RV-PILOT-001 version 1.2.3
 **Status:** Facilitator-only static validation note and blank run-record schema;
 prepared and unrun
 
-Version 1.2.2 adds the normative machine-readable inventory in
-[`temporal-protocol.json`](../temporal-protocol.json) and an executable mutation
-suite. The validator checks causal order, manifest membership and exclusions,
-successful observed verification, next-release binding, correction identity,
-critical document hashes, packet versions, stale fields, and all six release
-rows. Passing those static checks remains non-human evidence only.
+Version 1.2.3 extends the machine-readable protocol and mutation suite to make
+the execution history auditable, not merely the final files. Every detached
+record now requires attempt, phase, actor, facilitator, exact verification
+command/output/exit/time/timezone, and a later record-completion
+timestamp/timezone. The facilitator separately maintains the
+[`execution and access log`](05-execution-and-access-log.md). Passing static
+checks remains non-human evidence only.
 
 ## Static protocol finding
 
@@ -41,6 +42,10 @@ Rules:
 6. A later correction never alters frozen bytes. Preserve the old three-part evidence set and
    issue new immutable artifact bytes, a new manifest, and a new detached
    verification record.
+7. The sealed participant input contains only route-declared files. An
+   `ORCHESTRATION.md`, run note, hidden prompt, facilitator file, or other
+   undeclared control file is prohibited. Facilitation instructions and the
+   item-by-item access history stay in the external execution/access log.
 
 ## Exact freeze inventory
 
@@ -59,16 +64,27 @@ Create one record for each inventory row under that row's exact record
 filename. Do not place the later observed values back into a governed artifact.
 
 - Attempt ID:
+- Stage and phase:
 - Freeze-verification record ID/version:
-- Observed manifest-verification timestamp and timezone:
-- Verifier and relationship:
-- Verification command or method:
+- Artifact-producing actor code:
+- Facilitator name/code:
+- Manifest verifier name/code and relationship:
+- Exact manifest-verification command:
+- Complete observed command output:
+- Observed command exit code:
 - Verification result: pass / fail / deviation
+- Observed manifest-verification timestamp:
+- Observed manifest-verification timezone:
+- Record-completing actor name/code:
+- Record completion timestamp, explicitly later than verification:
+- Record completion timezone:
 - Governing manifest exact filename:
 - Governing manifest SHA-256:
 - Manifest excludes itself: yes / no
 - Manifest excludes this later detached verification record: yes / no
 - Record created only after manifest verification: yes / no
+- All required attempt, phase, actor, facilitator, command, output, exit,
+  verification-time, and later record-completion fields present: yes / no
 
 | Governed artifact exact literal filename | Artifact ID/version | Artifact completion timestamp/timezone | Pre-hash state | SHA-256 | Matches manifest |
 | --- | --- | --- | --- | --- | --- |
@@ -80,6 +96,10 @@ filename. Do not place the later observed values back into a governed artifact.
 - Next-phase input manifest exact filename:
 - Next-phase input manifest includes every governed artifact, the governing
   manifest, and this completed record: yes / no / not yet created
+
+The facilitator copies these observed values from the immutable command result
+and execution/access log. Do not infer missing times, actors, output, or exit
+codes after the fact. Any blank required field prevents `FROZEN`.
 
 ## Post-freeze correction schema
 

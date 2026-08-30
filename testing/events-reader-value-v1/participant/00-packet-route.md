@@ -1,10 +1,10 @@
 # Exact Participant Route
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.2
+**Packet:** EVT-RV-PILOT-001 version 1.2.3
 **Human execution:** `PREPARED/UNRUN`
-**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
-adds machine-enforced protocol checks after independent challenge; it has no
-human or practitioner validation.
+**Revision note:** Version 1.2.3 adds machine-enforced replay identity,
+verification-command evidence, record-completion chronology, and external
+access logging; it has no human or practitioner validation.
 
 Use only the exact local files in the sealed flat input. Do not search the repository
 or open a link to an unlisted full worked or comprehensive example, completed
@@ -13,12 +13,25 @@ already visible inside the supplied meaning-and-authority record and short
 generic examples inside supplied files may be read; they are not scenario answers.
 Record any tempting or confusing omitted link instead of opening it.
 
+The sealed input contains only files declared by this route and its current
+phase release. Do not open or follow an `ORCHESTRATION.md`, run note, hidden
+prompt, facilitator file, or other undeclared control file. Its presence is a
+stop and deviation. The facilitator keeps instructions and the item-by-item
+access history outside this input.
+
 Human consent is required for a real run. Complete
 [the consent notice](01-consent-and-privacy.md) before scored work. The
 facilitator records setup start before that notice is first opened, verifies a
 run-specific manifest that does not hash itself, then records the exact stage
 start and timezone immediately before this route is opened. Every file-open,
 pause, question, intervention, filename, and staged release is recorded.
+
+For every detached verification record named below, record the attempt ID,
+stage/phase, artifact-producing actor, facilitator, manifest verifier, exact
+verification command, complete observed output, exit code, observed
+verification timestamp and timezone, record-completing actor, and explicit
+later record-completion timestamp and timezone. A blank field, failed command,
+or missing chronological separation prevents `FROZEN` and stops release.
 
 ## Stage A order
 

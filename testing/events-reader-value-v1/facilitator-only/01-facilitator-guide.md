@@ -1,11 +1,11 @@
 # Facilitator Guide
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.2
+**Packet:** EVT-RV-PILOT-001 version 1.2.3
 **Status:** Facilitator-only; prepared and unrun
 
-**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
-adds machine-enforced protocol checks after independent challenge; it has no
-human or practitioner validation.
+**Revision note:** Version 1.2.3 adds machine-enforced replay identity,
+verification-command evidence, record-completion chronology, and external
+access logging; it has no human or practitioner validation.
 
 ## Purpose
 
@@ -41,6 +41,13 @@ the route is opened. Record the exact file-open order, each pause or question,
 and every intervention with time and level. Do not reconstruct these from
 memory after the session.
 
+Maintain the facilitator-only
+[`execution and access log`](05-execution-and-access-log.md) item by item. Log
+every manifest gate, file open or attempted access, artifact completion,
+manifest creation, manifest verification, detached-record completion, and next
+phase open with exact actor, facilitator, timestamp, timezone, filename, and
+continuity binding.
+
 ## Sealed flat delivery and manifest rule
 
 Before each stage, copy only the approved exact files into a new sealed flat
@@ -48,6 +55,11 @@ input. Preserve every literal local filename named by the packet route. Create
 and verify a run-specific delivery manifest before scored work and log each
 later staged release. A manifest hashes other files; it never lists or hashes
 itself. Do not rely on repository-relative paths.
+
+Reject any participant input containing an undeclared `ORCHESTRATION.md`, run
+note, hidden prompt, facilitator file, or other extra control file. Keep all
+facilitation outside the sealed participant surface and prove the declared
+inventory item by item in the external access log.
 
 Every freeze uses four ordered operations: finish artifact bytes with
 ID/version, completion timestamp/timezone, and complete pre-hash state; create
@@ -57,6 +69,12 @@ event. The record is later than, and excluded from, the manifest it describes.
 The next phase's sealed input manifest hashes the artifacts, governing manifest,
 and detached record. Never require an artifact, manifest, or record to contain
 its own hash or a future verification time.
+
+Every detached record must contain attempt ID, stage/phase,
+artifact-producing actor, facilitator, manifest verifier, exact verification
+command, complete observed output, exit code, observed verification timestamp
+and timezone, record-completing actor, and an explicit later record-completion
+timestamp and timezone. Missing evidence prevents `FROZEN`.
 
 The planned live update creates the first revised set. It is not a correction
 of already frozen revised bytes. A later correction must preserve the old

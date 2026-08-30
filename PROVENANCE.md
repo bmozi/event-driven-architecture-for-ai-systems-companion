@@ -94,3 +94,18 @@ and which validation or usability state actually changed.
 - **Evidence boundary:** these deterministic checks validate prepared source
   structure only. They are not human usability, architecture, safety,
   production, cost, or business-value evidence.
+
+## 2026-08-29 replay-evidence protocol v1.2.3
+
+- **Authority:** Collection-wide repair of defects found during synthetic
+  temporal replay and independent challenge
+- **Changed:** every detached record now requires attempt, phase, actors,
+  facilitator, exact verification command/output/exit/time/timezone, and a
+  separately recorded later completion timestamp/timezone
+- **Added:** a facilitator-only item-level execution/access log with ordered
+  manifest gates, opens, completions, verification events, record events, and
+  continuity bindings; undeclared participant-input orchestration is forbidden
+- **Enforcement:** schema-v2 validation plus sixteen disposable-copy mutations,
+  including omissions that refresh surrounding hashes
+- **Execution state:** `PREPARED/UNRUN`; static and synthetic defect-finding is
+  not human usability, event correctness, loop safety, or business-value evidence

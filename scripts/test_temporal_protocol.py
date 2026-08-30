@@ -190,6 +190,52 @@ def mutate_failed_verification_permission(repo: Path) -> None:
     write_protocol(repo, protocol)
 
 
+def mutate_missing_verification_output(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["verification"]["required_observation_fields"].remove("complete_output")
+    write_protocol(repo, protocol)
+
+
+def mutate_missing_attempt_identity(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["detached_record"]["required_fields"].remove("attempt_id")
+    write_protocol(repo, protocol)
+
+
+def mutate_record_chronology_permission(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["detached_record"]["record_completion_must_follow_verification"] = False
+    write_protocol(repo, protocol)
+
+
+def mutate_undeclared_orchestration_permission(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["participant_input_policy"]["undeclared_orchestration_forbidden"] = False
+    write_protocol(repo, protocol)
+
+
+def mutate_missing_execution_event(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["execution_access_log"]["required_event_sequence"].remove(
+        "GOVERNING_MANIFEST_VERIFIED"
+    )
+    write_protocol(repo, protocol)
+
+
+def mutate_missing_execution_actor(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["execution_access_log"]["required_row_fields"].remove("actor")
+    write_protocol(repo, protocol)
+
+
+def mutate_record_template_omission(repo: Path) -> None:
+    update_critical_document(
+        repo,
+        "participant/06-revised-artifact-freeze-record.md",
+        lambda content: content.replace("- Complete observed command output:\n", "", 1),
+    )
+
+
 def mutate_unmanifested_byte(repo: Path) -> None:
     packet = protocol_path(repo).parent
     target = packet / "participant/02-scenario-and-task.md"
@@ -243,6 +289,41 @@ def main() -> int:
             "manifest verification must succeed before release",
         ),
         (
+            "missing-verification-output",
+            mutate_missing_verification_output,
+            "verification must capture exact command, complete output",
+        ),
+        (
+            "missing-attempt-identity",
+            mutate_missing_attempt_identity,
+            "detached record must capture attempt, phase, actors",
+        ),
+        (
+            "record-chronology-permission",
+            mutate_record_chronology_permission,
+            "record completion must follow manifest verification",
+        ),
+        (
+            "undeclared-orchestration-permission",
+            mutate_undeclared_orchestration_permission,
+            "undeclared orchestration must be forbidden",
+        ),
+        (
+            "missing-execution-event",
+            mutate_missing_execution_event,
+            "execution/access event sequence is incomplete or reordered",
+        ),
+        (
+            "missing-execution-actor",
+            mutate_missing_execution_actor,
+            "execution/access log row fields are incomplete",
+        ),
+        (
+            "record-template-omission",
+            mutate_record_template_omission,
+            "missing replay-control clause: - Complete observed command output:",
+        ),
+        (
             "checksum-control",
             mutate_unmanifested_byte,
             "checksum mismatch",
@@ -253,7 +334,7 @@ def main() -> int:
 
     print(
         "temporal protocol mutation tests passed: "
-        "1 clean positive control, 9 rejected mutations"
+        "1 clean positive control, 16 rejected mutations"
     )
     return 0
 

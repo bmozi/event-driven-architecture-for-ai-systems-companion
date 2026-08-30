@@ -1,11 +1,11 @@
 # Results and Deviation Log
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.2
+**Packet:** EVT-RV-PILOT-001 version 1.2.3
 **Status:** Blank controlled record; no result exists
 
-**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
-adds machine-enforced protocol checks after independent challenge; it has no
-human or practitioner validation.
+**Revision note:** Version 1.2.3 adds machine-enforced replay identity,
+verification-command evidence, record-completion chronology, and external
+access logging; it has no human or practitioner validation.
 
 ## Run identity
 
@@ -18,6 +18,7 @@ human or practitioner validation.
 - Date, mode, and time:
 - Exact Stage A start and end with timezone:
 - Exact Stage B start and end with timezone:
+- Facilitator execution/access log exact filename and SHA-256:
 
 ## Consent, privacy, and freeze
 
@@ -28,6 +29,10 @@ human or practitioner validation.
 - Sealed flat Stage B input location and manifest:
 - Prepared-source manifest match:
 - Supplied and withheld materials correct: yes / no / deviation
+- Declared participant-input inventory matches item by item: yes / no /
+  deviation
+- Undeclared orchestration, run note, hidden prompt, facilitator file, or other
+  control file in participant input: none / deviation ID
 - Confidentiality or privacy concern:
 - Initial Stage A artifacts completed before manifest creation: yes / no /
   deviation; IDs/versions and completion timestamps/timezones:
@@ -78,6 +83,21 @@ stops detailed read-back.
 | Stage B Section 1 | `EVT-B-SECTION-1-SCAN-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-1-SHA256SUMS-v1.txt` / | | `EVT-B-SECTION-1-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-2-INPUT-SHA256SUMS-v1.txt` / | |
 | Stage B Section 2 | `EVT-B-SECTION-2-DETAIL-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-2-SHA256SUMS-v1.txt` / | | `EVT-B-SECTION-2-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-3-INPUT-SHA256SUMS-v1.txt` / | |
 | Stage B Sections 3-5 | `EVT-B-SECTIONS-3-5-DECISION-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt` / | | `EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt` / | |
+
+## Detached-record required-field audit
+
+Do not infer missing history. Each row must match the detached record and the
+facilitator execution/access log. Any blank, failed verification, output
+omission, or record completion that is not explicitly later blocks `FROZEN`.
+
+| Scope | Attempt ID | Phase | Artifact actor | Facilitator | Manifest verifier | Exact command | Complete observed output | Exit code | Verification timestamp/timezone | Record-completing actor | Later record-completion timestamp/timezone | Chronology and log match |
+| --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- |
+| Stage A initial | | | | | | | | | | | | |
+| Stage A revised | | | | | | | | | | | | |
+| Stage A handoff | | | | | | | | | | | | |
+| Stage B Section 1 | | | | | | | | | | | | |
+| Stage B Section 2 | | | | | | | | | | | | |
+| Stage B Sections 3-5 | | | | | | | | | | | | |
 
 ## Timing and interventions
 

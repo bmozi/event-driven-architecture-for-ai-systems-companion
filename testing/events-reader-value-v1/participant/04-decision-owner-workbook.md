@@ -1,11 +1,11 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.2
+**Packet:** EVT-RV-PILOT-001 version 1.2.3
 **Status:** Blank independent read-back record
 
-**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
-adds machine-enforced protocol checks after independent challenge; it has no
-human or practitioner validation.
+**Revision note:** Version 1.2.3 adds replay identity, verification-command
+evidence, completion chronology, and external access logging; it remains
+unrun with people.
 
 - Reviewer code:
 - Broad role and experience band, optional:
@@ -14,6 +14,8 @@ human or practitioner validation.
 - Stage start recorded before first file read, with timezone, and end time:
 - Exact file-open order:
 - Sealed Stage B input manifest:
+- Undeclared orchestration, facilitator, hidden-prompt, or run-note file
+  present: none / stop and deviation
 - Prior involvement with Stage A: none required for first calibration
 
 Do not ask the Stage A practitioner to explain or repair the artifact until

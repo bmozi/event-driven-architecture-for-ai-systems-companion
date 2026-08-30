@@ -1,15 +1,17 @@
 # Events Reader-Value Pilot Packet
 
 **Packet ID:** EVT-RV-PILOT-001
-**Version:** 1.2.2
+**Version:** 1.2.3
 **Status:** `PREPARED/UNRUN` for human participants; no participant recruited or
 consented
 **Scenario:** Pine Hollow Foods, entirely fictional
 
-Version 1.2.2 preserves the non-self-referential freeze sequence introduced in
-version 1.2.1 and adds a machine-readable protocol plus executable negative
-mutation tests. That internal work was not a human or practitioner session and
-provides no usability, safety, architecture, or business-value validation.
+Version 1.2.3 preserves the non-self-referential freeze sequence and adds an
+auditable facilitator-side execution history. Detached records now require the
+attempt, phase, actors, facilitator, exact manifest-verification
+command/output/exit/time/timezone, and a later record-completion
+timestamp/timezone. That internal work was not a human or practitioner session
+and provides no usability, safety, architecture, or business-value validation.
 
 The normative release inventory and invariants are in
 [`temporal-protocol.json`](temporal-protocol.json). The human instructions must
@@ -36,6 +38,11 @@ flat stage-input directory. Preserve every literal filename below. Do not
 deliver repository-relative paths, aliases, regenerated copies, or summaries.
 Create and verify a run-specific SHA-256 delivery manifest before the scored
 stage starts. A manifest hashes other files; it never lists or hashes itself.
+The sealed directory must contain only route-declared participant files. An
+`ORCHESTRATION.md`, run note, hidden prompt, facilitator file, or other
+undeclared control file is prohibited. Keep orchestration and every item-level
+gate/open/completion/manifest/verification/record event in the separate
+facilitator-only [execution and access log](facilitator-only/05-execution-and-access-log.md).
 
 For every later freeze, use this exact temporal order:
 
@@ -168,6 +175,7 @@ then.
 - [Observation and scoring rubric](facilitator-only/02-observation-and-scoring-rubric.md)
 - [Results and deviation log](facilitator-only/03-results-and-deviation-log.md)
 - [Temporal freeze protocol and record templates](facilitator-only/04-temporal-freeze-protocol-and-record-templates.md)
+- [Execution and access log](facilitator-only/05-execution-and-access-log.md)
 
 Never supply these files before either scored stage ends.
 
@@ -183,8 +191,13 @@ Before recruitment:
    asset bytes;
 5. record SHA-256 values and observed verification timestamps/timezones in
    detached run-specific evidence;
-6. keep scheduling identity separate from participant codes; and
-7. assign a facilitator and evaluator with disclosed relationships.
+6. retain the exact verification command, complete output, exit code, actors,
+   facilitator, and later record-completion timestamp/timezone for every
+   detached record;
+7. maintain the external item-by-item execution/access log and prove the
+   participant input contains no undeclared orchestration file;
+8. keep scheduling identity separate from participant codes; and
+9. assign a facilitator and evaluator with disclosed relationships.
 
 The checked-in `SHA256SUMS` records the prepared source packet. See the
 [static protocol validation note](facilitator-only/04-temporal-freeze-protocol-and-record-templates.md)
