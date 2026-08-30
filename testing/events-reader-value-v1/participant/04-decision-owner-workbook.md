@@ -1,11 +1,11 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.1
+**Packet:** EVT-RV-PILOT-001 version 1.2.2
 **Status:** Blank independent read-back record
 
-**Revision note:** Version 1.2.1 makes every staged freeze temporally ordered
-and non-self-referential after static protocol review; it has no human or
-practitioner validation.
+**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
+adds machine-enforced protocol checks after independent challenge; it has no
+human or practitioner validation.
 
 - Reviewer code:
 - Broad role and experience band, optional:

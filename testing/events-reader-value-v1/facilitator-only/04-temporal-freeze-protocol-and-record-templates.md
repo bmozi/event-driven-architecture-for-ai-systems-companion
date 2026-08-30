@@ -1,8 +1,15 @@
 # Temporal Freeze Protocol and Record Templates
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.1
+**Packet:** EVT-RV-PILOT-001 version 1.2.2
 **Status:** Facilitator-only static validation note and blank run-record schema;
 prepared and unrun
+
+Version 1.2.2 adds the normative machine-readable inventory in
+[`temporal-protocol.json`](../temporal-protocol.json) and an executable mutation
+suite. The validator checks causal order, manifest membership and exclusions,
+successful observed verification, next-release binding, correction identity,
+critical document hashes, packet versions, stale fields, and all six release
+rows. Passing those static checks remains non-human evidence only.
 
 ## Static protocol finding
 

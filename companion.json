@@ -19,10 +19,15 @@
     "FAILURE-LAB.md",
     "PILOT-AND-USABILITY.md",
     "testing/events-reader-value-v1/README.md",
-    "testing/events-reader-value-v1/SHA256SUMS"
+    "testing/events-reader-value-v1/SHA256SUMS",
+    "testing/events-reader-value-v1/temporal-protocol.json",
+    "scripts/test_temporal_protocol.py"
   ],
   "checksum_manifests": [
     "testing/events-reader-value-v1/SHA256SUMS"
+  ],
+  "temporal_protocols": [
+    "testing/events-reader-value-v1/temporal-protocol.json"
   ],
   "gateway_assets": [
     {

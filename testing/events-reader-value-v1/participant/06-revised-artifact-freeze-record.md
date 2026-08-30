@@ -1,6 +1,6 @@
 # Revised Artifact Freeze-Verification Record
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.1
+**Packet:** EVT-RV-PILOT-001 version 1.2.2
 **Status:** Blank detached record; create only after the revised governing
 manifest has been created and verified
 

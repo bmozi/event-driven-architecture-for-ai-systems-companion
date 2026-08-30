@@ -1,15 +1,20 @@
 # Events Reader-Value Pilot Packet
 
 **Packet ID:** EVT-RV-PILOT-001
-**Version:** 1.2.1
+**Version:** 1.2.2
 **Status:** `PREPARED/UNRUN` for human participants; no participant recruited or
 consented
 **Scenario:** Pine Hollow Foods, entirely fictional
 
-Version 1.2.1 removes temporal self-reference from every freeze after a static
-protocol review of version 1.2.0. That internal work was not a human
-or practitioner session and provides no usability, safety, architecture, or
-business-value validation.
+Version 1.2.2 preserves the non-self-referential freeze sequence introduced in
+version 1.2.1 and adds a machine-readable protocol plus executable negative
+mutation tests. That internal work was not a human or practitioner session and
+provides no usability, safety, architecture, or business-value validation.
+
+The normative release inventory and invariants are in
+[`temporal-protocol.json`](temporal-protocol.json). The human instructions must
+agree with that file; the repository validator checks both their exact frozen
+bytes and their structured release rows.
 
 ## What this packet tests
 

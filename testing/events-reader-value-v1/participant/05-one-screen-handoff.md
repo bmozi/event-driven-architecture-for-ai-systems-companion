@@ -1,12 +1,12 @@
 # One-Screen Stage A Handoff
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.1
+**Packet:** EVT-RV-PILOT-001 version 1.2.2
 **Status:** Blank; open only after the revised-detail governing manifest has
 verified, its detached verification record exists, and the handoff-phase input
 manifest verifies
-**Revision note:** Version 1.2.1 makes handoff freeze evidence temporally
-ordered and non-self-referential after static protocol review; it has no human
-or practitioner validation.
+**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
+adds machine-enforced protocol checks after independent challenge; it has no
+human or practitioner validation.
 
 Keep this handoff to one page. Link detail instead of repeating it. Use
 `UNKNOWN` rather than guessing. An owner may be `UNASSIGNED`; do not invent an

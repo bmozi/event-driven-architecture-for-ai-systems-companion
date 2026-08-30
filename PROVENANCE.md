@@ -82,3 +82,15 @@ and which validation or usability state actually changed.
 - **Execution state:** `PREPARED/UNRUN`; no human participant result exists.
 - **Boundary:** Static protocol coherence only; it does not establish human
   comprehension, event correctness, loop safety, readiness, or business value.
+
+## 2026-08-29 machine-enforced temporal protocol v1.2.2
+
+- **Changed:** added a machine-readable six-release inventory and hardened the
+  repository validator against circular manifests, invalid temporal order,
+  incomplete next-release binding, overwrite-permitting corrections, stale
+  governed fields, incomplete release logs, and packet-version mismatch.
+- **Added:** executable disposable-copy mutation tests, including a clean
+  positive control and checksum-integrity control.
+- **Evidence boundary:** these deterministic checks validate prepared source
+  structure only. They are not human usability, architecture, safety,
+  production, cost, or business-value evidence.

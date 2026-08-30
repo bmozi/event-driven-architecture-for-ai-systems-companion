@@ -1,10 +1,10 @@
 # Exact Participant Route
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.1
+**Packet:** EVT-RV-PILOT-001 version 1.2.2
 **Human execution:** `PREPARED/UNRUN`
-**Revision note:** Version 1.2.1 makes every freeze temporally ordered and
-non-self-referential after static protocol review; it has no human or
-practitioner validation.
+**Revision note:** Version 1.2.2 retains the version 1.2.1 temporal repair and
+adds machine-enforced protocol checks after independent challenge; it has no
+human or practitioner validation.
 
 Use only the exact local files in the sealed flat input. Do not search the repository
 or open a link to an unlisted full worked or comprehensive example, completed

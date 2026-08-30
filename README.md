@@ -53,7 +53,7 @@ the book's reasoning.
 [Executive Decision Brief](EXECUTIVE-DECISION-BRIEF.md), and
 [Failure Lab](FAILURE-LAB.md) connect event mechanics to team and investment
 decisions. The [Pilot and Usability Route](PILOT-AND-USABILITY.md) and
-reader-value packet version 1.2.1 remain prepared and unrun with human
+reader-value packet version 1.2.2 remain prepared and unrun with human
 participants.
 
 ## Development boundary

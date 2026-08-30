@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "protocol_id": "RV-TEMPORAL-FREEZE-001",
+  "packet_id": "EVT-RV-PILOT-001",
+  "packet_version": "1.2.2",
+  "causal_order": [
+    "completed_artifacts",
+    "artifact_only_manifest",
+    "successful_manifest_verification",
+    "detached_verification_record",
+    "next_release_manifest"
+  ],
+  "governing_manifest_members": [
+    "governed_artifacts"
+  ],
+  "governing_manifest_excludes": [
+    "governing_manifest",
+    "detached_verification_record"
+  ],
+  "verification": {
+    "must_succeed": true,
+    "observed_timestamp_timezone_required": true
+  },
+  "detached_record": {
+    "created_after": "successful_manifest_verification",
+    "excluded_from_described_manifest": true,
+    "claims_self_hash": false
+  },
+  "next_release_bindings": [
+    "governed_artifacts",
+    "governing_manifest",
+    "detached_verification_record"
+  ],
+  "correction_policy": {
+    "preserve_prior_release": true,
+    "allow_overwrite": false,
+    "allow_same_filename": false,
+    "required_new_identity": [
+      "filename",
+      "artifact_id",
+      "version",
+      "sha256",
+      "governing_manifest",
+      "detached_verification_record"
+    ]
+  },
+  "results_log": "facilitator-only/03-results-and-deviation-log.md",
+  "static_inventory": "facilitator-only/04-temporal-freeze-protocol-and-record-templates.md",
+  "governed_templates": [
+    "participant/03-practitioner-workbook.md",
+    "participant/04-decision-owner-workbook.md",
+    "participant/05-one-screen-handoff.md"
+  ],
+  "release_chains": [
+    {
+      "id": "stage_a_initial",
+      "results_label": "Stage A initial",
+      "artifacts": [
+        {"filename": "EVT-A-INITIAL-WORKBOOK-v1.md", "state": "INITIAL COMPLETE"},
+        {"filename": "EVT-A-INITIAL-MEANING-AUTHORITY-v1.md", "state": "INITIAL COMPLETE"},
+        {"filename": "EVT-A-INITIAL-MULTIPLIER-v1.md", "state": "INITIAL COMPLETE"},
+        {"filename": "EVT-A-INITIAL-LOOP-CHECK-v1.md", "state": "INITIAL COMPLETE"}
+      ],
+      "governing_manifest": "EVT-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt",
+      "detached_record": "EVT-A-INITIAL-FREEZE-VERIFICATION-v1.md",
+      "next_release_manifest": "EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt"
+    },
+    {
+      "id": "stage_a_revised",
+      "results_label": "Stage A revised",
+      "artifacts": [
+        {"filename": "EVT-A-REVISED-WORKBOOK-v1.md", "state": "REVISED COMPLETE"},
+        {"filename": "EVT-A-REVISED-MEANING-AUTHORITY-v1.md", "state": "REVISED COMPLETE"},
+        {"filename": "EVT-A-REVISED-MULTIPLIER-v1.md", "state": "REVISED COMPLETE"},
+        {"filename": "EVT-A-REVISED-LOOP-CHECK-v1.md", "state": "REVISED COMPLETE"}
+      ],
+      "governing_manifest": "EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt",
+      "detached_record": "EVT-A-REVISED-FREEZE-VERIFICATION-v1.md",
+      "next_release_manifest": "EVT-A-HANDOFF-PHASE-INPUT-SHA256SUMS-v1.txt"
+    },
+    {
+      "id": "stage_a_handoff",
+      "results_label": "Stage A handoff",
+      "artifacts": [
+        {"filename": "EVT-A-ONE-SCREEN-HANDOFF-v1.md", "state": "HANDOFF COMPLETE"}
+      ],
+      "governing_manifest": "EVT-A-HANDOFF-SHA256SUMS-v1.txt",
+      "detached_record": "EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md",
+      "next_release_manifest": "EVT-B-PHASE-1-INPUT-SHA256SUMS-v1.txt"
+    },
+    {
+      "id": "stage_b_section_1",
+      "results_label": "Stage B Section 1",
+      "artifacts": [
+        {"filename": "EVT-B-SECTION-1-SCAN-v1.md", "state": "SECTION COMPLETE"}
+      ],
+      "governing_manifest": "EVT-B-SECTION-1-SHA256SUMS-v1.txt",
+      "detached_record": "EVT-B-SECTION-1-FREEZE-VERIFICATION-v1.md",
+      "next_release_manifest": "EVT-B-PHASE-2-INPUT-SHA256SUMS-v1.txt"
+    },
+    {
+      "id": "stage_b_section_2",
+      "results_label": "Stage B Section 2",
+      "artifacts": [
+        {"filename": "EVT-B-SECTION-2-DETAIL-v1.md", "state": "SECTION COMPLETE"}
+      ],
+      "governing_manifest": "EVT-B-SECTION-2-SHA256SUMS-v1.txt",
+      "detached_record": "EVT-B-SECTION-2-FREEZE-VERIFICATION-v1.md",
+      "next_release_manifest": "EVT-B-PHASE-3-INPUT-SHA256SUMS-v1.txt"
+    },
+    {
+      "id": "stage_b_sections_3_5",
+      "results_label": "Stage B Sections 3-5",
+      "artifacts": [
+        {"filename": "EVT-B-SECTIONS-3-5-DECISION-v1.md", "state": "SECTION COMPLETE"}
+      ],
+      "governing_manifest": "EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt",
+      "detached_record": "EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md",
+      "next_release_manifest": "EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt"
+    }
+  ],
+  "critical_documents": [
+    {"path": "README.md", "sha256": "efa3b855e039ce13131061bb55ee02935063fe8c265a65b5c69ed8a8e872ab6b"},
+    {"path": "facilitator-only/01-facilitator-guide.md", "sha256": "7b9ae28df72341f573e429631196a5d67c76402a3ad8ef3232f02875f5b49b81"},
+    {"path": "facilitator-only/02-observation-and-scoring-rubric.md", "sha256": "f796901de3cdd14a03c5ee76876610d488c9fbc0414be7e185cd74180295baa2"},
+    {"path": "facilitator-only/03-results-and-deviation-log.md", "sha256": "f546880b17e194c22e3c0631ef4def3b7b65bdceab5a2ca32db5063af1bac79c"},
+    {"path": "facilitator-only/04-temporal-freeze-protocol-and-record-templates.md", "sha256": "c75c54c0cf3917ce4387776dbe466e01851063d8839e77beb7af8d0e09d743d8"},
+    {"path": "participant/00-packet-route.md", "sha256": "01e557a53ba986797dc56be1c5d788fc1de4a787d46b845f2b8498a9382cdb32"},
+    {"path": "participant/01-consent-and-privacy.md", "sha256": "57b7f542835235bbbf2e0848b6854e8c4ae0e54d4875b29d0f2cc8eb05040803"},
+    {"path": "participant/02-scenario-and-task.md", "sha256": "880b7cf8cc5daa2fc8e832a0292f5ddc70767eda28210625c5d18d8266e64fdc"},
+    {"path": "participant/03-practitioner-workbook.md", "sha256": "dc7db70aeffcb565f0a3fe41616e33669e1c4689450f4fa80af04d1e319f9287"},
+    {"path": "participant/04-decision-owner-workbook.md", "sha256": "905596f6e6048c23a1ef839a94d448dca041e29fcb3abc09d789c665676667ea"},
+    {"path": "participant/05-one-screen-handoff.md", "sha256": "fdf4ddc1c1890af6bacdf36b5dd719156c1abda0b5cd9b7fab69d1743c4f0cb7"},
+    {"path": "participant/06-revised-artifact-freeze-record.md", "sha256": "5e864424d7ef22fd51b916d68f66a203fd0ddb29c9be8560a4d2d68c5132fb37"}
+  ]
+}
