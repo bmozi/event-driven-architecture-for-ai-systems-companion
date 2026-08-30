@@ -1,6 +1,6 @@
 # Stage B Section 6 Debrief
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Blank post-scoring input; no debrief has occurred
 
 Open this file only after the facilitator logs `STAGE_B_SCORING_ENDED` and

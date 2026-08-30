@@ -1,10 +1,11 @@
 # Facilitator Execution and Access Log
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Blank facilitator-side control record; prepared and unrun
 
-**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
-binding and adds full-route event closure.
+**Revision note:** Version 1.2.6 preserves v1.2.5's full-route event closure
+and v1.2.4's exact immutable live-update binding, and makes branch selection
+and run start the first two semantic events.
 
 Keep this log outside every sealed participant input. It is not a participant
 instruction, artifact, answer key, or substitute for consent. Do not copy an
@@ -76,8 +77,8 @@ and actor on every `*_MANIFEST_VERIFIED` row.
 
 The full-route log additionally uses these exact boundary types:
 
-- `ENTRY_BRANCH_SELECTED` and `ENTRY_CONTEXT_RECORD_COMPLETED`;
-- `RUN_LOG_STARTED`;
+- `ENTRY_BRANCH_SELECTED` and `RUN_LOG_STARTED` as the first two semantic events;
+- `ENTRY_CONTEXT_RECORD_COMPLETED` before scored input;
 - `STAGE_A_STARTED`, `STAGE_A_MATERIAL_FEEDBACK_COMPLETED`, and
   `STAGE_A_ENDED`;
 - `HANDOFF_LAYOUT_PROOF_COMPLETED`;
@@ -87,7 +88,7 @@ The full-route log additionally uses these exact boundary types:
 - `RUN_LOG_CLOSED`.
 
 The exact entry order is
-`ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED`;
+`ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED`;
 the selected context manifest also verifies before each stage start. Stage A ends
 after material feedback. Stage B scoring ends before the debrief manifest is
 created or opened; debrief-before-scoring is a stop. Stage B ends after the

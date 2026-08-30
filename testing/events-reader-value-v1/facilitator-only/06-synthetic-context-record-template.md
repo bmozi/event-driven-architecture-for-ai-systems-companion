@@ -1,6 +1,6 @@
 # Synthetic Context Record Template
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Facilitator-only blank template; no synthetic result exists
 
 Use this template only after the run selects the synthetic branch. Export one
@@ -12,7 +12,7 @@ access as human behavior.
 
 - Exact filename: `EVT-SYNTHETIC-CONTEXT-<attempt-id>-v1.md`
 - Artifact ID/version: `EVT-SYNTHETIC-CONTEXT/v1`
-- Packet ID/version: `EVT-RV-PILOT-001` / `1.2.5`
+- Packet ID/version: `EVT-RV-PILOT-001` / `1.2.6`
 - Attempt ID:
 - Required statement: `SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA`
 - Scenario state: `fictional only`

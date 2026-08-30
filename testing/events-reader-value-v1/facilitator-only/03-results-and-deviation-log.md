@@ -1,10 +1,11 @@
 # Results and Deviation Log
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Blank controlled record; no result exists
 
-**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
-binding and adds full-route closure; it has no human validation.
+**Revision note:** Version 1.2.6 preserves v1.2.5's full-route closure,
+v1.2.4's exact immutable live-update binding, and the first-two-event rule:
+branch selection, then run start; it has no human validation.
 
 Export immutable run results as
 `EVT-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md`. Complete them after
@@ -16,7 +17,7 @@ log hash or external closeout timestamp.
 
 - Attempt ID:
 - Exact results filename and artifact ID/version:
-- Packet ID/version: `EVT-RV-PILOT-001` / `1.2.5`
+- Packet ID/version: `EVT-RV-PILOT-001` / `1.2.6`
 - Entry branch: human / synthetic
 - Execution owner and authorization:
 - Stage A participant code:
@@ -121,7 +122,7 @@ omission, or record completion that is not explicitly later blocks `FROZEN`.
 ## Full-route boundary checkpoints
 
 - Exact pre-run order
-  `ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED`
+  `ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED`
   event IDs/hashes:
 - Exact Stage A start and `STAGE_A_STARTED` event ID/hash:
 - `STAGE_A_MATERIAL_FEEDBACK_COMPLETED` event ID/hash:

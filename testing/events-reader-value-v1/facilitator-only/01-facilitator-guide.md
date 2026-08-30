@@ -1,10 +1,11 @@
 # Facilitator Guide
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Facilitator-only; prepared and unrun
 
-**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
-binding and adds full-route closure; it has no human validation.
+**Revision note:** Version 1.2.6 preserves v1.2.5's full-route closure,
+v1.2.4's exact immutable live-update binding, and the first-two-event rule:
+branch selection, then run start; it has no human validation.
 
 ## Purpose
 
@@ -49,15 +50,17 @@ continuity binding.
 
 ## Select exactly one entry branch
 
-Before run start, enforce
-`ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED`.
+Make the first two semantic events exactly
+`ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED`. Complete and verify the selected
+entry-context record immediately afterward and before scored input:
+`ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED`.
 Select `human` or `synthetic`.
 Human runs use distinct Stage A/B consent records and exact human-context
 manifests. Synthetic runs use
 `EVT-SYNTHETIC-CONTEXT-<attempt-id>-v1.md` from the synthetic template with
 `SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA`; never fill the human form or
 claim human behavior/results. Missing selection or branch mixing stops the
-attempt. Verify the selected context before run start and each stage checkpoint.
+attempt. Verify the selected context after run start and before each stage checkpoint.
 
 ## Sealed flat delivery and manifest rule
 

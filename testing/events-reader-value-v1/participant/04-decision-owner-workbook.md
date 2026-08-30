@@ -1,10 +1,11 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Blank independent read-back record
 
-**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
-binding and adds full-route closure; it remains unrun with people.
+**Revision note:** Version 1.2.6 preserves v1.2.5's full-route closure,
+v1.2.4's exact immutable live-update binding, and the first-two-event rule:
+branch selection, then run start; it remains unrun with people.
 
 - Reviewer code:
 - Broad role and experience band, optional:

@@ -1,14 +1,15 @@
 # Events Reader-Value Pilot Packet
 
 **Packet ID:** EVT-RV-PILOT-001
-**Version:** 1.2.5
+**Version:** 1.2.6
 **Status:** `PREPARED/UNRUN` for human participants; no participant recruited or
 consented
 **Scenario:** Pine Hollow Foods, entirely fictional
 
-Version 1.2.5 preserves v1.2.4's schema-3 exact live-update byte binding,
-auditable facilitator-side execution history, and all six scored freeze
-chains, then adds full-route closure. The
+Version 1.2.6 preserves v1.2.5's full-route closure, v1.2.4's schema-3 exact
+live-update byte binding, auditable facilitator-side execution history, and
+all six scored freeze chains. It makes branch selection and run start the
+first two semantic events. The
 exact fictional update is now the immutable route-declared input
 `EVT-A-LIVE-UPDATE-v1.md`; the revision-phase input manifest must hash it with
 the completed initial artifacts, their governing manifest, and their detached
@@ -28,8 +29,10 @@ bytes and their structured release rows.
 
 ## Mutually exclusive entry branch
 
-Before run start, enforce this exact order:
-`ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED`.
+The first two semantic events must be exactly
+`ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED`. Complete and verify the selected
+entry-context record immediately afterward, before any scored input opens:
+`ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED`.
 Choose exactly one branch:
 
 1. **Human:** complete and manifest-verify the distinct Stage A and Stage B
@@ -40,8 +43,8 @@ Choose exactly one branch:
 
 Never mix branches. Synthetic work must not complete human consent or claim
 human comprehension, usability, practitioner behavior, or a human result.
-Verify the matching context before `RUN_LOG_STARTED`, `STAGE_A_STARTED`, and
-`STAGE_B_STARTED`.
+Verify the matching context after `RUN_LOG_STARTED` and before
+`STAGE_A_STARTED`; reverify it before `STAGE_B_STARTED`.
 
 ## What this packet tests
 

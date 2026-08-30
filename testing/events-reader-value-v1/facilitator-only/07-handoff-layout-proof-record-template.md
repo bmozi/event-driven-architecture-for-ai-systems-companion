@@ -1,6 +1,6 @@
 # Handoff Layout Proof Record Template
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Facilitator-only blank template; no layout result exists
 
 After the completed Markdown handoff is manifested and verified, render its

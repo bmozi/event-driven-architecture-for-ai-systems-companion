@@ -1,9 +1,10 @@
 # Exact Participant Route
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Human execution:** `PREPARED/UNRUN`
-**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
-binding and adds full-route closure; it has no human validation.
+**Revision note:** Version 1.2.6 preserves v1.2.5's full-route closure,
+v1.2.4's exact immutable live-update binding, and the first-two-event rule:
+branch selection, then run start; it has no human validation.
 
 Use only the exact local files in the sealed flat input. Do not search the repository
 or open a link to an unlisted full worked or comprehensive example, completed
@@ -18,16 +19,18 @@ prompt, facilitator file, or other undeclared control file. Its presence is a
 stop and deviation. The facilitator keeps instructions and the item-by-item
 access history outside this input.
 
-Before run start, enforce exactly
-`ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED`.
+The first two semantic events are exactly
+`ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED`. Complete and verify the selected
+entry-context record immediately afterward and before scored input:
+`ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED`.
 Select one mutually exclusive entry branch. A human
 run completes the distinct Stage A/B records from
 [the consent notice](01-consent-and-privacy.md). A synthetic run instead uses
 manifest-bound `EVT-SYNTHETIC-CONTEXT-<attempt-id>-v1.md` with the exact
 statement `SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA`; it never fills the
 human form or claims human consent, comprehension, usability, or results.
-Branch mixing stops the run. Verify the selected context before run start and the separate
-`STAGE_A_STARTED` or `STAGE_B_STARTED` log checkpoint. Every file-open, pause,
+Branch mixing stops the run. Verify the selected context after run start and
+before the separate `STAGE_A_STARTED` or `STAGE_B_STARTED` log checkpoint. Every file-open, pause,
 question, intervention, filename, and staged release is recorded.
 
 For every detached verification record named below, record the attempt ID,

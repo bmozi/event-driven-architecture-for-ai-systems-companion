@@ -1,11 +1,12 @@
 # Temporal Freeze Protocol and Record Templates
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Facilitator-only static validation note and blank run-record schema;
 prepared and unrun
 
-Version 1.2.5 preserves the v1.2.4 schema-3 revision-phase byte binding and
-adds machine-enforced full-route closure. The exact immutable
+Version 1.2.6 preserves v1.2.5's machine-enforced full-route closure and the
+v1.2.4 schema-3 revision-phase byte binding. It makes branch selection and run
+start the first two semantic events. The exact immutable
 `EVT-A-LIVE-UPDATE-v1.md` must be hashed with the four completed initial
 artifacts, their governing manifest, and their detached verification record by
 `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` before the file opens. The

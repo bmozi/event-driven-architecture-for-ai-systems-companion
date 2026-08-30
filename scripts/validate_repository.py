@@ -22,7 +22,7 @@ PACKET_HEADER_PATTERN = re.compile(
     r"^\*\*Packet:\*\*\s*(\S+)\s+version\s+(\S+)\s*$", re.MULTILINE
 )
 TEMPORAL_SCHEMA_VERSION = 3
-CURRENT_PACKET_VERSION = "1.2.5"
+CURRENT_PACKET_VERSION = "1.2.6"
 LIVE_UPDATE_FILENAME = "EVT-A-LIVE-UPDATE-v1.md"
 LIVE_UPDATE_PATH = f"participant/{LIVE_UPDATE_FILENAME}"
 REVISION_PHASE_ID = "stage_a_revision"
@@ -173,7 +173,7 @@ FULL_ROUTE_CONTRACT = {
     "scored_freeze_chain_ids": RELEASE_IDS,
     "six_scored_freezes_are_full_route_closure": False,
     "required_boundary_order": [
-        "ENTRY_BRANCH_SELECTED", "ENTRY_CONTEXT_RECORD_COMPLETED", "RUN_LOG_STARTED",
+        "ENTRY_BRANCH_SELECTED", "RUN_LOG_STARTED", "ENTRY_CONTEXT_RECORD_COMPLETED",
         "STAGE_A_STARTED", "stage_a_initial", "stage_a_revised", "stage_a_handoff",
         "HANDOFF_LAYOUT_PROOF_COMPLETED", "STAGE_A_MATERIAL_FEEDBACK_COMPLETED",
         "STAGE_A_ENDED", "STAGE_B_STARTED", "stage_b_section_1",
@@ -648,7 +648,7 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "six scored freeze chains",
                 "US Letter",
                 "RUN_RESULTS_COMPLETED",
-                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+                "ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
             ],
             "participant/00-packet-route.md": [
                 "For every detached verification record named below",
@@ -660,7 +660,7 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "`ORCHESTRATION.md`",
                 "debrief before scoring ends is forbidden",
                 "Do not put or predict those future end fields",
-                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+                "ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
             ],
             "participant/06-revised-artifact-freeze-record.md": [
                 "- Attempt ID:",
@@ -687,7 +687,7 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "STAGE_A_ENDED",
                 "STAGE_B_SCORING_ENDED",
                 "RUN_RESULTS_COMPLETED",
-                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+                "ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
             ],
             "facilitator-only/02-observation-and-scoring-rubric.md": [
                 "Detached-record replay identity",
@@ -709,7 +709,7 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "RUN RESULTS COMPLETE",
                 "Full-route boundary checkpoints",
                 "Real-world evidence state: `UNRUN`",
-                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+                "ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
             ],
             "facilitator-only/04-temporal-freeze-protocol-and-record-templates.md": [
                 "- Attempt ID:",
@@ -736,7 +736,7 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "`EVT-A-LIVE-UPDATE-v1.md`",
                 "STAGE_B_SCORING_ENDED",
                 "RUN_LOG_CLOSED",
-                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+                "ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
             ],
             "facilitator-only/06-synthetic-context-record-template.md": [
                 "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",

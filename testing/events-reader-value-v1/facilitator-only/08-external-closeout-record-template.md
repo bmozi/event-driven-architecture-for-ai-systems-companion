@@ -1,6 +1,6 @@
 # External Closeout Record Template
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Facilitator-only blank template; no closeout result exists
 
 Complete this record only after immutable run results are complete, the
@@ -10,7 +10,7 @@ bound by an external checksum manifest. Export
 
 ## Run-results and closed-log binding
 
-- Packet ID/version: `EVT-RV-PILOT-001` / `1.2.5`
+- Packet ID/version: `EVT-RV-PILOT-001` / `1.2.6`
 - Attempt ID:
 - Run-results filename: `EVT-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md`
 - Run-results SHA-256 and completion event ID/timestamp/timezone:

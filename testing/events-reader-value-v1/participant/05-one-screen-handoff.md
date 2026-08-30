@@ -1,11 +1,12 @@
 # One-Screen Stage A Handoff
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.5
+**Packet:** EVT-RV-PILOT-001 version 1.2.6
 **Status:** Blank; open only after the revised-detail governing manifest has
 verified, its detached verification record exists, and the handoff-phase input
 manifest verifies
-**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
-binding and adds full-route closure; it remains unrun with people.
+**Revision note:** Version 1.2.6 preserves v1.2.5's full-route closure,
+v1.2.4's exact immutable live-update binding, and the first-two-event rule:
+branch selection, then run start; it remains unrun with people.
 
 Keep this handoff to one declared US Letter portrait page. Link detail instead of repeating it. Use
 `UNKNOWN` rather than guessing. An owner may be `UNASSIGNED`; do not invent an

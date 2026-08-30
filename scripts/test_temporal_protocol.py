@@ -395,11 +395,31 @@ def mutate_route_branch_after_run_start(repo: Path) -> None:
         repo,
         "participant/00-packet-route.md",
         lambda content: content.replace(
-            "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+            "ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
             "RUN_LOG_STARTED -> ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
             1,
         ),
     )
+
+
+def mutate_context_between_first_two_events(repo: Path) -> None:
+    update_critical_document(
+        repo,
+        "participant/00-packet-route.md",
+        lambda content: content.replace(
+            "ENTRY_BRANCH_SELECTED -> RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
+            "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+            1,
+        ),
+    )
+
+
+def mutate_protocol_context_between_first_two_events(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    order = protocol["full_route_contract"]["required_boundary_order"]
+    order.remove("ENTRY_CONTEXT_RECORD_COMPLETED")
+    order.insert(order.index("RUN_LOG_STARTED"), "ENTRY_CONTEXT_RECORD_COMPLETED")
+    write_protocol(repo, protocol)
 
 
 def main() -> int:
@@ -580,7 +600,18 @@ def main() -> int:
             "route-branch-after-run-start",
             mutate_route_branch_after_run_start,
             "missing replay-control clause: ENTRY_BRANCH_SELECTED -> "
-            "ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+            "RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
+        ),
+        (
+            "context-between-first-two-events",
+            mutate_context_between_first_two_events,
+            "missing replay-control clause: ENTRY_BRANCH_SELECTED -> "
+            "RUN_LOG_STARTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
+        ),
+        (
+            "protocol-context-between-first-two-events",
+            mutate_protocol_context_between_first_two_events,
+            "full_route_contract mismatch",
         ),
     ]
     for name, mutation, expected in cases:
