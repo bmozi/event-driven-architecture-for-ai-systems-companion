@@ -14,9 +14,13 @@ evidence for a next decision.
 - [Executive Decision Brief](EXECUTIVE-DECISION-BRIEF.md)
 - [Failure Lab](FAILURE-LAB.md)
 - existing controlled [testing packet](testing/README.md)
+- separately versioned [Events Reader-Value Pilot Packet](testing/events-reader-value-v1/README.md)
 
-Do not modify the frozen packet and imply it tested the new materials. Version
-an amendment first.
+The existing frozen Harborlight packet must not be silently altered to claim it
+tested these new materials. The new reader-value packet supplies a separate
+prepared protocol; both remain unrun. During the scored reader-value packet,
+follow its participant inventory exactly—the standalone Failure Lab is not an
+additional participant handout.
 
 ## Observable gates
 

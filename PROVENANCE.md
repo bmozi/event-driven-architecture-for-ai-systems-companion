@@ -25,3 +25,15 @@ and which validation or usability state actually changed.
 - **Boundary:** Repository validation proves declared structure and link
   integrity only, not event meaning, capacity, loop safety, operational outcome,
   or public-release readiness.
+
+## 2026-08-29 reader-value pilot candidate
+
+- **Authority:** Portfolio reader-value completion standard
+- **Added:** `EVT-RV-PILOT-001` version 1.0.0, a two-stage practitioner and
+  decision-owner packet covering event meaning, authority, permitted inference,
+  multiplication, feedback loops, ownership, and evidence
+- **Scenario status:** Pine Hollow Foods is constructed and fictional
+- **Execution status:** PREPARED and UNRUN; no recruitment, consent, session,
+  observation, score, revision-from-observation, or result exists
+- **Prior packet boundary:** the Harborlight two-tool packet remains unchanged
+  and does not inherit the new packet's scope
