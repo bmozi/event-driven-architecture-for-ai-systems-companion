@@ -1,10 +1,11 @@
 # Facilitator Guide
 
-**Packet:** EVT-RV-PILOT-001 version 1.1.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.0
 **Status:** Facilitator-only; prepared and unrun
 
-**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
-route preflight; it has no human or practitioner validation.
+**Revision note:** Version 1.2.0 strengthens exact-file transfer, freeze
+provenance, and staged decision evidence after synthetic protocol audit; it has
+no human or practitioner validation.
 
 ## Purpose
 
@@ -40,6 +41,20 @@ the route is opened. Record the exact file-open order, each pause or question,
 and every intervention with time and level. Do not reconstruct these from
 memory after the session.
 
+## Sealed flat delivery and manifest rule
+
+Before each stage, copy only the approved exact files into a new sealed flat
+input. Preserve every literal local filename named by the packet route. Create
+and verify a run-specific delivery manifest before scored work and log each
+later staged release. A manifest hashes other files; it never lists or hashes
+itself. Do not rely on repository-relative paths.
+
+The planned live update creates the first revised set. It is not a correction
+of already frozen revised bytes. A later correction must preserve the old
+artifact and create exact new immutable filename, ID/version, hash, reason,
+correction timestamp/timezone, replacement freeze record, and replacement
+manifest. Never overwrite or reuse the old filename.
+
 ## No-coaching rule
 
 During scored work, the facilitator may repeat written text or resolve file
@@ -57,7 +72,9 @@ Record every intervention.
    Northbridge miniature embedded in the supplied record and generic examples
    already visible in supplied files are allowed; do not allow linked
    comprehensive or completed examples.
-4. Freeze the initial workbook and detailed artifacts before the update.
+4. Freeze the initial workbook and detailed artifacts before the update. Record
+   immutable filenames, IDs/versions, timestamps/timezones, hashes, and
+   manifest.
 5. Read the live update:
 
 > The same high-temperature reading was delivered three times. Two workers
@@ -71,23 +88,49 @@ Record every intervention.
 
 6. Ask only: “What can each party safely say or do now, and what changes in
    your artifacts?”
-7. Let the participant revise the detailed artifacts and workbook Section 5,
-   including the labeled incident sequence.
-8. Only then supply the blank one-screen handoff. Freeze the revised detailed
-   artifacts and completed handoff separately from the initial outputs.
-9. Preserve original and revised artifacts without alteration.
+7. Let the participant revise the workbook, meaning/authority record,
+   multiplier, and loop check. Require exactly
+   `EVT-A-REVISED-WORKBOOK-v1.md`,
+   `EVT-A-REVISED-MEANING-AUTHORITY-v1.md`,
+   `EVT-A-REVISED-MULTIPLIER-v1.md`, and
+   `EVT-A-REVISED-LOOP-CHECK-v1.md`, each with artifact ID, version,
+   completion timestamp/timezone, and pre-hash state `REVISED COMPLETE`.
+8. Remove every `DRAFT`, `PENDING`, `PENDING FREEZE`, `AWAITING FREEZE`, blank,
+   or equivalent incomplete state, and reject a premature artifact
+   self-declaration of `FROZEN`. Create
+   `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`; it hashes the four details and
+   does not hash itself.
+9. Complete `EVT-A-REVISED-FREEZE-RECORD-v1.md` with exact freeze
+   timestamp/timezone, literal filenames, IDs/versions, completion
+   timestamps/timezones, pre-hash states, hashes, and governing manifest
+   filename/hash. The verified manifest and detached record establish
+   `FROZEN`; verify them before opening the handoff.
+10. Only then supply `05-one-screen-handoff.md`. Ensure its inventory matches
+    the detached record and manifest, complete it as
+    `EVT-A-ONE-SCREEN-HANDOFF-v1.md`, and freeze it separately.
+11. Preserve initial, revised, record, manifest, and handoff bytes without
+    alteration.
 
 ## Stage B sequence
 
-1. Use a participant who did not create the Stage A artifact and obtain separate
-   consent. Record Stage B start before opening the route.
-2. Supply the frozen one-screen handoff as the first decision content. Then
-   supply the scenario, revised Stage A detail, decision-owner workbook,
-   Executive Decision Brief, and Value and Evidence Ledger in route order.
-3. Record every file opened. Stage B may inspect detail only after reading the
-   one-screen handoff.
-4. Keep the Stage A participant unavailable during Sections 1–4.
-5. End scoring before allowing explanation or repair.
+1. Use a participant who did not create the Stage A artifact, obtain separate
+   consent, verify the sealed Stage B manifest, and record exact Stage B start
+   and timezone before opening the route.
+2. Supply the route, `EVT-A-ONE-SCREEN-HANDOFF-v1.md` as first substantive
+   content, and the decision-owner workbook. Freeze
+   `EVT-B-SECTION-1-SCAN-v1.md` before any scenario or detail opens.
+3. Supply `02-scenario-and-task.md`, the detached freeze record, its governing
+   revised manifest, and all four exact handoff-linked revised details. Verify
+   literal filenames, IDs/versions, completion timestamps/timezones, pre-hash
+   `REVISED COMPLETE` states, hashes, and detached-record `FROZEN` conditions. A rename,
+   regenerated copy, summary, substitution, omission, mismatch, or missing
+   record/manifest stops detailed read-back.
+4. Freeze `EVT-B-SECTION-2-DETAIL-v1.md` before supplying
+   `EXECUTIVE-DECISION-BRIEF.md`, then `VALUE-AND-EVIDENCE-LEDGER.md`.
+5. Freeze `EVT-B-SECTIONS-3-5-DECISION-v1.md`. Keep Section 6 closed until all
+   three freezes verify and scoring ends.
+6. Keep the Stage A participant unavailable until then. End scoring before
+   allowing explanation or repair. Record exact Stage B end and timezone.
 
 ## Intervention levels
 

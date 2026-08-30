@@ -1,10 +1,10 @@
 # Pine Hollow Scenario: Protect One Refrigerated Shipment
 
-**Packet:** EVT-RV-PILOT-001 version 1.1.0
+**Packet:** EVT-RV-PILOT-001 version 1.2.0
 **Status:** Fictional, prepared, and unrun
 
-**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
-route preflight; it has no human or practitioner validation.
+**Revision note:** Version 1.2.0 strengthens protocol provenance after
+synthetic audit; it has no human or practitioner validation.
 
 Pine Hollow Foods ships refrigerated products to grocery stores. The business
 wants faster intervention when a shipment may be warming. The proposed design
@@ -70,6 +70,9 @@ Without discussing the intended answer with a facilitator:
 
 The facilitator will provide one update after the initial artifact is frozen.
 Revise only after hearing it. Record the original and revised answer.
+
+That planned revision creates the first revised artifact set. It is not a
+later correction of already frozen revised bytes.
 
 ## Boundary
 

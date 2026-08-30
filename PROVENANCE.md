@@ -53,3 +53,17 @@ and which validation or usability state actually changed.
 - **Claim boundary:** Neither the preflight nor repository validation supports
   a usability, safety, architecture-correctness, publication-readiness, or
   business-value claim.
+
+## 2026-08-29 reader-value protocol provenance repair v1.2.0
+
+- **Authority:** Cross-guide synthetic protocol regression and exact-transfer
+  audit
+- **Changed:** `EVT-RV-PILOT-001` now requires sealed flat delivery, literal
+  revised-artifact filenames, a governing manifest, a detached freeze record
+  completed before handoff, exact Stage B transfer, staged decision freezes,
+  and immutable post-freeze correction provenance; revised artifacts declare
+  `REVISED COMPLETE`, and only manifest plus detached-record verification
+  establishes `FROZEN`
+- **Execution state:** `PREPARED/UNRUN`; no human participant result exists
+- **Boundary:** Source protocol hardening only; it does not establish usability,
+  event correctness, loop safety, readiness, or business value

@@ -1,14 +1,15 @@
 # Events Reader-Value Pilot Packet
 
 **Packet ID:** EVT-RV-PILOT-001
-**Version:** 1.1.0
+**Version:** 1.2.0
 **Status:** `PREPARED/UNRUN` for human participants; no participant recruited or
 consented
 **Scenario:** Pine Hollow Foods, entirely fictional
 
-Version 1.1.0 incorporates source repairs identified by a synthetic route
-preflight. That internal exercise was not a human or practitioner session and
-provides no usability, safety, architecture, or business-value validation.
+Version 1.2.0 strengthens exact-file transfer and freeze provenance after a
+synthetic protocol audit of version 1.1.0. That internal work was not a human
+or practitioner session and provides no usability, safety, architecture, or
+business-value validation.
 
 ## What this packet tests
 
@@ -23,55 +24,97 @@ packet keeps its frozen two-tool scope. This packet separately tests the newer
 reader routes, multiplier and loop tools, value ledger, and executive decision
 language.
 
+## Sealed flat run inputs
+
+Before either stage, copy the exact approved immutable files into a new sealed,
+flat stage-input directory. Preserve every literal filename below. Do not
+deliver repository-relative paths, aliases, regenerated copies, or summaries.
+Create and verify a run-specific SHA-256 delivery manifest before the scored
+stage starts. A manifest hashes other files; it never lists or hashes itself.
+
+The planned live-update revision creates the first revised artifact set. It is
+not a correction of already frozen revised bytes. If a revised byte changes
+after its freeze, retain the old artifact and create a new immutable filename,
+ID/version, hash, freeze record, and governing manifest. Record the exact
+reason and correction timestamp with timezone. Never overwrite, rename, or
+relabel the prior evidence.
+
 ## Two stages
 
 ### Stage A — practitioner
 
 Record setup start before the consent notice is first opened. Complete consent
-before scored work. Then record the Stage A start before the route is opened
-and follow its exact order. Supply only:
+before scored work. Then record the Stage A start and timezone before the route
+is opened and follow its exact order. Supply only these exact local filenames:
 
 1. [Consent and privacy notice](participant/01-consent-and-privacy.md), during
    setup rather than as scored architecture work
-2. [Exact packet route](participant/00-packet-route.md)
-3. [Scenario and task](participant/02-scenario-and-task.md)
-4. [Practitioner workbook](participant/03-practitioner-workbook.md)
-5. [Start Here](../../START-HERE.md)
-6. [Event Meaning-and-Authority Record](../../event-meaning-and-authority-record.md)
-7. [Traffic, Cost, and Action Multiplier Calculator](../../traffic-cost-action-multiplier-calculator.md)
-8. [Event Loop-Prevention Checklist](../../event-loop-prevention-checklist.md)
-9. after the live update only, the blank
-   [One-Screen Handoff](participant/05-one-screen-handoff.md)
+2. `00-packet-route.md`
+3. `02-scenario-and-task.md`
+4. `03-practitioner-workbook.md`
+5. `START-HERE.md`
+6. `event-meaning-and-authority-record.md`
+7. `traffic-cost-action-multiplier-calculator.md`
+8. `event-loop-prevention-checklist.md`
+9. after the live-update revision, `06-revised-artifact-freeze-record.md`; and
+10. only after that record verifies, the blank `05-one-screen-handoff.md`.
 
 The Northbridge miniature embedded in the supplied meaning-and-authority record
 and short generic examples already visible in supplied files are allowed. Do
 not follow links to the comprehensive Northbridge example or any other
 completed example. All full worked examples are withheld. Do not supply the
-repository Failure Lab, facilitator
-materials, executive brief, or value ledger during Stage A. Freeze the initial
-detailed outputs before the live update. After the update, freeze the revised
-detailed outputs and completed one-screen handoff.
+repository Failure Lab, facilitator materials, executive brief, or value
+ledger during Stage A. Freeze the initial detailed outputs before the live
+update. The required revised detail filenames are:
+
+- `EVT-A-REVISED-WORKBOOK-v1.md`;
+- `EVT-A-REVISED-MEANING-AUTHORITY-v1.md`;
+- `EVT-A-REVISED-MULTIPLIER-v1.md`; and
+- `EVT-A-REVISED-LOOP-CHECK-v1.md`.
+
+Each revised file must contain its artifact ID, version, completion
+timestamp/timezone, and pre-hash state `REVISED COMPLETE`; `DRAFT`, `PENDING`,
+`PENDING FREEZE`, `AWAITING FREEZE`, a blank state, or an equivalent marker is
+not complete. The governing manifest is
+`EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`. It hashes the four revised detail
+files and does not hash itself. Complete
+`EVT-A-REVISED-FREEZE-RECORD-v1.md` from the supplied
+[detached record template](participant/06-revised-artifact-freeze-record.md).
+That record must verify exact filenames, IDs, versions, completion
+timestamps/timezones, pre-hash states, hashes, and manifest filename/hash and
+then establish the `FROZEN` condition before the blank handoff opens.
+The completed handoff is frozen separately as
+`EVT-A-ONE-SCREEN-HANDOFF-v1.md`.
 
 ### Stage B — independent decision owner
 
 Record setup start before the consent notice is first opened. Complete consent,
-then record the Stage B start before the route is opened. Follow the route and
-supply:
+then record the Stage B start and timezone before the route is opened. Build a
+separate sealed flat Stage B input and supply in the route's exact order:
 
 1. [Consent and privacy notice](participant/01-consent-and-privacy.md), during
    setup;
-2. the [Exact packet route](participant/00-packet-route.md);
-3. the frozen completed [One-Screen Handoff](participant/05-one-screen-handoff.md)
-   as the first decision content;
-4. the frozen scenario and revised Stage A detailed artifacts;
-5. [Decision-owner workbook](participant/04-decision-owner-workbook.md);
-6. [Executive Decision Brief](../../EXECUTIVE-DECISION-BRIEF.md); and
-7. [Value and Evidence Ledger](../../VALUE-AND-EVIDENCE-LEDGER.md).
+2. `00-packet-route.md`;
+3. `EVT-A-ONE-SCREEN-HANDOFF-v1.md` as the first substantive decision content;
+4. `04-decision-owner-workbook.md`;
+5. after the Section 1 freeze, `02-scenario-and-task.md`,
+   `EVT-A-REVISED-FREEZE-RECORD-v1.md`,
+   `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, and all four literal revised
+   detail files named above;
+6. after the Section 2 freeze, `EXECUTIVE-DECISION-BRIEF.md`; and
+7. `VALUE-AND-EVIDENCE-LEDGER.md`.
+
+The handoff's literal detail inventory, detached record, governing manifest,
+and delivered Stage B files must match exactly. A rename, regenerated copy,
+summary, substitution, omission, hash mismatch, pre-hash state other than
+`REVISED COMPLETE`, or missing detached `FROZEN` verification stops detailed
+read-back and is recorded as a deviation.
 
 Use a different person for Stage B during the first calibration round. Stage B
-reads the one-screen handoff before the scenario or detailed artifacts and may
-then inspect the detail. Do not let the Stage A participant explain or repair
-any artifact during the initial read-back.
+checksum-freezes Section 1 from the handoff alone; Section 2 after exact detail
+verification; and Sections 3-5 after the executive files. Keep Section 6 closed
+until those freezes verify and scoring ends. Do not let the Stage A participant
+explain or repair an artifact before then.
 
 ## Facilitator only
 
@@ -89,14 +132,16 @@ Before recruitment:
 2. approve storage, access, retention, redaction, and deletion;
 3. decide whether further ethics, legal, privacy, or organizational review is
    required;
-4. freeze the exact files and referenced asset bytes;
+4. create sealed flat stage inputs and freeze the exact files and referenced
+   asset bytes;
 5. record SHA-256 values in a run-specific evidence manifest;
 6. keep scheduling identity separate from participant codes; and
 7. assign a facilitator and evaluator with disclosed relationships.
 
 The checked-in `SHA256SUMS` records the prepared source packet. A run-specific
-copy must also hash every supplied referenced asset. Any byte change requires a
-new manifest and, when meaning changes, a new packet version.
+delivery manifest must also hash every supplied referenced asset under its
+exact local filename while excluding itself. Any byte change requires a new
+manifest and, when meaning changes, a new packet version.
 
 ## Evidence boundary
 
