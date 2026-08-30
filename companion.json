@@ -3,6 +3,9 @@
   "title": "Architecting with Events in the Age of AI Companion",
   "book_repository": "https://github.com/bmozi/architecting-with-events-in-the-age-of-ai",
   "source_commit": "659b5eb",
+  "reader_value_packet_version": "1.2.5",
+  "human_evidence_state": "PREPARED/UNRUN",
+  "real_world_evidence_state": "UNRUN",
   "required_files": [
     "README.md",
     "START-HERE.md",
@@ -22,6 +25,10 @@
     "testing/events-reader-value-v1/SHA256SUMS",
     "testing/events-reader-value-v1/temporal-protocol.json",
     "testing/events-reader-value-v1/participant/EVT-A-LIVE-UPDATE-v1.md",
+    "testing/events-reader-value-v1/participant/07-stage-b-section-6-debrief.md",
+    "testing/events-reader-value-v1/facilitator-only/06-synthetic-context-record-template.md",
+    "testing/events-reader-value-v1/facilitator-only/07-handoff-layout-proof-record-template.md",
+    "testing/events-reader-value-v1/facilitator-only/08-external-closeout-record-template.md",
     "scripts/test_temporal_protocol.py"
   ],
   "checksum_manifests": [

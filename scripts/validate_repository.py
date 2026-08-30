@@ -22,6 +22,7 @@ PACKET_HEADER_PATTERN = re.compile(
     r"^\*\*Packet:\*\*\s*(\S+)\s+version\s+(\S+)\s*$", re.MULTILINE
 )
 TEMPORAL_SCHEMA_VERSION = 3
+CURRENT_PACKET_VERSION = "1.2.5"
 LIVE_UPDATE_FILENAME = "EVT-A-LIVE-UPDATE-v1.md"
 LIVE_UPDATE_PATH = f"participant/{LIVE_UPDATE_FILENAME}"
 REVISION_PHASE_ID = "stage_a_revision"
@@ -134,6 +135,118 @@ STALE_GOVERNED_FIELDS = [
     "- Manifest reference:",
     "- Governing manifest filename/hash:",
 ]
+ENTRY_BRANCH_CONTRACT = {
+    "selection": "exactly_one",
+    "selection_event": "ENTRY_BRANCH_SELECTED",
+    "selection_before_scored_input": True,
+    "branch_mixing_stops_attempt": True,
+    "human": {
+        "template": "participant/01-consent-and-privacy.md",
+        "stage_a_record_pattern": "EVT-A-HUMAN-CONSENT-<attempt-id>-v1.md",
+        "stage_b_record_pattern": "EVT-B-HUMAN-CONSENT-<attempt-id>-v1.md",
+        "stage_a_manifest_pattern": "EVT-A-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+        "stage_b_manifest_pattern": "EVT-B-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+        "required_state": "HUMAN CONSENT COMPLETE",
+        "synthetic_context_forbidden": True,
+    },
+    "synthetic": {
+        "template": "facilitator-only/06-synthetic-context-record-template.md",
+        "record_pattern": "EVT-SYNTHETIC-CONTEXT-<attempt-id>-v1.md",
+        "manifest_pattern": "EVT-SYNTHETIC-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+        "required_identity_statement": "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
+        "required_state": "SYNTHETIC CONTEXT COMPLETE",
+        "human_consent_record_forbidden": True,
+        "human_result_claims_forbidden": [
+            "human consent obtained",
+            "participant consented",
+            "human comprehension passed",
+            "human usability passed",
+            "practitioner result observed",
+        ],
+    },
+    "stage_context_gates": {
+        "stage_a": "selected_branch_record_and_manifest_verified_before_STAGE_A_STARTED",
+        "stage_b": "same_selected_branch_record_and_manifest_verified_before_STAGE_B_STARTED",
+    },
+}
+FULL_ROUTE_CONTRACT = {
+    "scored_freeze_chain_ids": RELEASE_IDS,
+    "six_scored_freezes_are_full_route_closure": False,
+    "required_boundary_order": [
+        "ENTRY_BRANCH_SELECTED", "ENTRY_CONTEXT_RECORD_COMPLETED", "RUN_LOG_STARTED",
+        "STAGE_A_STARTED", "stage_a_initial", "stage_a_revised", "stage_a_handoff",
+        "HANDOFF_LAYOUT_PROOF_COMPLETED", "STAGE_A_MATERIAL_FEEDBACK_COMPLETED",
+        "STAGE_A_ENDED", "STAGE_B_STARTED", "stage_b_section_1",
+        "stage_b_section_2", "stage_b_sections_3_5", "STAGE_B_SCORING_ENDED",
+        "STAGE_B_SECTION_6_DEBRIEF_COMPLETED", "STAGE_B_ENDED",
+        "RUN_RESULTS_COMPLETED", "RUN_LOG_CLOSED",
+    ],
+    "premature_log_close_forbidden": True,
+}
+DEBRIEF_CONTRACT = {
+    "template": "participant/07-stage-b-section-6-debrief.md",
+    "input_manifest": "EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+    "output_filename": "EVT-B-SECTION-6-DEBRIEF-v1.md",
+    "required_state": "SECTION 6 DEBRIEF COMPLETE",
+    "completion_event": "STAGE_B_SECTION_6_DEBRIEF_COMPLETED",
+    "after_event": "STAGE_B_SCORING_ENDED",
+    "debrief_before_scoring_forbidden": True,
+    "retroactive_score_or_artifact_change_forbidden": True,
+}
+RUN_RESULTS_CONTRACT = {
+    "template": "facilitator-only/03-results-and-deviation-log.md",
+    "filename_pattern": "EVT-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md",
+    "required_state": "RUN RESULTS COMPLETE",
+    "completion_event": "RUN_RESULTS_COMPLETED",
+    "after_event": "STAGE_B_ENDED",
+    "before_event": "RUN_LOG_CLOSED",
+    "immutable_before_log_close": True,
+    "final_pre_results_checkpoint_required": True,
+    "forbidden_fields": [
+        "final_closed_log_sha256", "predicted_future_log_hash",
+        "predicted_future_closeout_timestamp",
+    ],
+}
+EXTERNAL_CLOSEOUT_CONTRACT = {
+    "template": "facilitator-only/08-external-closeout-record-template.md",
+    "filename_pattern": "EVT-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md",
+    "required_state": "EXTERNAL CLOSEOUT COMPLETE",
+    "after_event": "RUN_LOG_CLOSED",
+    "binds_results_sha256": True,
+    "binds_closed_log_sha256": True,
+    "binds_external_manifest_sha256": True,
+    "external_to_closed_log": True,
+}
+LAYOUT_PROOF_CONTRACT = {
+    "handoff_markdown": "EVT-A-ONE-SCREEN-HANDOFF-v1.md",
+    "handoff_pdf": "EVT-A-ONE-SCREEN-HANDOFF-v1.pdf",
+    "proof_template": "facilitator-only/07-handoff-layout-proof-record-template.md",
+    "proof_filename_pattern": "EVT-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md",
+    "completion_event": "HANDOFF_LAYOUT_PROOF_COMPLETED",
+    "page_count": 1,
+    "page_size": "US Letter portrait",
+    "minimum_margin_inches": 0.5,
+    "minimum_font_points": 9,
+    "maximum_reader_facing_words_excluding_labeled_provenance": 450,
+    "clipping_forbidden": True,
+    "overlap_forbidden": True,
+    "favorable_one_page_claim_requires_pass_proof": True,
+    "human_comprehension_evidence": False,
+}
+FORBIDDEN_FUTURE_BOUNDARY_FIELDS = [
+    "Exact Stage A end timestamp/timezone",
+    "STAGE_A_ENDED event ID",
+    "Exact Stage B scoring-end timestamp/timezone",
+    "STAGE_B_SCORING_ENDED event ID",
+    "Exact Stage B end timestamp/timezone",
+    "STAGE_B_ENDED event ID",
+]
+EVIDENCE_STATE_CONTRACT = {
+    "human_pilot": "PREPARED/UNRUN",
+    "human_comprehension": "UNRUN",
+    "real_world": "UNRUN",
+    "synthetic_may_not_upgrade_human_or_real_world_state": True,
+}
 
 
 def markdown_links(path: Path):
@@ -255,6 +368,22 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
             errors.append(f"{prefix} packet_id must be a non-empty string")
         if not isinstance(packet_version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", packet_version):
             errors.append(f"{prefix} packet_version must use semantic versioning")
+        elif packet_version != CURRENT_PACKET_VERSION:
+            errors.append(f"{prefix} packet_version must be {CURRENT_PACKET_VERSION}")
+
+        closure_contracts = {
+            "entry_branch_contract": ENTRY_BRANCH_CONTRACT,
+            "full_route_contract": FULL_ROUTE_CONTRACT,
+            "debrief_contract": DEBRIEF_CONTRACT,
+            "run_results_contract": RUN_RESULTS_CONTRACT,
+            "external_closeout_contract": EXTERNAL_CLOSEOUT_CONTRACT,
+            "layout_proof_contract": LAYOUT_PROOF_CONTRACT,
+            "governed_future_boundary_fields_forbidden": FORBIDDEN_FUTURE_BOUNDARY_FIELDS,
+            "evidence_state_contract": EVIDENCE_STATE_CONTRACT,
+        }
+        for contract_name, expected_contract in closure_contracts.items():
+            if protocol.get(contract_name) != expected_contract:
+                errors.append(f"{prefix} {contract_name} mismatch")
 
         if protocol.get("causal_order") != TEMPORAL_ORDER:
             errors.append(f"{prefix} invalid temporal causal order")
@@ -515,6 +644,11 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "revision-phase input manifest must hash it",
                 "`ORCHESTRATION.md`",
                 "execution and access log",
+                "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
+                "six scored freeze chains",
+                "US Letter",
+                "RUN_RESULTS_COMPLETED",
+                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
             ],
             "participant/00-packet-route.md": [
                 "For every detached verification record named below",
@@ -524,6 +658,9 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "`EVT-A-LIVE-UPDATE-v1.md`",
                 "After that revision-phase input manifest verifies",
                 "`ORCHESTRATION.md`",
+                "debrief before scoring ends is forbidden",
+                "Do not put or predict those future end fields",
+                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
             ],
             "participant/06-revised-artifact-freeze-record.md": [
                 "- Attempt ID:",
@@ -547,6 +684,10 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "`EVT-A-LIVE-UPDATE-v1.md`",
                 "Only after that manifest verifies",
                 "undeclared `ORCHESTRATION.md`",
+                "STAGE_A_ENDED",
+                "STAGE_B_SCORING_ENDED",
+                "RUN_RESULTS_COMPLETED",
+                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
             ],
             "facilitator-only/02-observation-and-scoring-rubric.md": [
                 "Detached-record replay identity",
@@ -554,6 +695,9 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "Revision-phase input integrity",
                 "`EVT-A-LIVE-UPDATE-v1.md`",
                 "participant input contains no undeclared orchestration or facilitator file",
+                "Entry-branch integrity",
+                "Literal one-page proof",
+                "Full-route closure",
             ],
             "facilitator-only/03-results-and-deviation-log.md": [
                 "Facilitator execution/access log exact filename and SHA-256",
@@ -562,6 +706,10 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "Complete observed output",
                 "Later record-completion timestamp/timezone",
                 "`EVT-A-LIVE-UPDATE-v1.md`",
+                "RUN RESULTS COMPLETE",
+                "Full-route boundary checkpoints",
+                "Real-world evidence state: `UNRUN`",
+                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
             ],
             "facilitator-only/04-temporal-freeze-protocol-and-record-templates.md": [
                 "- Attempt ID:",
@@ -573,6 +721,8 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "- Record completion timezone:",
                 "Revision-phase sealed-input inventory",
                 "`EVT-A-LIVE-UPDATE-v1.md`",
+                "Six freezes versus full-route closure",
+                "governed/scored workbooks must not contain future",
                 "Any blank required field prevents `FROZEN`",
             ],
             "facilitator-only/05-execution-and-access-log.md": [
@@ -584,6 +734,31 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 "Complete observed output",
                 "Continuity binding",
                 "`EVT-A-LIVE-UPDATE-v1.md`",
+                "STAGE_B_SCORING_ENDED",
+                "RUN_LOG_CLOSED",
+                "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+            ],
+            "facilitator-only/06-synthetic-context-record-template.md": [
+                "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
+                "SYNTHETIC CONTEXT COMPLETE",
+                "Human consent state",
+            ],
+            "facilitator-only/07-handoff-layout-proof-record-template.md": [
+                "US Letter portrait",
+                "0.5 inch",
+                "9 points",
+                "450",
+                "Layout proof is not comprehension evidence.",
+            ],
+            "facilitator-only/08-external-closeout-record-template.md": [
+                "EXTERNAL CLOSEOUT COMPLETE",
+                "Run-results SHA-256",
+                "Active closed-log SHA-256",
+            ],
+            "participant/07-stage-b-section-6-debrief.md": [
+                "STAGE_B_SCORING_ENDED",
+                "EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+                "SECTION 6 DEBRIEF COMPLETE",
             ],
         }
         for document, clauses in required_document_clauses.items():
@@ -617,6 +792,12 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
             for stale in STALE_GOVERNED_FIELDS:
                 if stale in content:
                     errors.append(f"{prefix} stale governed field in {raw}: {stale}")
+            for future_field in FORBIDDEN_FUTURE_BOUNDARY_FIELDS:
+                if future_field in content:
+                    errors.append(
+                        f"{prefix} future end field forbidden in governed template "
+                        f"{raw}: {future_field}"
+                    )
             if re.search(r"-[A-Z]+-FREEZE-RECORD-v1\.md", content):
                 errors.append(f"{prefix} stale freeze-record filename in {raw}")
 
@@ -669,6 +850,14 @@ def validate_temporal_protocols(manifest: dict, errors: list[str]) -> int:
                 )
         else:
             errors.append(f"{prefix} revision phase prior release is missing")
+
+        final_release = release_map.get("stage_b_sections_3_5")
+        if not isinstance(final_release, dict) or final_release.get(
+            "next_release_additional_inputs"
+        ) != ["07-stage-b-section-6-debrief.md"]:
+            errors.append(
+                f"{prefix} final scored release must bind the exact Section 6 debrief input"
+            )
 
         results_path = temporal_target(packet_dir, protocol.get("results_log"), "results_log", errors)
         inventory_path = temporal_target(
@@ -792,6 +981,14 @@ def main() -> int:
         errors.append("companion.json: schema_version must be 1")
     if not COMMIT_PATTERN.fullmatch(str(manifest.get("source_commit", ""))):
         errors.append("companion.json: source_commit must be a 7-40 character Git hash")
+    if manifest.get("reader_value_packet_version") != CURRENT_PACKET_VERSION:
+        errors.append(
+            f"companion.json: reader_value_packet_version must be {CURRENT_PACKET_VERSION}"
+        )
+    if manifest.get("human_evidence_state") != "PREPARED/UNRUN":
+        errors.append("companion.json: human evidence state must remain PREPARED/UNRUN")
+    if manifest.get("real_world_evidence_state") != "UNRUN":
+        errors.append("companion.json: real-world evidence state must remain UNRUN")
 
     required = manifest.get("required_files")
     if not isinstance(required, list) or not required:

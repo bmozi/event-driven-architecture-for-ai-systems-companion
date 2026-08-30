@@ -306,6 +306,102 @@ def mutate_live_update_wording_drift(repo: Path) -> None:
     write_protocol(repo, protocol)
 
 
+def mutate_missing_entry_branch(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol.pop("entry_branch_contract")
+    write_protocol(repo, protocol)
+
+
+def mutate_mixed_entry_branches(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["entry_branch_contract"]["selection"] = "one_or_more"
+    write_protocol(repo, protocol)
+
+
+def mutate_synthetic_human_claim(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["entry_branch_contract"]["synthetic"][
+        "human_result_claims_forbidden"
+    ].remove("human comprehension passed")
+    write_protocol(repo, protocol)
+
+
+def mutate_missing_boundary(boundary: str):
+    def mutation(repo: Path) -> None:
+        protocol = load_protocol(repo)
+        protocol["full_route_contract"]["required_boundary_order"].remove(boundary)
+        write_protocol(repo, protocol)
+
+    return mutation
+
+
+def mutate_debrief_before_scoring(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["debrief_contract"]["after_event"] = "STAGE_B_STARTED"
+    protocol["debrief_contract"]["debrief_before_scoring_forbidden"] = False
+    write_protocol(repo, protocol)
+
+
+def mutate_unbound_debrief_input(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    final = next(
+        item for item in protocol["release_chains"]
+        if item["id"] == "stage_b_sections_3_5"
+    )
+    final.pop("next_release_additional_inputs")
+    write_protocol(repo, protocol)
+
+
+def mutate_premature_close(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    order = protocol["full_route_contract"]["required_boundary_order"]
+    order.remove("RUN_LOG_CLOSED")
+    order.insert(order.index("RUN_RESULTS_COMPLETED"), "RUN_LOG_CLOSED")
+    write_protocol(repo, protocol)
+
+
+def mutate_predicted_future_hash(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["run_results_contract"]["forbidden_fields"].remove(
+        "predicted_future_log_hash"
+    )
+    write_protocol(repo, protocol)
+
+
+def mutate_missing_external_closeout(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol.pop("external_closeout_contract")
+    write_protocol(repo, protocol)
+
+
+def mutate_favorable_layout_without_proof(repo: Path) -> None:
+    protocol = load_protocol(repo)
+    protocol["layout_proof_contract"][
+        "favorable_one_page_claim_requires_pass_proof"
+    ] = False
+    write_protocol(repo, protocol)
+
+
+def mutate_future_end_field(repo: Path) -> None:
+    update_critical_document(
+        repo,
+        "participant/03-practitioner-workbook.md",
+        lambda content: content + "\n- Exact Stage A end timestamp/timezone:\n",
+    )
+
+
+def mutate_route_branch_after_run_start(repo: Path) -> None:
+    update_critical_document(
+        repo,
+        "participant/00-packet-route.md",
+        lambda content: content.replace(
+            "ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+            "RUN_LOG_STARTED -> ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED",
+            1,
+        ),
+    )
+
+
 def main() -> int:
     baseline = run_validator(ROOT)
     if baseline.returncode != 0:
@@ -414,13 +510,86 @@ def main() -> int:
             mutate_live_update_wording_drift,
             "immutable live-update participant input differs from canonical facilitator wording",
         ),
+        (
+            "missing-entry-branch",
+            mutate_missing_entry_branch,
+            "entry_branch_contract mismatch",
+        ),
+        (
+            "mixed-entry-branches",
+            mutate_mixed_entry_branches,
+            "entry_branch_contract mismatch",
+        ),
+        (
+            "synthetic-human-claim",
+            mutate_synthetic_human_claim,
+            "entry_branch_contract mismatch",
+        ),
+        *[
+            (
+                f"missing-boundary-{boundary.lower()}",
+                mutate_missing_boundary(boundary),
+                "full_route_contract mismatch",
+            )
+            for boundary in (
+                "STAGE_A_STARTED",
+                "STAGE_A_ENDED",
+                "STAGE_B_STARTED",
+                "STAGE_B_SCORING_ENDED",
+                "STAGE_B_SECTION_6_DEBRIEF_COMPLETED",
+                "STAGE_B_ENDED",
+                "RUN_RESULTS_COMPLETED",
+            )
+        ],
+        (
+            "debrief-before-scoring",
+            mutate_debrief_before_scoring,
+            "debrief_contract mismatch",
+        ),
+        (
+            "unbound-debrief-input",
+            mutate_unbound_debrief_input,
+            "final scored release must bind the exact Section 6 debrief input",
+        ),
+        (
+            "premature-log-close",
+            mutate_premature_close,
+            "full_route_contract mismatch",
+        ),
+        (
+            "predicted-future-log-hash",
+            mutate_predicted_future_hash,
+            "run_results_contract mismatch",
+        ),
+        (
+            "missing-external-closeout",
+            mutate_missing_external_closeout,
+            "external_closeout_contract mismatch",
+        ),
+        (
+            "favorable-layout-without-proof",
+            mutate_favorable_layout_without_proof,
+            "layout_proof_contract mismatch",
+        ),
+        (
+            "future-end-field-in-governed-workbook",
+            mutate_future_end_field,
+            "future end field forbidden in governed template",
+        ),
+        (
+            "route-branch-after-run-start",
+            mutate_route_branch_after_run_start,
+            "missing replay-control clause: ENTRY_BRANCH_SELECTED -> "
+            "ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED",
+        ),
     ]
     for name, mutation, expected in cases:
         assert_rejected(name, mutation, expected)
 
     print(
         "temporal protocol mutation tests passed: "
-        "1 clean positive control, 21 rejected mutations"
+        f"1 clean positive control, {len(cases)} rejected mutations "
+        "(21 preserved plus closure mutations)"
     )
     return 0
 

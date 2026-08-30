@@ -1,28 +1,43 @@
 # Results and Deviation Log
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.4
+**Packet:** EVT-RV-PILOT-001 version 1.2.5
 **Status:** Blank controlled record; no result exists
 
-**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
-the exact immutable `EVT-A-LIVE-UPDATE-v1.md` into the verified revision-phase
-input; it has no human or practitioner validation.
+**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
+binding and adds full-route closure; it has no human validation.
+
+Export immutable run results as
+`EVT-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md`. Complete them after
+`STAGE_B_ENDED` and before `RUN_RESULTS_COMPLETED` and `RUN_LOG_CLOSED`. They
+may bind the final pre-results checkpoint but cannot predict the future closed-
+log hash or external closeout timestamp.
 
 ## Run identity
 
 - Attempt ID:
+- Exact results filename and artifact ID/version:
+- Packet ID/version: `EVT-RV-PILOT-001` / `1.2.5`
+- Entry branch: human / synthetic
 - Execution owner and authorization:
 - Stage A participant code:
 - Stage B reviewer code:
 - Facilitator:
 - Evaluator and independence disclosure:
 - Date, mode, and time:
-- Exact Stage A start and end with timezone:
-- Exact Stage B start and end with timezone:
-- Facilitator execution/access log exact filename and SHA-256:
+- Record completion timestamp/timezone:
+- State: `RUN RESULTS COMPLETE` / invalid
+- Facilitator execution/access log exact filename and SHA-256 of its final
+  pre-results checkpoint bytes:
+- Final pre-results event ID and exact line-byte SHA-256:
+
+Do not place a final closed-log hash or future closeout timestamp here. The
+later `EVT-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md` binds those actual bytes.
 
 ## Consent, privacy, and freeze
 
-- Consent records:
+- Branch-selection event and human consent records or synthetic context:
+- Branches mutually exclusive and context gates matched: yes / no / deviation
+- Synthetic context contains no human consent/result claim: yes / no / N/A
 - Storage/access/retention authority:
 - Run-specific SHA-256 manifest:
 - Sealed flat Stage A input location and manifest:
@@ -86,7 +101,7 @@ stops detailed read-back.
 | Stage A handoff | `EVT-A-ONE-SCREEN-HANDOFF-v1.md`; `HANDOFF COMPLETE` | `EVT-A-HANDOFF-SHA256SUMS-v1.txt` / | | `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-1-INPUT-SHA256SUMS-v1.txt` / | |
 | Stage B Section 1 | `EVT-B-SECTION-1-SCAN-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-1-SHA256SUMS-v1.txt` / | | `EVT-B-SECTION-1-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-2-INPUT-SHA256SUMS-v1.txt` / | |
 | Stage B Section 2 | `EVT-B-SECTION-2-DETAIL-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-2-SHA256SUMS-v1.txt` / | | `EVT-B-SECTION-2-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-3-INPUT-SHA256SUMS-v1.txt` / | |
-| Stage B Sections 3-5 | `EVT-B-SECTIONS-3-5-DECISION-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt` / | | `EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt` / | |
+| Stage B Sections 3-5 | `EVT-B-SECTIONS-3-5-DECISION-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt` / | | `EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt` /; `07-stage-b-section-6-debrief.md` | |
 
 ## Detached-record required-field audit
 
@@ -102,6 +117,38 @@ omission, or record completion that is not explicitly later blocks `FROZEN`.
 | Stage B Section 1 | | | | | | | | | | | | |
 | Stage B Section 2 | | | | | | | | | | | | |
 | Stage B Sections 3-5 | | | | | | | | | | | | |
+
+## Full-route boundary checkpoints
+
+- Exact pre-run order
+  `ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED`
+  event IDs/hashes:
+- Exact Stage A start and `STAGE_A_STARTED` event ID/hash:
+- `STAGE_A_MATERIAL_FEEDBACK_COMPLETED` event ID/hash:
+- Exact Stage A end and `STAGE_A_ENDED` event ID/hash:
+- Exact Stage B start and `STAGE_B_STARTED` event ID/hash:
+- Exact scoring end and `STAGE_B_SCORING_ENDED` event ID/hash:
+- Debrief-input manifest verification event ID/hash:
+- `STAGE_B_SECTION_6_DEBRIEF_COMPLETED` event ID/hash:
+- Exact Stage B end and `STAGE_B_ENDED` event ID/hash:
+- `RUN_RESULTS_COMPLETED` occurs before `RUN_LOG_CLOSED`: yes / no / deviation
+- Six scored freeze chains complete: yes / no / stopped
+- Pre-close route complete: yes / no / stopped
+- External closeout state at this earlier result time:
+  `PENDING — REQUIRED FOR FULL-ROUTE CLOSURE`
+
+## Handoff layout proof
+
+- Markdown/PDF exact filenames and hashes:
+- Layout-proof record filename/hash:
+- Rendering command and tool versions:
+- US Letter portrait and exactly one page: yes / no
+- All margins >=0.5 inch and body/table text >=9 points: yes / no
+- Reader-facing words excluding only labeled immutable provenance:
+- No clipping/overlap/hidden overflow/unreadable shrinking: yes / no
+- Literal layout state: `PASS` / `FAIL` / `UNRUN`
+- Human comprehension state: separately `UNRUN` unless a consented human route
+  actually supplies evidence
 
 ## Timing and interventions
 
@@ -120,8 +167,11 @@ omission, or record completion that is not explicitly later blocks `FROZEN`.
 | B revised-detail verification | | | | |
 | B Section 2 freeze | | | | |
 | B Sections 3-5 freeze | | | | |
+| B scoring end | | | | |
+| B debrief-input manifest verification | | | | |
 | B Section 6 debrief | | | | |
-| B decision | | | | |
+| B stage end | | | | |
+| Run-results completion | | | | |
 
 | Stage | Sequence | File opened | Open time | Close time | Notes |
 | --- | ---: | --- | --- | --- | --- |
@@ -161,6 +211,10 @@ their governing records.
 | --- | --- | --- | --- | --- | --- | --- |
 | | | | | | | |
 
+Record branch omission/mixing, synthetic human-result claims, missing stage
+boundaries, debrief before scoring, missing or failed layout proof, premature
+results/log close, predicted future hash/time, and missing external closeout.
+
 ## Findings and disposition
 
 | ID | Finding | Source | Severity | Revise / retest / hold / remove | Owner | Evidence |
@@ -169,8 +223,22 @@ their governing records.
 
 ## Truthful state statement
 
+- Six scored freeze-chain state: complete / incomplete / stopped
+- Full selected-route state: pending external closeout / incomplete / stopped
+- Protocol integrity state:
+- Synthetic behavior state: passed / partial / failed / unrun / N/A
+- Layout state: passed / failed / unrun; not comprehension evidence
+- Human evidence state: passed / partial / failed / `PREPARED/UNRUN`
+- Human comprehension state: `UNRUN` unless consented human evidence exists
+- Real-world evidence state: `UNRUN`
 - What this exact pair establishes:
 - What it does not establish:
 - Packet state after authorized review:
 - Files changed only after raw evidence was preserved:
 - Next attempt and version:
+
+`RUN RESULTS COMPLETE` is allowed only when every required field is present,
+the six freeze chains and full-route boundaries are reported separately, and
+the record contains no predicted final log hash or future closeout time. Log
+`RUN_RESULTS_COMPLETED`, then close the log. The external closeout later binds
+the actual results, closed-log, copy, and external-manifest hashes.

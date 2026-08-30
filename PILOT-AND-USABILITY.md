@@ -16,7 +16,7 @@ evidence for a next decision.
 - existing controlled [testing packet](testing/README.md)
 - separately versioned [Events Reader-Value Pilot Packet](testing/events-reader-value-v1/README.md)
 
-The current reader-value packet is version 1.2.4 and remains `PREPARED/UNRUN`
+The current reader-value packet is version 1.2.5 and remains `PREPARED/UNRUN`
 for humans. Its route and provenance repairs came from synthetic and static internal QA,
 not practitioner validation. The existing frozen Harborlight packet must not be silently altered
 to claim it tested these new materials. The new reader-value packet supplies a separate

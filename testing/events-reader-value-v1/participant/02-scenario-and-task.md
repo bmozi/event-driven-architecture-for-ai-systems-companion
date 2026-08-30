@@ -1,11 +1,10 @@
 # Pine Hollow Scenario: Protect One Refrigerated Shipment
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.4
+**Packet:** EVT-RV-PILOT-001 version 1.2.5
 **Status:** Fictional, prepared, and unrun
 
-**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
-the exact immutable live-update file into the verified revision-phase input;
-it remains unrun with people.
+**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
+binding and adds full-route closure; it remains unrun with people.
 
 Pine Hollow Foods ships refrigerated products to grocery stores. The business
 wants faster intervention when a shipment may be warming. The proposed design

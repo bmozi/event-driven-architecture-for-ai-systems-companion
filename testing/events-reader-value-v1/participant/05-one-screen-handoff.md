@@ -1,18 +1,19 @@
 # One-Screen Stage A Handoff
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.4
+**Packet:** EVT-RV-PILOT-001 version 1.2.5
 **Status:** Blank; open only after the revised-detail governing manifest has
 verified, its detached verification record exists, and the handoff-phase input
 manifest verifies
-**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
-the exact immutable live-update file into the verified revision-phase input;
-it remains unrun with people.
+**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
+binding and adds full-route closure; it remains unrun with people.
 
-Keep this handoff to one page. Link detail instead of repeating it. Use
+Keep this handoff to one declared US Letter portrait page. Link detail instead of repeating it. Use
 `UNKNOWN` rather than guessing. An owner may be `UNASSIGNED`; do not invent an
 assignment or date. Complete this as `EVT-A-ONE-SCREEN-HANDOFF-v1.md` only
 after `EVT-A-REVISED-FREEZE-VERIFICATION-v1.md` exists and the sealed
 handoff-phase input manifest verifies.
+
+## Immutable provenance metadata — excluded from reader-facing word count
 
 - Handoff ID/version:
 - Handoff completion timestamp/timezone:
@@ -23,7 +24,7 @@ handoff-phase input manifest verifies.
 - Governing revised-artifact manifest exact local filename/hash:
   `EVT-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt` /
 
-## Exact revised-detail inventory
+## Immutable revised-detail inventory — excluded from reader-facing word count
 
 Stage B must receive all four files under these literal local filenames. Copy
 the IDs, versions, states, and hashes from the verified detached record. A
@@ -38,7 +39,7 @@ verification stops detailed read-back.
 | `EVT-A-REVISED-MULTIPLIER-v1.md` | | | `REVISED COMPLETE` | | `FROZEN` |
 | `EVT-A-REVISED-LOOP-CHECK-v1.md` | | | `REVISED COMPLETE` | | `FROZEN` |
 
-## Decision transfer
+## Reader-facing decision transfer — maximum 450 words
 
 - Current state:
 - Evidence class (`REPORTED` / `INFERRED` / `PROPOSED` / `UNKNOWN`):
@@ -57,6 +58,15 @@ verification stops detailed read-back.
 - Interim store/customer instruction:
 - Authority and evidence for that instruction:
 - Review date **or** evidence-based reconsideration trigger:
+
+The word count covers all completed Markdown except only the two sections
+explicitly labeled immutable provenance. After the handoff freezes, render the
+exact Markdown as `EVT-A-ONE-SCREEN-HANDOFF-v1.pdf` and complete
+`EVT-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md`. A favorable one-page claim
+requires exactly one US Letter portrait page, margins of at least 0.5 inch,
+body and table text of at least 9 points, no more than 450 reader-facing words,
+and no clipping, overlap, hidden overflow, or unreadable shrinking. Missing or
+failed proof yields layout `HOLD`. Layout PASS is not comprehension evidence.
 
 After every field is final, retain `HANDOFF COMPLETE`, hash this handoff alone
 in `EVT-A-HANDOFF-SHA256SUMS-v1.txt`, verify that manifest, and only then create

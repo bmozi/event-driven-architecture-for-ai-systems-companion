@@ -1,11 +1,22 @@
 # Participant Consent and Privacy Notice
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.4
+**Packet:** EVT-RV-PILOT-001 version 1.2.5
 **Status:** Blank; no consent has been obtained
 
-**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
-the exact immutable live-update file into the verified revision-phase input;
-it remains unrun with people.
+**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
+binding and adds full-route closure; it remains unrun with people.
+
+## Human-branch use only
+
+Use this notice only after the facilitator logs the mutually exclusive
+`human` entry branch. Never fill it for a synthetic actor. Synthetic work uses
+the manifest-bound `EVT-SYNTHETIC-CONTEXT-<attempt-id>-v1.md` template.
+
+Export completed human notices as
+`EVT-A-HUMAN-CONSENT-<attempt-id>-v1.md` and
+`EVT-B-HUMAN-CONSENT-<attempt-id>-v1.md`. Verify them respectively under
+`EVT-A-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt` and
+`EVT-B-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt` before each stage starts.
 
 ## Purpose
 
@@ -60,3 +71,10 @@ Blank fields above mean the session must not begin.
 - I agree not to disclose real confidential information: yes / no
 - I consent to the described unrecorded session: yes / no
 - Consent recorded by and method:
+- Attempt ID and exact exported filename:
+- Completion timestamp/timezone:
+- Record state: `HUMAN CONSENT COMPLETE` / invalid
+
+A human consent record and synthetic context in one attempt is branch mixing
+and stops the run. Consent permits only the described session; it is not
+comprehension, usability, safety, correctness, or favorable-result evidence.

@@ -1,11 +1,10 @@
 # Facilitator Guide
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.4
+**Packet:** EVT-RV-PILOT-001 version 1.2.5
 **Status:** Facilitator-only; prepared and unrun
 
-**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
-the exact immutable `EVT-A-LIVE-UPDATE-v1.md` into the verified revision-phase
-input; it has no human or practitioner validation.
+**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
+binding and adds full-route closure; it has no human validation.
 
 ## Purpose
 
@@ -47,6 +46,18 @@ every manifest gate, file open or attempted access, artifact completion,
 manifest creation, manifest verification, detached-record completion, and next
 phase open with exact actor, facilitator, timestamp, timezone, filename, and
 continuity binding.
+
+## Select exactly one entry branch
+
+Before run start, enforce
+`ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED`.
+Select `human` or `synthetic`.
+Human runs use distinct Stage A/B consent records and exact human-context
+manifests. Synthetic runs use
+`EVT-SYNTHETIC-CONTEXT-<attempt-id>-v1.md` from the synthetic template with
+`SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA`; never fill the human form or
+claim human behavior/results. Missing selection or branch mixing stops the
+attempt. Verify the selected context before run start and each stage checkpoint.
 
 ## Sealed flat delivery and manifest rule
 
@@ -154,6 +165,14 @@ Record every intervention.
     `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md`.
 11. Preserve initial, revised, record, manifest, and handoff bytes without
     alteration.
+12. Render the exact handoff as `EVT-A-ONE-SCREEN-HANDOFF-v1.pdf` and complete
+    `EVT-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md`. PASS requires one US
+    Letter portrait page, margins >=0.5 inch, text >=9 points, <=450 reader-
+    facing words excluding only labeled provenance, and no clipping, overlap,
+    hidden overflow, or unreadable shrinking. It is not comprehension proof.
+13. Complete material feedback and append
+    `STAGE_A_MATERIAL_FEEDBACK_COMPLETED`, then `STAGE_A_ENDED`. Do not place
+    or predict these future end facts in an earlier governed artifact.
 
 ## Stage B sequence
 
@@ -184,8 +203,24 @@ Record every intervention.
    export, verify its governing manifest, and then create its detached record.
    Keep Section 6 closed until a debrief-phase input manifest hashes the last
    export, governing manifest, and detached record and scoring ends.
-6. Keep the Stage A participant unavailable until then. End scoring before
-   allowing explanation or repair. Record exact Stage B end and timezone.
+6. Keep the Stage A participant unavailable until then. Append
+   `STAGE_B_SCORING_ENDED` before allowing explanation or repair. Verify
+   `EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt` over the final trilogy and
+   blank `participant/07-stage-b-section-6-debrief.md`, complete
+   `EVT-B-SECTION-6-DEBRIEF-v1.md`, then append
+   `STAGE_B_SECTION_6_DEBRIEF_COMPLETED` and `STAGE_B_ENDED`. Debrief before
+   scoring ends is forbidden and cannot alter frozen scores or artifacts.
+
+## Results, close, and external binding
+
+After `STAGE_B_ENDED`, complete immutable
+`EVT-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md`; append
+`RUN_RESULTS_COMPLETED` and only then `RUN_LOG_CLOSED`. Results may bind the
+final pre-results checkpoint, not a predicted final log hash or future closeout
+time. After close, validate and copy the log byte-identically, verify
+`EVT-RUN-EXECUTION-ACCESS-LOG-SHA256SUMS-<attempt-id>.txt`, and complete
+`EVT-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md` with the actual results/log/copy/
+manifest hashes. Six scored freeze chains alone are not full-route closure.
 
 ## Intervention levels
 

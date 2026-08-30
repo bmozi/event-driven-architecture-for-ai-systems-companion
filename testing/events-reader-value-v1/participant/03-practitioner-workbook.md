@@ -1,15 +1,15 @@
 # Stage A Practitioner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.4
+**Packet:** EVT-RV-PILOT-001 version 1.2.5
 **Status:** Blank participant record
 
-**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
-the exact immutable live-update file into the verified revision-phase input;
-it remains unrun with people.
+**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
+binding and adds full-route closure; it remains unrun with people.
 
 - Participant code:
 - Broad role and experience band, optional:
-- Stage start recorded before first file read, with timezone, and end time:
+- Exact Stage A start before first scored read, with timezone:
+- `STAGE_A_STARTED` event ID and exact line-byte SHA-256:
 - Exact file-open order:
 - Frozen supplied-file manifest:
 - Undeclared orchestration, facilitator, hidden-prompt, or run-note file
@@ -136,3 +136,8 @@ not describe that post-freeze correction as the planned live-update revision.
 - Important decision the materials missed:
 - Any prompt that pushed you toward an unsupported answer:
 - What this exercise cannot establish:
+
+After this governed workbook and the handoff/layout work complete, the
+facilitator logs `STAGE_A_MATERIAL_FEEDBACK_COMPLETED` and then
+`STAGE_A_ENDED`. Do not add or predict those future end facts in this governed
+workbook; the later execution log and immutable run-results record bind them.

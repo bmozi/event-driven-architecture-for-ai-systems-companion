@@ -1,17 +1,17 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.4
+**Packet:** EVT-RV-PILOT-001 version 1.2.5
 **Status:** Blank independent read-back record
 
-**Revision note:** Version 1.2.4 preserves the v1.2.3 replay controls and binds
-the exact immutable live-update file into the verified revision-phase input;
-it remains unrun with people.
+**Revision note:** Version 1.2.5 preserves v1.2.4's exact immutable live-update
+binding and adds full-route closure; it remains unrun with people.
 
 - Reviewer code:
 - Broad role and experience band, optional:
 - One-screen handoff ID/version:
 - Stage A exact detailed filenames, IDs/versions, and hashes:
-- Stage start recorded before first file read, with timezone, and end time:
+- Exact Stage B start before first scored read, with timezone:
+- `STAGE_B_STARTED` event ID and exact line-byte SHA-256:
 - Exact file-open order:
 - Sealed Stage B input manifest:
 - Undeclared orchestration, facilitator, hidden-prompt, or run-note file
@@ -130,13 +130,12 @@ the later detached record before Section 6 opens.
 
 ## 6. Debrief after scoring
 
-Keep this section closed until the facilitator confirms that Sections 1, 2,
-and 3-5 have verified detached freeze records, their next-phase input manifests
-verify, and scoring has ended.
-
-- Stage A explanation that changed your interpretation:
-- Decision changed after discussion:
-- Why:
+Section 6 is the separate gated
+`07-stage-b-section-6-debrief.md`. Do not include future scoring-end, debrief,
+or Stage B end facts in any governed Section 1-5 export. After scoring ends,
+the facilitator verifies the debrief input, completes the separate debrief,
+then logs `STAGE_B_ENDED`; the immutable results record later binds those
+observed events.
 
 ## Frozen-artifact correction register
 

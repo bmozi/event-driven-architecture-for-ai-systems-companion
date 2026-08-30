@@ -1,19 +1,21 @@
 # Events Reader-Value Pilot Packet
 
 **Packet ID:** EVT-RV-PILOT-001
-**Version:** 1.2.4
+**Version:** 1.2.5
 **Status:** `PREPARED/UNRUN` for human participants; no participant recruited or
 consented
 **Scenario:** Pine Hollow Foods, entirely fictional
 
-Version 1.2.4 preserves the v1.2.3 non-self-referential freeze and auditable
-facilitator-side execution history, and repairs the Stage A revision gate. The
+Version 1.2.5 preserves v1.2.4's schema-3 exact live-update byte binding,
+auditable facilitator-side execution history, and all six scored freeze
+chains, then adds full-route closure. The
 exact fictional update is now the immutable route-declared input
 `EVT-A-LIVE-UPDATE-v1.md`; the revision-phase input manifest must hash it with
 the completed initial artifacts, their governing manifest, and their detached
 verification record before it opens. This protocol repair was not a human or
 practitioner session and provides no usability, safety, architecture, or
-business-value validation.
+business-value validation. Human use remains `PREPARED/UNRUN`, human
+comprehension remains `UNRUN`, and real-world evidence remains `UNRUN`.
 
 Detached records still require attempt, phase, actors, facilitator, exact
 manifest-verification command/output/exit/time/timezone, and a separately
@@ -23,6 +25,23 @@ The normative release inventory and invariants are in
 [`temporal-protocol.json`](temporal-protocol.json). The human instructions must
 agree with that file; the repository validator checks both their exact frozen
 bytes and their structured release rows.
+
+## Mutually exclusive entry branch
+
+Before run start, enforce this exact order:
+`ENTRY_BRANCH_SELECTED -> ENTRY_CONTEXT_RECORD_COMPLETED -> RUN_LOG_STARTED`.
+Choose exactly one branch:
+
+1. **Human:** complete and manifest-verify the distinct Stage A and Stage B
+   human consent records; or
+2. **Synthetic:** complete and manifest-verify
+   `EVT-SYNTHETIC-CONTEXT-<attempt-id>-v1.md`, including the exact statement
+   `SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA`.
+
+Never mix branches. Synthetic work must not complete human consent or claim
+human comprehension, usability, practitioner behavior, or a human result.
+Verify the matching context before `RUN_LOG_STARTED`, `STAGE_A_STARTED`, and
+`STAGE_B_STARTED`.
 
 ## What this packet tests
 
@@ -64,6 +83,11 @@ For every later freeze, use this exact temporal order:
 The governing manifest never hashes itself or the later record that describes
 its verification. The record never claims its own hash.
 
+These six scored freeze chains preserve scored evidence; they do not by
+themselves establish full-route closure. Closure additionally requires the
+selected entry context, stage starts/ends, layout proof, scoring end, Section 6
+debrief, immutable results before log close, and later external closeout.
+
 The planned live-update revision creates the first revised artifact set. It is
 not a correction of already frozen revised bytes. If a revised byte changes
 after its freeze, retain the old artifact and create a new immutable filename,
@@ -75,12 +99,11 @@ relabel the prior evidence.
 
 ### Stage A — practitioner
 
-Record setup start before the consent notice is first opened. Complete consent
-before scored work. Then record the Stage A start and timezone before the route
+Complete the selected entry-context gate before scored work. Then record the
+Stage A start and timezone before the route
 is opened and follow its exact order. Supply only these exact local filenames:
 
-1. [Consent and privacy notice](participant/01-consent-and-privacy.md), during
-   setup rather than as scored architecture work
+1. the selected, verified Stage A entry-context record
 2. `00-packet-route.md`
 3. `02-scenario-and-task.md`
 4. `03-practitioner-workbook.md`
@@ -142,14 +165,22 @@ and then create `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md`. The Stage B phase-1
 input manifest must hash the handoff, its governing manifest, and its detached
 verification record.
 
+After the handoff freeze, render its exact bytes as
+`EVT-A-ONE-SCREEN-HANDOFF-v1.pdf` and complete the declared layout proof. PASS
+requires one US Letter portrait page, every margin at least 0.5 inch, all body
+and table text at least 9 points, at most 450 reader-facing words excluding
+only labeled immutable provenance, and no clipping, overlap, hidden overflow,
+or unreadable shrinking. This is layout proof, not comprehension evidence.
+After material feedback, log `STAGE_A_MATERIAL_FEEDBACK_COMPLETED` and
+`STAGE_A_ENDED`; three Stage A freezes alone do not close Stage A.
+
 ### Stage B — independent decision owner
 
-Record setup start before the consent notice is first opened. Complete consent,
-then record the Stage B start and timezone before the route is opened. Build a
+Complete the matching selected Stage B context, then record the Stage B start
+and timezone before the route is opened. Build a
 separate sealed flat Stage B input and supply in the route's exact order:
 
-1. [Consent and privacy notice](participant/01-consent-and-privacy.md), during
-   setup;
+1. the selected, verified Stage B entry-context record;
 2. `00-packet-route.md`;
 3. `EVT-A-ONE-SCREEN-HANDOFF-v1.md` as the first substantive decision content,
    plus its governing manifest and detached verification record as sealed
@@ -180,6 +211,16 @@ and the debrief-phase input manifest seals the last export, manifest, and
 record. Do not let the Stage A participant explain or repair an artifact before
 then.
 
+After the sixth scored freeze, log `STAGE_B_SCORING_ENDED`, verify
+`EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt` over the Sections 3-5 trilogy
+and blank `07-stage-b-section-6-debrief.md`, complete
+`EVT-B-SECTION-6-DEBRIEF-v1.md`, and log `STAGE_B_ENDED`. Debrief cannot alter
+frozen scores or artifacts. Complete immutable
+`EVT-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md` before
+`RUN_LOG_CLOSED`; log `RUN_RESULTS_COMPLETED` first. Results cannot predict the future closed-log hash or closeout
+time. After close, bind the actual results, closed log, byte-identical copy,
+and external manifest in `EVT-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md`.
+
 ## Facilitator only
 
 - [Facilitator guide](facilitator-only/01-facilitator-guide.md)
@@ -187,6 +228,9 @@ then.
 - [Results and deviation log](facilitator-only/03-results-and-deviation-log.md)
 - [Temporal freeze protocol and record templates](facilitator-only/04-temporal-freeze-protocol-and-record-templates.md)
 - [Execution and access log](facilitator-only/05-execution-and-access-log.md)
+- [Synthetic context record template](facilitator-only/06-synthetic-context-record-template.md)
+- [Handoff layout proof record template](facilitator-only/07-handoff-layout-proof-record-template.md)
+- [External closeout record template](facilitator-only/08-external-closeout-record-template.md)
 
 Never supply these files before either scored stage ends.
 

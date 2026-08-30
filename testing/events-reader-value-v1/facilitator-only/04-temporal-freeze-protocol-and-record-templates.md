@@ -1,11 +1,11 @@
 # Temporal Freeze Protocol and Record Templates
 
-**Packet:** EVT-RV-PILOT-001 version 1.2.4
+**Packet:** EVT-RV-PILOT-001 version 1.2.5
 **Status:** Facilitator-only static validation note and blank run-record schema;
 prepared and unrun
 
-Version 1.2.4 preserves the v1.2.3 auditable execution-history controls and
-adds a machine-enforced revision-phase input binding. The exact immutable
+Version 1.2.5 preserves the v1.2.4 schema-3 revision-phase byte binding and
+adds machine-enforced full-route closure. The exact immutable
 `EVT-A-LIVE-UPDATE-v1.md` must be hashed with the four completed initial
 artifacts, their governing manifest, and their detached verification record by
 `EVT-A-REVISION-PHASE-INPUT-SHA256SUMS-v1.txt` before the file opens. The
@@ -61,7 +61,24 @@ Rules:
 | Stage A handoff | `EVT-A-ONE-SCREEN-HANDOFF-v1.md`; `HANDOFF COMPLETE` | `EVT-A-HANDOFF-SHA256SUMS-v1.txt` | `EVT-A-HANDOFF-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-1-INPUT-SHA256SUMS-v1.txt` |
 | Stage B Section 1 | `EVT-B-SECTION-1-SCAN-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-1-SHA256SUMS-v1.txt` | `EVT-B-SECTION-1-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-2-INPUT-SHA256SUMS-v1.txt` |
 | Stage B Section 2 | `EVT-B-SECTION-2-DETAIL-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTION-2-SHA256SUMS-v1.txt` | `EVT-B-SECTION-2-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-3-INPUT-SHA256SUMS-v1.txt` |
-| Stage B Sections 3-5 | `EVT-B-SECTIONS-3-5-DECISION-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt` | `EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt` |
+| Stage B Sections 3-5 | `EVT-B-SECTIONS-3-5-DECISION-v1.md`; `SECTION COMPLETE` | `EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt` | `EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md` | `EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt`; `07-stage-b-section-6-debrief.md` |
+
+## Six freezes versus full-route closure
+
+The table above contains the six scored freeze chains. It does not establish
+full-route closure. A complete route also has exactly one manifest-verified
+human or synthetic entry context; Stage A/B start/end log checkpoints; Stage A
+material-feedback completion; handoff layout proof; Stage B scoring end and
+separate Section 6 debrief; immutable run results before log close; and a later
+external closeout binding actual hashes. Governed/scored workbooks must not
+contain future Stage A/B end or scoring-end fields.
+
+Use
+[`06-synthetic-context-record-template.md`](06-synthetic-context-record-template.md),
+[`07-handoff-layout-proof-record-template.md`](07-handoff-layout-proof-record-template.md),
+and
+[`08-external-closeout-record-template.md`](08-external-closeout-record-template.md)
+for the additional route records.
 
 ## Revision-phase sealed-input inventory
 

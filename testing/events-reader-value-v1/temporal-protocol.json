@@ -2,7 +2,7 @@
   "schema_version": 3,
   "protocol_id": "RV-TEMPORAL-FREEZE-001",
   "packet_id": "EVT-RV-PILOT-001",
-  "packet_version": "1.2.4",
+  "packet_version": "1.2.5",
   "causal_order": [
     "completed_artifacts",
     "artifact_only_manifest",
@@ -48,6 +48,40 @@
       "record_completion_timezone"
     ],
     "record_completion_must_follow_verification": true
+  },
+  "entry_branch_contract": {
+    "selection": "exactly_one",
+    "selection_event": "ENTRY_BRANCH_SELECTED",
+    "selection_before_scored_input": true,
+    "branch_mixing_stops_attempt": true,
+    "human": {
+      "template": "participant/01-consent-and-privacy.md",
+      "stage_a_record_pattern": "EVT-A-HUMAN-CONSENT-<attempt-id>-v1.md",
+      "stage_b_record_pattern": "EVT-B-HUMAN-CONSENT-<attempt-id>-v1.md",
+      "stage_a_manifest_pattern": "EVT-A-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+      "stage_b_manifest_pattern": "EVT-B-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+      "required_state": "HUMAN CONSENT COMPLETE",
+      "synthetic_context_forbidden": true
+    },
+    "synthetic": {
+      "template": "facilitator-only/06-synthetic-context-record-template.md",
+      "record_pattern": "EVT-SYNTHETIC-CONTEXT-<attempt-id>-v1.md",
+      "manifest_pattern": "EVT-SYNTHETIC-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+      "required_identity_statement": "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
+      "required_state": "SYNTHETIC CONTEXT COMPLETE",
+      "human_consent_record_forbidden": true,
+      "human_result_claims_forbidden": [
+        "human consent obtained",
+        "participant consented",
+        "human comprehension passed",
+        "human usability passed",
+        "practitioner result observed"
+      ]
+    },
+    "stage_context_gates": {
+      "stage_a": "selected_branch_record_and_manifest_verified_before_STAGE_A_STARTED",
+      "stage_b": "same_selected_branch_record_and_manifest_verified_before_STAGE_B_STARTED"
+    }
   },
   "participant_input_policy": {
     "declared_route_files_only": true,
@@ -99,6 +133,104 @@
     "governing_manifest",
     "detached_verification_record"
   ],
+  "full_route_contract": {
+    "scored_freeze_chain_ids": [
+      "stage_a_initial",
+      "stage_a_revised",
+      "stage_a_handoff",
+      "stage_b_section_1",
+      "stage_b_section_2",
+      "stage_b_sections_3_5"
+    ],
+    "six_scored_freezes_are_full_route_closure": false,
+    "required_boundary_order": [
+      "ENTRY_BRANCH_SELECTED",
+      "ENTRY_CONTEXT_RECORD_COMPLETED",
+      "RUN_LOG_STARTED",
+      "STAGE_A_STARTED",
+      "stage_a_initial",
+      "stage_a_revised",
+      "stage_a_handoff",
+      "HANDOFF_LAYOUT_PROOF_COMPLETED",
+      "STAGE_A_MATERIAL_FEEDBACK_COMPLETED",
+      "STAGE_A_ENDED",
+      "STAGE_B_STARTED",
+      "stage_b_section_1",
+      "stage_b_section_2",
+      "stage_b_sections_3_5",
+      "STAGE_B_SCORING_ENDED",
+      "STAGE_B_SECTION_6_DEBRIEF_COMPLETED",
+      "STAGE_B_ENDED",
+      "RUN_RESULTS_COMPLETED",
+      "RUN_LOG_CLOSED"
+    ],
+    "premature_log_close_forbidden": true
+  },
+  "debrief_contract": {
+    "template": "participant/07-stage-b-section-6-debrief.md",
+    "input_manifest": "EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+    "output_filename": "EVT-B-SECTION-6-DEBRIEF-v1.md",
+    "required_state": "SECTION 6 DEBRIEF COMPLETE",
+    "completion_event": "STAGE_B_SECTION_6_DEBRIEF_COMPLETED",
+    "after_event": "STAGE_B_SCORING_ENDED",
+    "debrief_before_scoring_forbidden": true,
+    "retroactive_score_or_artifact_change_forbidden": true
+  },
+  "run_results_contract": {
+    "template": "facilitator-only/03-results-and-deviation-log.md",
+    "filename_pattern": "EVT-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md",
+    "required_state": "RUN RESULTS COMPLETE",
+    "completion_event": "RUN_RESULTS_COMPLETED",
+    "after_event": "STAGE_B_ENDED",
+    "before_event": "RUN_LOG_CLOSED",
+    "immutable_before_log_close": true,
+    "final_pre_results_checkpoint_required": true,
+    "forbidden_fields": [
+      "final_closed_log_sha256",
+      "predicted_future_log_hash",
+      "predicted_future_closeout_timestamp"
+    ]
+  },
+  "external_closeout_contract": {
+    "template": "facilitator-only/08-external-closeout-record-template.md",
+    "filename_pattern": "EVT-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md",
+    "required_state": "EXTERNAL CLOSEOUT COMPLETE",
+    "after_event": "RUN_LOG_CLOSED",
+    "binds_results_sha256": true,
+    "binds_closed_log_sha256": true,
+    "binds_external_manifest_sha256": true,
+    "external_to_closed_log": true
+  },
+  "layout_proof_contract": {
+    "handoff_markdown": "EVT-A-ONE-SCREEN-HANDOFF-v1.md",
+    "handoff_pdf": "EVT-A-ONE-SCREEN-HANDOFF-v1.pdf",
+    "proof_template": "facilitator-only/07-handoff-layout-proof-record-template.md",
+    "proof_filename_pattern": "EVT-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md",
+    "completion_event": "HANDOFF_LAYOUT_PROOF_COMPLETED",
+    "page_count": 1,
+    "page_size": "US Letter portrait",
+    "minimum_margin_inches": 0.5,
+    "minimum_font_points": 9,
+    "maximum_reader_facing_words_excluding_labeled_provenance": 450,
+    "clipping_forbidden": true,
+    "overlap_forbidden": true,
+    "favorable_one_page_claim_requires_pass_proof": true,
+    "human_comprehension_evidence": false
+  },
+  "governed_future_boundary_fields_forbidden": [
+    "Exact Stage A end timestamp/timezone",
+    "STAGE_A_ENDED event ID",
+    "Exact Stage B scoring-end timestamp/timezone",
+    "STAGE_B_SCORING_ENDED event ID",
+    "Exact Stage B end timestamp/timezone",
+    "STAGE_B_ENDED event ID"
+  ],
+  "evidence_state_contract": {
+    "human_pilot": "PREPARED/UNRUN",
+    "human_comprehension": "UNRUN",
+    "real_world": "UNRUN",
+    "synthetic_may_not_upgrade_human_or_real_world_state": true
+  },
   "correction_policy": {
     "preserve_prior_release": true,
     "allow_overwrite": false,
@@ -247,61 +379,80 @@
       ],
       "governing_manifest": "EVT-B-SECTIONS-3-5-SHA256SUMS-v1.txt",
       "detached_record": "EVT-B-SECTIONS-3-5-FREEZE-VERIFICATION-v1.md",
-      "next_release_manifest": "EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt"
+      "next_release_manifest": "EVT-B-PHASE-4-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+      "next_release_additional_inputs": [
+        "07-stage-b-section-6-debrief.md"
+      ]
     }
   ],
   "critical_documents": [
     {
       "path": "README.md",
-      "sha256": "7aba33bcd3fe645fa26356a868a90aacb720c65e0ae2964459992d8aa76e69a1"
+      "sha256": "676100543cf2b25b42394a9a4d0238f5ba662915e6fccae54d60645a5fe7971d"
     },
     {
       "path": "facilitator-only/01-facilitator-guide.md",
-      "sha256": "20deadd0f76a5170064b757e49ff4c9a89d2d79e41edd9eaf3b22083b7932a1b"
+      "sha256": "ac478e55b32a2e411b0c87f7272143e2d801fc8a91c77a6e08db5b959b42534f"
     },
     {
       "path": "facilitator-only/02-observation-and-scoring-rubric.md",
-      "sha256": "a460dd88b716a796c00bef259886c680c6463e8778b22ab66be939b6e6af52b5"
+      "sha256": "167831678d0195437aba19db558a43c6f379132d13f84c16da1448b8f94e93af"
     },
     {
       "path": "facilitator-only/03-results-and-deviation-log.md",
-      "sha256": "6ce58e5e8007551b2d786d5319f060941d80de19a3242386d065194f4db5b971"
+      "sha256": "88508af4feaef2c3b9256af57b5ffa7af17a5615643048a71dbb596f03ee0b8b"
     },
     {
       "path": "facilitator-only/04-temporal-freeze-protocol-and-record-templates.md",
-      "sha256": "f743fc91f8e26a4061c978b61c290f3e8362e2fb409a71e9c0e5724c9589a463"
+      "sha256": "1bfed7515312a73bbdd22679fa9ccf6d5e80267434b49a5c6e9436a991ae00e7"
     },
     {
       "path": "facilitator-only/05-execution-and-access-log.md",
-      "sha256": "d8f52fd69e8e45cde70637d3368d80d8b58f9b514311c70647ffaafc018aa675"
+      "sha256": "ce5dabffbd7069b8746a0a9f5441bf960855c5b50c6ad2237549948c6ebed032"
+    },
+    {
+      "path": "facilitator-only/06-synthetic-context-record-template.md",
+      "sha256": "4ae425644501a8c5b9fb9d02c1282b94c8edf0c5fb7fc207fb39913af521b07a"
+    },
+    {
+      "path": "facilitator-only/07-handoff-layout-proof-record-template.md",
+      "sha256": "cb151709720ad62d0e64a923c802d3ee21609b6b6fdca43a89baaa64e873208a"
+    },
+    {
+      "path": "facilitator-only/08-external-closeout-record-template.md",
+      "sha256": "545b9bd8fb0f87a824222342b89399cd63d55889d3d49854eb566c71b0c486e7"
     },
     {
       "path": "participant/00-packet-route.md",
-      "sha256": "38ef77ca23f31d00ec0b36fee344d6ea938461ea920ad5b825015e75f27c93de"
+      "sha256": "23d712b386de2e6c62606811f270433539d0bf74cc4bf9cd52260fd6d50c02f8"
     },
     {
       "path": "participant/01-consent-and-privacy.md",
-      "sha256": "20cf8bf0c926a7b698990077b2125ffed0277601549b34e058287677c4ea70d4"
+      "sha256": "c38e626f3eaeb74594e4447a5ecbd918ae3f9e32c3129e3a699b423fcaa2a722"
     },
     {
       "path": "participant/02-scenario-and-task.md",
-      "sha256": "61441da0b7b8f3657afa572a6c089ff9728cd214a2efbddb69547d7cdf70a25e"
+      "sha256": "edab654fa170fb1d3dda304936547980c06c897e25998e0dde7be69312772841"
     },
     {
       "path": "participant/03-practitioner-workbook.md",
-      "sha256": "799a3a619f760923817503635fded814ed4c02a2b30feaf6c1b02defaf882e1a"
+      "sha256": "b3c84aec6eb2bddfdc704ae5024dffc09f830da12ab383d636b03a69f9bc3988"
     },
     {
       "path": "participant/04-decision-owner-workbook.md",
-      "sha256": "6fad073cf64b2b76b0514a845a57308ee946e2b1147c4f5b7de31a2edb8a3f3d"
+      "sha256": "deafc1c75c14a21ef3581d7aeaec8ee0594bfe9a520a3bc89af4bb6d45fb170a"
     },
     {
       "path": "participant/05-one-screen-handoff.md",
-      "sha256": "6c635efc4f657a0a011bf216d8fd644b24e9145cab9694fd706cf60aa3f7eb8a"
+      "sha256": "ccc04a14845d9b8c1e291fb9b346ce12e2257a1eab2f17b51aba975813a07cc6"
     },
     {
       "path": "participant/06-revised-artifact-freeze-record.md",
-      "sha256": "29cdc9737a77a300ae3ee9fcd8da1fb4f9b04854b1853f8f67c011a52b8287d8"
+      "sha256": "d6c136a04b41fec093e02f91bb9021966e78189e9db71a8371be3a3140308840"
+    },
+    {
+      "path": "participant/07-stage-b-section-6-debrief.md",
+      "sha256": "48756aca56d77b9d41ba666b4ea13f01e0d3bce82aba934623e2482c6c95a487"
     },
     {
       "path": "participant/EVT-A-LIVE-UPDATE-v1.md",

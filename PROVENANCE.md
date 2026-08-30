@@ -126,3 +126,22 @@ and which validation or usability state actually changed.
 - **Preserved:** Version 1.2.3 provenance and all prior human-evidence
   boundaries. No human session, participant observation, execution result,
   usability finding, safety finding, or business-value result is claimed.
+
+## 2026-08-30 synthetic closure successor v1.2.5
+
+- **Authority:** Author-directed synthetic execution closure standard
+- **Preserved:** schema-3 canonical-byte equality for exact immutable
+  `EVT-A-LIVE-UPDATE-v1.md`, its revision-phase binding, all six scored freeze
+  chains, and all twenty-one prior adversarial regression cases
+- **Added:** an exactly-one human-consent or synthetic-context entry branch;
+  facilitator-log Stage A/B starts and ends without future end fields in
+  governed workbooks; Stage B scoring end and separate Section 6 debrief;
+  immutable run-specific results before log close; later external closeout;
+  and a reproducible one-page US Letter handoff proof contract
+- **Closure boundary:** six scored freeze chains preserve scored evidence but
+  do not alone establish full-route closure
+- **Execution state:** human use remains `PREPARED/UNRUN`, human comprehension
+  remains `UNRUN`, and real-world evidence remains `UNRUN`
+- **Claim boundary:** static validation and synthetic mutations establish no
+  consent, usability, comprehension, event correctness, loop safety,
+  practitioner value, or real-world outcome
