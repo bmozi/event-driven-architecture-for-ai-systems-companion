@@ -1,7 +1,10 @@
 # Results and Deviation Log
 
-**Packet:** EVT-RV-PILOT-001 version 1.0.0
+**Packet:** EVT-RV-PILOT-001 version 1.1.0
 **Status:** Blank controlled record; no result exists
+
+**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
+route preflight; it has no human or practitioner validation.
 
 ## Run identity
 
@@ -21,17 +24,32 @@
 - Prepared-source manifest match:
 - Supplied and withheld materials correct: yes / no / deviation
 - Confidentiality or privacy concern:
+- Initial Stage A outputs frozen at and artifact IDs:
+- Revised Stage A outputs frozen at and artifact IDs:
+- One-screen handoff frozen at and artifact ID:
 
 ## Timing and interventions
 
 | Stage/activity | Start | End | Elapsed | Notes |
 | --- | --- | --- | ---: | --- |
+| A consent/setup before consent-file read | | | | |
+| A start before first file read | | | | |
 | A recognition | | | | |
 | A artifact | | | | |
 | A live update | | | | |
 | A handoff | | | | |
-| B read-back | | | | |
+| B consent/setup before consent-file read | | | | |
+| B start before first file read | | | | |
+| B one-screen read-back | | | | |
 | B decision | | | | |
+
+| Stage | Sequence | File opened | Open time | Close time | Notes |
+| --- | ---: | --- | --- | --- | --- |
+| | | | | | |
+
+| Time | Stage | Pause, question, or observable route friction | Response or intervention | Level |
+| --- | --- | --- | --- | --- |
+| | | | | |
 
 | Time | Exact intervention | Level | Gate affected | Interpretation effect |
 | --- | --- | --- | --- | --- |
@@ -48,6 +66,10 @@
 | RV-5 | | | |
 | RV-6 | | | |
 | RV-7 | | | |
+
+- One-screen handoff scanability evidence:
+- Owner recorded as assigned or `UNASSIGNED`; assignment authority/trigger:
+- Review date or evidence-based trigger; basis:
 
 ## Deviations and stops
 

@@ -26,7 +26,7 @@ and which validation or usability state actually changed.
   integrity only, not event meaning, capacity, loop safety, operational outcome,
   or public-release readiness.
 
-## 2026-08-29 reader-value pilot candidate
+## 2026-08-29 reader-value pilot candidate v1.0.0
 
 - **Authority:** Portfolio reader-value completion standard
 - **Added:** `EVT-RV-PILOT-001` version 1.0.0, a two-stage practitioner and
@@ -37,3 +37,19 @@ and which validation or usability state actually changed.
   observation, score, revision-from-observation, or result exists
 - **Prior packet boundary:** the Harborlight two-tool packet remains unchanged
   and does not inherit the new packet's scope
+
+## 2026-08-29 synthetic route preflight and v1.1.0 source repair
+
+- **Internal defect-finding event:** Version 1.0.0 was exercised through a
+  synthetic route preflight. It showed strong reasoning but partial cross-role
+  transfer, omitted-link and example-route ambiguity, incomplete timing and
+  read-order capture, and an overlong decision surface.
+- **Evidence class:** Synthetic internal QA only. No human or practitioner was
+  recruited or consented, and no human observation or usability result exists.
+- **Changed:** Version 1.1.0 adds an exact blinded route, a frozen one-screen
+  post-update handoff, a labeled incident sequence, exact timing/read-order
+  capture, and owner/review-trigger rules that preserve unknown authority.
+- **Current execution state:** `PREPARED/UNRUN` for human participants.
+- **Claim boundary:** Neither the preflight nor repository validation supports
+  a usability, safety, architecture-correctness, publication-readiness, or
+  business-value claim.

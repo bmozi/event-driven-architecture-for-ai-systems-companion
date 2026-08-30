@@ -1,7 +1,10 @@
 # Observation and Scoring Rubric
 
-**Packet:** EVT-RV-PILOT-001 version 1.0.0
+**Packet:** EVT-RV-PILOT-001 version 1.1.0
 **Status:** Predetermined, blank, and unrun
+
+**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
+route preflight; it has no human or practitioner validation.
 
 Score retained behavior, not agreement with preferred vocabulary.
 
@@ -23,9 +26,9 @@ Do not use the total as a validated psychometric score.
 | RV-1 Recognition | Names the human need and consequence before mechanisms | A | | |
 | RV-2 Plain understanding | Explains alert, fact, request, pending state, and outcome without broker jargon | A and B | | |
 | RV-3 First useful artifact | Produces a bounded event record with explicit unknowns | A | | |
-| RV-4 Outside read-back | Stage B reconstructs meaning, authority, reactions, risk, and proof without repair | B | | |
+| RV-4 Outside read-back | Stage B scans the one-screen handoff, then reconstructs meaning, authority, reactions, risk, and proof without repair | B | | |
 | RV-5 Failure discovery | Detects duplication, false declaration, premature outcome, multiplication, and loop | A | | |
-| RV-6 Team transfer | Handoff yields owner, decision, unknowns, evidence, and next date | B | | |
+| RV-6 Team transfer | Scanable handoff yields decision, allowed/withheld scope, evidence, unknowns, next action, an assigned owner or `UNASSIGNED` with assignment authority/trigger, and a review date or evidence-based trigger | B | | |
 | RV-7 Decision-owner legibility | Selects a bounded state without inventing ROI or approval | B | | |
 
 ## Critical Events gates
@@ -38,10 +41,14 @@ Mark `clear`, `unclear`, `unsafe`, or `contaminated`:
 | Authority | Names who may declare each fact and leaves missing authority unknown | | |
 | Permitted inference | Consumers do not treat `accepted` or `at risk` as a final outcome | | |
 | Causality and duplication | One business condition survives redelivery, workers, retries, and message IDs | | |
-| Multiplication and loop | Reconstructs fan-out, detects feedback, and names budgets and a breaker | | |
+| Multiplication and loop | Reconstructs fan-out, detects feedback, names budgets and a breaker, and names an authorized stop owner or explicit `UNASSIGNED` state with assignment authority/trigger | | |
 | Outcome evidence | Reroute, stock, credit, case, notification, and final store outcome can be reconciled | | |
 
 Any unsafe critical gate blocks a favorable interpretation regardless of total.
+
+Do not reward an invented owner, assignment authority, calendar date, or review
+trigger. Record handoff scanability and whether Stage B had to search detailed
+artifacts before it could identify the bounded decision.
 
 ## Findings to record
 

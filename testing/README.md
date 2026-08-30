@@ -134,7 +134,8 @@ usability claim exists.
 
 ## Separate reader-value packet
 
-The [Events Reader-Value Pilot Packet](events-reader-value-v1/README.md) is a
-separately versioned, prepared, and unrun protocol for the newer role-transfer,
+The [Events Reader-Value Pilot Packet](events-reader-value-v1/README.md),
+currently version 1.1.0, is a separately versioned, prepared, and human-unrun
+protocol for the newer role-transfer,
 multiplier, loop, value-ledger, and decision-owner materials. It does not
 change this packet's two-tool scope or inherit any result from it.

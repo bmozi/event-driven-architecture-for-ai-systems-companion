@@ -1,9 +1,14 @@
 # Events Reader-Value Pilot Packet
 
 **Packet ID:** EVT-RV-PILOT-001
-**Version:** 1.0.0
-**Status:** Prepared and unrun; no participant recruited or consented
+**Version:** 1.1.0
+**Status:** `PREPARED/UNRUN` for human participants; no participant recruited or
+consented
 **Scenario:** Pine Hollow Foods, entirely fictional
+
+Version 1.1.0 incorporates source repairs identified by a synthetic route
+preflight. That internal exercise was not a human or practitioner session and
+provides no usability, safety, architecture, or business-value validation.
 
 ## What this packet tests
 
@@ -22,32 +27,51 @@ language.
 
 ### Stage A — practitioner
 
-Supply only:
+Record setup start before the consent notice is first opened. Complete consent
+before scored work. Then record the Stage A start before the route is opened
+and follow its exact order. Supply only:
 
-1. [Consent and privacy notice](participant/01-consent-and-privacy.md)
-2. [Scenario and task](participant/02-scenario-and-task.md)
-3. [Practitioner workbook](participant/03-practitioner-workbook.md)
-4. [Start Here](../../START-HERE.md)
-5. [Event Meaning-and-Authority Record](../../event-meaning-and-authority-record.md)
-6. [Traffic, Cost, and Action Multiplier Calculator](../../traffic-cost-action-multiplier-calculator.md)
-7. [Event Loop-Prevention Checklist](../../event-loop-prevention-checklist.md)
+1. [Consent and privacy notice](participant/01-consent-and-privacy.md), during
+   setup rather than as scored architecture work
+2. [Exact packet route](participant/00-packet-route.md)
+3. [Scenario and task](participant/02-scenario-and-task.md)
+4. [Practitioner workbook](participant/03-practitioner-workbook.md)
+5. [Start Here](../../START-HERE.md)
+6. [Event Meaning-and-Authority Record](../../event-meaning-and-authority-record.md)
+7. [Traffic, Cost, and Action Multiplier Calculator](../../traffic-cost-action-multiplier-calculator.md)
+8. [Event Loop-Prevention Checklist](../../event-loop-prevention-checklist.md)
+9. after the live update only, the blank
+   [One-Screen Handoff](participant/05-one-screen-handoff.md)
 
-Do not supply completed examples, the repository Failure Lab, facilitator
-materials, the executive brief, or the value ledger during Stage A.
+The Northbridge miniature embedded in the supplied meaning-and-authority record
+and short generic examples already visible in supplied files are allowed. Do
+not follow links to the comprehensive Northbridge example or any other
+completed example. All full worked examples are withheld. Do not supply the
+repository Failure Lab, facilitator
+materials, executive brief, or value ledger during Stage A. Freeze the initial
+detailed outputs before the live update. After the update, freeze the revised
+detailed outputs and completed one-screen handoff.
 
 ### Stage B — independent decision owner
 
-Supply:
+Record setup start before the consent notice is first opened. Complete consent,
+then record the Stage B start before the route is opened. Follow the route and
+supply:
 
-1. the frozen scenario;
-2. the unchanged Stage A artifact and handoff;
-3. [Decision-owner workbook](participant/04-decision-owner-workbook.md);
-4. [Executive Decision Brief](../../EXECUTIVE-DECISION-BRIEF.md); and
-5. [Value and Evidence Ledger](../../VALUE-AND-EVIDENCE-LEDGER.md).
+1. [Consent and privacy notice](participant/01-consent-and-privacy.md), during
+   setup;
+2. the [Exact packet route](participant/00-packet-route.md);
+3. the frozen completed [One-Screen Handoff](participant/05-one-screen-handoff.md)
+   as the first decision content;
+4. the frozen scenario and revised Stage A detailed artifacts;
+5. [Decision-owner workbook](participant/04-decision-owner-workbook.md);
+6. [Executive Decision Brief](../../EXECUTIVE-DECISION-BRIEF.md); and
+7. [Value and Evidence Ledger](../../VALUE-AND-EVIDENCE-LEDGER.md).
 
-Use a different person for Stage B during the first calibration round. Do not
-let the Stage A participant explain or repair the artifact during the initial
-read-back.
+Use a different person for Stage B during the first calibration round. Stage B
+reads the one-screen handoff before the scenario or detailed artifacts and may
+then inspect the detail. Do not let the Stage A participant explain or repair
+any artifact during the initial read-back.
 
 ## Facilitator only
 

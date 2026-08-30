@@ -1,7 +1,10 @@
 # Participant Consent and Privacy Notice
 
-**Packet:** EVT-RV-PILOT-001 version 1.0.0
+**Packet:** EVT-RV-PILOT-001 version 1.1.0
 **Status:** Blank; no consent has been obtained
+
+**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
+route preflight; it has no human or practitioner validation.
 
 ## Purpose
 
@@ -47,6 +50,7 @@ Blank fields above mean the session must not begin.
 
 ## Acknowledgment
 
+- Consent/setup start recorded before this notice was first read:
 - Participant code:
 - Stage: A practitioner / B decision owner
 - Date:

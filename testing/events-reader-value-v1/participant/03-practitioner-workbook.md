@@ -1,11 +1,15 @@
 # Stage A Practitioner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.0.0
+**Packet:** EVT-RV-PILOT-001 version 1.1.0
 **Status:** Blank participant record
+
+**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
+route preflight; it has no human or practitioner validation.
 
 - Participant code:
 - Broad role and experience band, optional:
-- Start and end time:
+- Stage start recorded before first file read, and end time:
+- Exact file-open order:
 - Frozen supplied-file manifest:
 
 ## 1. Recognition before terminology
@@ -31,14 +35,15 @@ remains uncertain, and how the store will know what actually occurred.
 - Shared causal identity:
 - Initial delivery, reaction, cost, and autonomous-action estimate:
 - Assumptions that make the estimate unreliable:
-- Budget, breaker, and stop owner:
+- Budget and breaker; authorized stop owner, or `UNASSIGNED` plus the
+  authority/trigger needed to assign one:
 - Final outcome evidence:
 
 ## 4. Monday-morning decision
 
 - Smallest useful design or policy change:
 - First duplicate, ordering, or loop failure to test:
-- Owner of that test:
+- Owner of that test, or `UNASSIGNED` plus authority/trigger to assign one:
 - Result that would block or reverse the design:
 
 ## 5. Live update
@@ -52,19 +57,26 @@ Record the update exactly as supplied.
 - Artifact fields revised:
 - Evidence still missing:
 
+### Compact incident sequence
+
+Complete in order. Every entry must use exactly one evidence label:
+`REPORTED`, `INFERRED`, `PROPOSED`, or `UNKNOWN`.
+
+| Order | Required entry | Action or decision | Evidence label | Authorized owner or `UNASSIGNED` | Authority/evidence or `UNKNOWN` |
+| ---: | --- | --- | --- | --- | --- |
+| 1 | Immediate containment | | | | |
+| 2 | Evidence preservation | | | | |
+| 3 | Effect reconciliation | | | | |
+| 4 | Authorized customer/store correction | | | | |
+| 5 | Redesign or restart only after 1-4 | | | | |
+
 ## 6. Cross-role handoff
 
-Write a handoff for a manager or decision owner who will not receive your
-verbal explanation:
-
-- Beneficiary and desired outcome:
-- Proposed bounded event flow:
-- Organizational commitment required:
-- Largest unacceptable outcome:
-- Evidence available now:
-- Evidence still needed:
-- Recommended state: `EXPLORE` / `PROCEED BOUNDED` / `INVEST` / `HOLD` / `STOP`
-- Reconsideration trigger and date:
+After the live update, complete
+[the One-Screen Stage A Handoff](05-one-screen-handoff.md). Link the detailed
+artifact IDs. If no accountable owner is authorized, record `UNASSIGNED` and
+name the authority or trigger needed to assign one. Use either a justified
+calendar date or an evidence-based reconsideration trigger; do not invent one.
 
 ## 7. Material feedback
 

@@ -1,7 +1,10 @@
 # Facilitator Guide
 
-**Packet:** EVT-RV-PILOT-001 version 1.0.0
+**Packet:** EVT-RV-PILOT-001 version 1.1.0
 **Status:** Facilitator-only; prepared and unrun
+
+**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
+route preflight; it has no human or practitioner validation.
 
 ## Purpose
 
@@ -29,6 +32,14 @@ read-back.
 
 Time is evidence, not a speed target.
 
+## Required capture
+
+For each participant, record setup start before the consent notice is first
+opened. Obtain consent, then record the exact stage start immediately before
+the route is opened. Record the exact file-open order, each pause or question,
+and every intervention with time and level. Do not reconstruct these from
+memory after the session.
+
 ## No-coaching rule
 
 During scored work, the facilitator may repeat written text or resolve file
@@ -38,11 +49,15 @@ Record every intervention.
 
 ## Stage A sequence
 
-1. Confirm consent and freeze identity.
-2. Supply the scenario and workbook only. Let the participant complete Section
-   1 before opening companion assets.
-3. Supply the four listed assets in the packet README.
-4. Freeze a copy of the initial artifact before the update.
+1. Confirm consent and freeze identity. Record Stage A start before opening the
+   participant route.
+2. Follow the route exactly. Supply the scenario and workbook only, then let the
+   participant complete Section 1 before opening companion assets.
+3. Supply only the four listed assets in the packet README, in order. The
+   Northbridge miniature embedded in the supplied record and generic examples
+   already visible in supplied files are allowed; do not allow linked
+   comprehensive or completed examples.
+4. Freeze the initial workbook and detailed artifacts before the update.
 5. Read the live update:
 
 > The same high-temperature reading was delivered three times. Two workers
@@ -56,15 +71,23 @@ Record every intervention.
 
 6. Ask only: “What can each party safely say or do now, and what changes in
    your artifacts?”
-7. Preserve original and revised artifacts separately.
+7. Let the participant revise the detailed artifacts and workbook Section 5,
+   including the labeled incident sequence.
+8. Only then supply the blank one-screen handoff. Freeze the revised detailed
+   artifacts and completed handoff separately from the initial outputs.
+9. Preserve original and revised artifacts without alteration.
 
 ## Stage B sequence
 
-1. Use a participant who did not create the Stage A artifact.
-2. Supply the scenario, unchanged Stage A artifact and handoff, decision-owner
-   workbook, Executive Decision Brief, and Value and Evidence Ledger.
-3. Keep the Stage A participant unavailable during Sections 1–4.
-4. End scoring before allowing explanation or repair.
+1. Use a participant who did not create the Stage A artifact and obtain separate
+   consent. Record Stage B start before opening the route.
+2. Supply the frozen one-screen handoff as the first decision content. Then
+   supply the scenario, revised Stage A detail, decision-owner workbook,
+   Executive Decision Brief, and Value and Evidence Ledger in route order.
+3. Record every file opened. Stage B may inspect detail only after reading the
+   one-screen handoff.
+4. Keep the Stage A participant unavailable during Sections 1–4.
+5. End scoring before allowing explanation or repair.
 
 ## Intervention levels
 

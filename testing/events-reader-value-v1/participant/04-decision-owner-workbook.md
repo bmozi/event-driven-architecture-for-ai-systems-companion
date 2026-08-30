@@ -1,12 +1,17 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** EVT-RV-PILOT-001 version 1.0.0
+**Packet:** EVT-RV-PILOT-001 version 1.1.0
 **Status:** Blank independent read-back record
+
+**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
+route preflight; it has no human or practitioner validation.
 
 - Reviewer code:
 - Broad role and experience band, optional:
-- Stage A artifact ID/version:
-- Start and end time:
+- One-screen handoff ID/version:
+- Stage A detailed artifact IDs/versions:
+- Stage start recorded before first file read, and end time:
+- Exact file-open order:
 - Prior involvement with Stage A: none required for first calibration
 
 Do not ask the Stage A practitioner to explain or repair the artifact until
@@ -38,8 +43,9 @@ Choose one: `EXPLORE` / `PROCEED BOUNDED` / `INVEST` / `HOLD` / `STOP`
 - Scope and conditions:
 - Withheld reactions or authority:
 - Evidence required before expansion:
-- Accountable owner:
-- Reconsideration date or trigger:
+- Accountable owner, or `UNASSIGNED` plus the authority/trigger needed to
+  assign one:
+- Review date or evidence-based reconsideration trigger:
 
 ## 4. Transfer finding
 
@@ -47,6 +53,8 @@ Choose one: `EXPLORE` / `PROCEED BOUNDED` / `INVEST` / `HOLD` / `STOP`
 - Missing or ambiguous information:
 - Implementation detail that obscured the business decision:
 - Unsupported benefit or certainty, if any:
+- Could the one-screen handoff be scanned before inspecting detail? yes / partly
+  / no; evidence:
 - Smallest change that would improve the handoff:
 
 ## 5. Debrief after scoring

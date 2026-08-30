@@ -1,7 +1,10 @@
 # Pine Hollow Scenario: Protect One Refrigerated Shipment
 
-**Packet:** EVT-RV-PILOT-001 version 1.0.0
+**Packet:** EVT-RV-PILOT-001 version 1.1.0
 **Status:** Fictional, prepared, and unrun
+
+**Revision note:** Version 1.1.0 incorporates source repairs from a synthetic
+route preflight; it has no human or practitioner validation.
 
 Pine Hollow Foods ships refrigerated products to grocery stores. The business
 wants faster intervention when a shipment may be warming. The proposed design
@@ -55,11 +58,13 @@ Without discussing the intended answer with a facilitator:
 3. Estimate the initial downstream actions and explain where the simple
    multiplier stops being trustworthy.
 4. Use the loop checklist to name one causal boundary, one budget, one breaker,
-   and one accountable stop owner.
+   and either an authorized stop owner or `UNASSIGNED` plus the authority or
+   trigger needed to assign one.
 5. State what each consumer may safely infer and what evidence would prove a
    shipment was actually rerouted or replaced.
 6. Leave missing authority or evidence unknown. Do not invent it.
-7. Complete the handoff in the practitioner workbook.
+7. Complete the separate one-screen handoff only after the live update. Link it
+   to the detailed artifacts rather than copying their contents.
 
 ## Live update
 
