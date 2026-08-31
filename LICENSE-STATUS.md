@@ -1,14 +1,18 @@
 # License and Distribution Status
 
-**Status:** Private development material. All rights reserved pending an
-approved distribution and licensing decision.
+**Status:** Owner-approved for intended distribution; all rights reserved.
 
-No permission to redistribute, publish, sell, train on, or incorporate these
-materials into a product is granted by this development repository. A future
-release may adopt separate licenses for executable code and written assets, as
-other John Briggs companion repositories do, but that decision has not been
-made for this field guide.
+**Approval date:** 2026-08-30
+**Approver:** John Briggs, owner and developer
 
-Do not make this repository public until content ownership, third-party
-material, commercial-use terms, attribution, security disclosure, and the
-corresponding book edition have been reviewed.
+The owner approves release of this companion with the written materials and
+source artifacts remaining all rights reserved unless a separate written
+license or distribution agreement says otherwise. This approval covers the
+owner's original material and the intended book-plus-companion distribution;
+it does not grant rights to any third-party material that may be added later.
+
+The owner confirms content ownership/provenance, intended commercial-use and
+attribution terms, security/privacy disclosure scope, packaging metadata, and
+the corresponding *Architecting with Events in the Age of AI* book edition for
+this release. Human learner/practitioner validation and representative
+accessibility testing remain separate evidence gates.

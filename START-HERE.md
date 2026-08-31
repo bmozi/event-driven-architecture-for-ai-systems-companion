@@ -1,5 +1,13 @@
 # Start Here: One Message in Thirty Minutes
 
+**Reader route:** Complete the thirty-minute exercise output first. The
+facilitator-only freeze, manifest, and evidence protocol is a separate route
+for controlled pilots; do not open it until the first-pass artifact is done.
+
+**Plain language:** Causal identity connects a message, retry, or action to the
+thing that caused it. Semantic difference means a change in meaning, not just
+a renamed field or changed format.
+
 Choose one message another team, system, partner, automation, or agent treats as
 important. Do not begin with the broker or schema.
 

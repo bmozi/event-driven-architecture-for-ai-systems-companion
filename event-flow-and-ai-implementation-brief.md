@@ -13,6 +13,13 @@ Complete the linked
 before approving this brief. Use one brief for one bounded flow and one release
 decision.
 
+**Reader translation:** *Causal identity* is the evidence that lets a team link
+an event, retry, or downstream action to the thing that caused it, rather than
+merely showing that several records happened. A message ID alone may not be
+enough. *Semantic difference* means a change in meaning, not just a renamed
+field or changed format; if `unknown`, `zero`, or `approved` means something
+different, the consumer contract has changed.
+
 ## Completion-state legend
 
 | State | Meaning |
