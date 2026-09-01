@@ -1,6 +1,6 @@
-# Events in the Age of AI — Companion
+# Event-Driven Architecture for AI Systems — Companion
 
-**Series:** *Solution Architecture in the Age of AI — Software Engineering Field Guides*
+**Series:** *AI Systems Architecture Field Guides*
 **Previous working title:** *Architecting with Events in the Age of AI*.
 
 Turn one important message into a defensible fact, then expose how its delivery,
@@ -26,7 +26,7 @@ ready for production.
 - **The companion provides the moves:** ontology records, pattern cards,
   multiplier tools, loop checks, failure matrices, and constructed examples.
 - **The book is required for the full exercise:** read the relevant chapter
-  before using a worksheet. *Architecting with Events in the Age of AI*
+  before using a worksheet. *Event-Driven Architecture for AI Systems*
   supplies the reasoning, narrative, tradeoffs, and evidence boundaries; this
   repository makes that judgment practice inspectable. The repository is not a
   substitute for the book.
@@ -37,7 +37,7 @@ Use [START-HERE.md](START-HERE.md) to take one message through a thirty-minute
 first pass. You will state the fact, declaring authority, permitted inference,
 prohibited inference, and first credible multiplication risk.
 
-For the intended result, keep *Architecting with Events in the Age of AI*
+For the intended result, keep *Event-Driven Architecture for AI Systems*
 beside this exercise and use [BOOK-TO-COMPANION-MAP.md](BOOK-TO-COMPANION-MAP.md)
 to read the relevant chapter first. A completed worksheet without that chapter
 context is a draft for discussion, not a complete event architecture decision.

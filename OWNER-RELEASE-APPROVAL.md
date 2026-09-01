@@ -1,12 +1,12 @@
 # Owner Release Approval
 
-**Repository:** Architecting with Events in the Age of AI Companion
+**Repository:** Event-Driven Architecture for AI Systems Companion
 **Approval date:** 2026-08-30
 **Approver:** John Briggs, owner and developer
 **Decision:** `OWNER-APPROVED-FOR-INTENDED-DISTRIBUTION`
 
 I approve the current static repository materials for intended distribution
-with the corresponding *Architecting with Events in the Age of AI* book. The
+with the corresponding *Event-Driven Architecture for AI Systems* book. The
 scope includes the documentation, constructed event examples, exercises,
 validation scripts, generated release artifacts, and release metadata present
 in the approved package.
