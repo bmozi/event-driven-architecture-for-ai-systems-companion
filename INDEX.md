@@ -34,4 +34,6 @@ and executive journeys.
 - [Pilot and Usability Route](PILOT-AND-USABILITY.md)
 - [Prepared Events Reader-Value Pilot Packet v1.2.6](testing/events-reader-value-v1/README.md)
 
+- [Responsible Amplification and Possible Futures Card](examples/responsible-amplification-and-possible-futures-card.md)
+
 See [BOOK-TO-COMPANION-MAP.md](BOOK-TO-COMPANION-MAP.md) for chapter routing.
