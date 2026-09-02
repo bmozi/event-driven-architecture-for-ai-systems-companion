@@ -145,3 +145,12 @@ and which validation or usability state actually changed.
 - **Claim boundary:** static validation and synthetic mutations establish no
   consent, usability, comprehension, event correctness, loop safety,
   practitioner value, or real-world outcome
+
+## 2026-09-01 Northbridge data-structures teaching bridge
+
+- **Authority:** John Briggs's Corollary Warehousing assessment and direct
+  author instruction to deepen the five-book teaching connection
+- **Use:** Constructed replay-and-rebuild lesson connecting event identity,
+  idempotency, projections, causal identity, and effect authorization
+- **Boundary:** `PLANNED/UNRUN`; no broker, replay, recovery, usability, or
+  production result is established

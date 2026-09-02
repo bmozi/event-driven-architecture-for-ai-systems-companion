@@ -52,6 +52,7 @@ context is a draft for discussion, not a complete event architecture decision.
 | Find feedback and runaway reactions | [Event Loop-Prevention Checklist](event-loop-prevention-checklist.md) |
 | Choose a pattern by invariant and failure | [Event Pattern Decision Cards](event-pattern-decision-cards.md) |
 | Reconstruct asynchronous outcomes | [Asynchronous Evidence and Business Reconciliation Map](asynchronous-evidence-and-business-reconciliation-map.md) |
+| Separate durable events from rebuildable state | [Northbridge Data-Structures Architecture Bridge](examples/northbridge-data-structures-architecture-bridge.md) |
 
 Use [INDEX.md](INDEX.md) for role- and outcome-based routes and
 [BOOK-TO-COMPANION-MAP.md](BOOK-TO-COMPANION-MAP.md) to reconnect each tool to

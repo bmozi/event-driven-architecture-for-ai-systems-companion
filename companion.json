@@ -21,6 +21,7 @@
     "EXECUTIVE-DECISION-BRIEF.md",
     "FAILURE-LAB.md",
     "PILOT-AND-USABILITY.md",
+    "examples/northbridge-data-structures-architecture-bridge.md",
     "testing/events-reader-value-v1/README.md",
     "testing/events-reader-value-v1/SHA256SUMS",
     "testing/events-reader-value-v1/temporal-protocol.json",
