@@ -27,3 +27,15 @@ privacy approval for a deployed system, WCAG conformance certification,
 representative assistive-technology testing, or human learner/practitioner
 validation. Those claims require their own evidence and must retain their
 truthful status labels.
+
++## Public-release licensing update
+
+**Recorded:** 2026-09-02
+**Decision:** `APPROVED FOR PUBLIC DISTRIBUTION`
+
+The owner authorizes this companion repository to be publicly available under
+the dual-license terms recorded in `LICENSE`, `LICENSE-CONTENT`, and
+`LICENSE-CODE`. This update supersedes an earlier all-rights-reserved
+distribution posture only to the extent expressly granted by those license
+files. All evidence, safety, accessibility, legal, and production-readiness
+boundaries above remain unchanged.

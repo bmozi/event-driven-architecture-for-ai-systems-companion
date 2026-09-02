@@ -1,18 +1,22 @@
-# License and Distribution Status
+# License and distribution status
 
-**Status:** Owner-approved for intended distribution; all rights reserved.
+**Status:** Owner-approved for public distribution.
 
-**Approval date:** 2026-08-30
-**Approver:** John Briggs, owner and developer
+**Public-release decision:** 2026-09-02
+**Owner:** John Briggs
+**Companion:** *Event-Driven Architecture for AI Systems*
 
-The owner approves release of this companion with the written materials and
-source artifacts remaining all rights reserved unless a separate written
-license or distribution agreement says otherwise. This approval covers the
-owner's original material and the intended book-plus-companion distribution;
-it does not grant rights to any third-party material that may be added later.
+The repository uses a deliberate dual-license model:
 
-The owner confirms content ownership/provenance, intended commercial-use and
-attribution terms, security/privacy disclosure scope, packaging metadata, and
-the corresponding *Event-Driven Architecture for AI Systems* book edition for
-this release. Human learner/practitioner validation and representative
-accessibility testing remain separate evidence gates.
+- written content, worksheets, templates, examples, and other creative material
+  are licensed under Creative Commons Attribution 4.0 International; and
+- executable code and machine-executable configuration are licensed under the
+  Apache License 2.0.
+
+The controlling scope notice is [LICENSE](LICENSE), with the applicable terms
+in [LICENSE-CONTENT](LICENSE-CONTENT) and [LICENSE-CODE](LICENSE-CODE).
+
+These licenses authorize reuse within their terms. They do not certify the
+materials as secure, accessible, legally sufficient, production-ready, or
+effective for a particular reader or organization. Constructed and unrun
+evidence labels remain in force after redistribution or adaptation.

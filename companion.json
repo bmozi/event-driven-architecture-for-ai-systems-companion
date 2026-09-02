@@ -1,13 +1,17 @@
 {
   "schema_version": 1,
   "title": "Event-Driven Architecture for AI Systems Companion",
-  "book_repository": "https://github.com/bmozi/architecting-with-events-in-the-age-of-ai",
+  "book_title": "Event-Driven Architecture for AI Systems",
+  "repository": "https://github.com/bmozi/event-driven-architecture-for-ai-systems-companion",
   "source_commit": "659b5eb",
   "reader_value_packet_version": "1.2.6",
   "human_evidence_state": "PREPARED/UNRUN",
   "real_world_evidence_state": "UNRUN",
   "required_files": [
     "README.md",
+    "LICENSE",
+    "LICENSE-CONTENT",
+    "LICENSE-CODE",
     "START-HERE.md",
     "INDEX.md",
     "BOOK-TO-COMPANION-MAP.md",

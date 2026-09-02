@@ -10,7 +10,7 @@ formula. Cycles, correlation, batching, queue dynamics, backpressure, nonlinear
 pricing, shared retries, and time-varying behavior may require simulation or a
 more formal model.
 
-**Bounded evidence:** The [EVT-R012 experiment](https://github.com/bmozi/architecting-with-events-in-the-age-of-ai/blob/main/research/2026-08-28-evt-r012-bounded-multiplier-experiment.md)
+**Bounded evidence:** The EVT-R012 experiment described in the book
 matched deterministic linear counts exactly and kept common normal-scenario
 counts within 0.75% for one frozen seeded topology. When delivery and action
 budgets bound in the failure scenario, the model overpredicted common observed
