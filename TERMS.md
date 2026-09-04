@@ -1,23 +1,21 @@
-# Working Companion Terms
+# Companion Terms and Use Boundary
 
-**Status:** Internal development restriction; not a final reader license and
-not approved for external distribution
+**Effective:** September 3, 2026
 
-Copyright © 2026 John Briggs. All rights reserved.
+Copyright © 2026 John Briggs.
 
-The companion templates, worksheets, examples, and related files in this
-working repository are unpublished development materials. They may be copied
-or adapted only for authorized internal authoring, editorial review, technical
-review, and practitioner-test preparation within this project. They may not be
-published, sold, sublicensed, redistributed, or represented as a production-
-ready method or certified control.
+Written content is licensed under the
+[Creative Commons Attribution 4.0 International license](LICENSE-CONTENT).
+Executable code is licensed under the [Apache License 2.0](LICENSE-CODE).
+The repository-level [license notice](LICENSE) explains that split. Preserve
+the applicable license, attribution, and third-party notices when copying,
+redistributing, or adapting material.
 
-These working terms do not establish that a companion asset is correct,
-complete, safe, usable, legally sufficient, or fit for a particular purpose.
+These terms do not establish that a companion asset is correct, complete,
+safe, usable, legally sufficient, or fit for a particular purpose.
 Constructed or scenario examples remain teaching fixtures, not empirical
 evidence or John Briggs history.
 
-A final reader or enterprise-use license requires explicit John Briggs
-approval and qualified legal review before any external companion distribution.
-If final approved terms differ, the later approved terms supersede this
-internal restriction for the materials and versions they identify.
+These licenses permit reuse; they do not certify the materials or any resulting
+system. New third-party material requires a provenance and permission record,
+and its own license terms continue to apply.

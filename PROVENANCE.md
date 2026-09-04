@@ -167,3 +167,14 @@ and which validation or usability state actually changed.
 - **Boundary:** AI-assisted working learning material; `PLANNED/UNRUN`. A
   completed card is a scenario and decision record, not prediction, fairness,
   safety, legal, environmental, economic, usability, or effectiveness evidence.
+
+## 2026-09-03 publication-language and license-scope correction
+
+- **Authority:** Direct John Briggs instruction following an adversarial
+  technical-writer/editor review of the five-book collection
+- **Use:** Align `TERMS.md` with the repository's CC BY 4.0 content license and
+  Apache 2.0 code license without changing legitimate template-maturity or
+  experiment-state labels
+- **Boundary:** This is an editorial and license-consistency repair, not legal
+  advice or legal review, practitioner validation, production fitness,
+  retailer acceptance, or publication proof.
