@@ -59,7 +59,7 @@ AI tools can generate candidate structures, implementation code, tests, and
 diagrams for many domains. The architect supplies the governing decisions the
 generated machinery must preserve.
 
-| Transfer case | AI can accelerate | Decision the structure cannot settle |
+| Transfer case | AI may draft candidates for | Decision the structure cannot settle |
 | --- | --- | --- |
 | Search-engine indexing | Crawlers, inverted indexes, ranking code, query tests | Content authority, freshness, deletion, ranking policy, and evidence |
 | Social-media platforms | Social graphs, feeds, queues, moderation classifiers | Consent, identity, amplification limits, appeal, and causal responsibility |
@@ -67,9 +67,10 @@ generated machinery must preserve.
 | Recommendation systems | Feature pipelines, candidate retrieval, ranking, evaluation | Permitted inputs, objective, fairness, explanation, and user control |
 | Online food delivery | Route graphs, order queues, dispatch heaps, ETA models | Order and payment authority, worker custody, retry safety, refunds, and recovery |
 
-The lesson is not that AI removes architecture work. It moves practitioners up
-a level: generated machinery arrives sooner, so meaning, authority, failure,
-and evidence must become explicit sooner.
+Generated machinery still needs approved meaning, authority, failure behavior,
+and evidence. This example does not measure implementation speed or quality.
+Current rebuild permission must cover its purpose, source slice, and target;
+historical identity alone does not authorize replay.
 
 > **Why we did not choose every structure**
 >

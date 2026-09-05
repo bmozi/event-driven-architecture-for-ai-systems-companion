@@ -1,5 +1,18 @@
 # Provenance
 
+## September 5, 2026 local improvement alignment
+
+The user's instruction to improve the next book prompted a supplied fictional
+public-library case with an editorial worked answer, a replay-permission
+correction in the shared data-structures bridge, and synchronization of the
+existing portable lab and pressure diagnostic. Lab code is unchanged from the
+book copy; the lab README uses standalone form links. See the book's
+`reviews/2026-09-05-improvement-process-run.md` for local validation.
+These additions are constructed teaching material and bounded in-memory tests.
+They do not establish production outcomes or human transfer. The versioned
+reader protocol and its historical attempt records remain unchanged. Human
+sessions completed in this run: 0.
+
 - **Created:** 2026-08-29
 - **Book repository:** `bmozi/architecting-with-events-in-the-age-of-ai`
 - **Source commit:** `659b5eb`

@@ -5,6 +5,7 @@ Run:
 ```bash
 python3 scripts/validate_repository.py
 python3 scripts/test_temporal_protocol.py
+python3 labs/portable-event-pattern-lab/run_lab.py
 ```
 
 The validator checks the manifest, required reader entry points, local Markdown
@@ -23,3 +24,8 @@ wording drift with refreshed surrounding hashes, are rejected. These are
 repository-integrity checks only. They do not establish
 practitioner usability, technical correctness, security, accessibility, legal
 sufficiency, production fitness, or book-edition compatibility.
+
+The portable lab checks five in-memory teaching fixtures. It does not exercise
+a broker, durable store, external capability, or production failure recovery.
+The supplied public-library practice case includes an editorial worked answer;
+it is not a completed human protocol session.

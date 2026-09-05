@@ -11,6 +11,11 @@ a renamed field or changed format.
 Choose one message another team, system, partner, automation, or agent treats as
 important. Do not begin with the broker or schema.
 
+If you do not have a message to bring, use the [supplied library-hold case and
+worked answer](supplied-practice-route.md). Try it before adapting the forms.
+For optional executable practice, the [portable event-pattern lab](labs/portable-event-pattern-lab/README.md)
+runs five small in-memory fixtures with the Python standard library.
+
 ## 0–5 minutes: say why it matters
 
 Complete three sentences:

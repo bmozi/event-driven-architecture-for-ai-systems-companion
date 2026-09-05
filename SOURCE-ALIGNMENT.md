@@ -1,5 +1,9 @@
 # Source Alignment and Permitted Drift
 
+**Current aligned book source:** `8011218f97eaf451cc024f5192fb444c5e2537f5` (September 5, 2026).
+The local improvement snapshot is now committed. Earlier provenance entries
+retain their original dates and evidence states; practitioner testing remains open.
+
 **Book source:** `bmozi/architecting-with-events-in-the-age-of-ai`, `companion/`
 **Original standalone seed:** book commit `659b5eb`
 **Current rule:** explicit operational drift is permitted; silent conceptual
@@ -21,9 +25,11 @@ Permitted differences are:
 - a frozen packet that remains tied to the exact version used in a completed
   attempt while later source work advances.
 
-The current intentional common-file differences are the new packet route in
-`testing/README.md` and the portable book-research URL in the multiplier
-calculator.
+The current intentional common-file differences include the new packet route in
+`testing/README.md`, the portable book-research URL in the multiplier calculator,
+and standalone form links in `labs/portable-event-pattern-lab/README.md` in place
+of book-relative chapter links. On September 5, 2026, the supplied practice route,
+pressure diagnostic card, and lab were synchronized; the lab code is identical.
 
 Meaning, authority, constraints, permitted inference, causal identity,
 budgets, loop boundaries, evidence states, example facts, and scoring criteria

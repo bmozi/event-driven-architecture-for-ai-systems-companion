@@ -3,6 +3,8 @@
 ## By desired outcome
 
 - **I need a useful result quickly:** [thirty-minute start](START-HERE.md).
+- **I need supplied facts and a worked answer:** [public-library practice case](supplied-practice-route.md).
+- **I want a small executable model:** [portable event-pattern lab](labs/portable-event-pattern-lab/README.md).
 - **I need to define one message:** [Meaning-and-Authority Record](event-meaning-and-authority-record.md).
 - **I need to estimate downstream growth:** [Multiplier Calculator](traffic-cost-action-multiplier-calculator.md).
 - **I suspect a loop:** [Loop-Prevention Checklist](event-loop-prevention-checklist.md).
