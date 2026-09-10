@@ -1,31 +1,57 @@
 # Event Pattern Decision Cards
 
 **Status:** Working card set; not yet practitioner validated
+
 **Purpose:** Select patterns by the invariant they protect, the assumptions they
 make, and the failure surface they create.
 
 Copy the blank card for a design review. The compact starter cards are prompts,
 not complete pattern definitions or vendor instructions.
 
+## Before selecting an event pattern
+
+First compare an authorized current-state query, periodic refresh, and durable
+fact publication against freshness, history, outage recovery, and ownership
+requirements. The [supplied practice route](supplied-practice-route.md) begins
+with a case where periodic refresh is sufficient and then changes the facts.
+Document why a simpler path fails before adding an event flow.
+
 ## Blank pattern card
 
 **Pattern:**
+
 **Business pressure:**
+
 **Fact and subject:**
+
 **Invariant protected:**
+
 **Authority and owner:**
+
 **Why this pattern fits:**
+
 **Counterconditions—when not to use it:**
+
 **New semantic or operational failure surface:**
+
 **Traffic, cost, and action multiplication:**
+
 **Duplicate, order, replay, and evolution behavior:**
+
 **Privacy, retention, and provenance consequence:**
+
 **What AI can generate:**
+
 **What humans must define:**
+
 **Positive evidence:**
+
 **Negative or mutation evidence:**
+
 **Operational evidence and reconciliation:**
+
 **Remaining uncertainty:**
+
 **Reversal trigger:**
 
 ## Routing and filtering
@@ -77,15 +103,25 @@ not complete pattern definitions or vendor instructions.
   irreproducible rebuilds, and order assumptions.
 - **Disprove with:** duplicate, reorder, late, missing, correction, and rebuild tests.
 
-## Splitter and fan-out
+## Fan-out
 
-- **Protects:** independent treatment of explicit child subjects or reactions.
-- **Use when:** causal ancestry, expected branches, ownership, and multiplication
-  are bounded.
-- **Watch for:** invisible traffic growth, lost parent identity, inconsistent
-  partial success, and authorization expansion.
-- **Disprove with:** missing-child, duplicate-child, unauthorized-branch, and
-  multiplier tests.
+- **Protects:** independent delivery of the same fact to eligible consumers.
+- **Use when:** separate reactions need that fact; preserve its event identity
+  while recording distinct deliveries and reaction effects.
+- **Watch for:** invisible traffic growth, unauthorized recipients, slow
+  consumers, and an assumption that delivery grants permission to act.
+- **Disprove with:** duplicate-delivery, unauthorized-recipient, isolated-consumer
+  failure, and multiplier tests.
+
+## Splitter
+
+- **Protects:** explicit treatment of the parts of a compound record.
+- **Use when:** the contract defines fragment identity, subject, membership,
+  parent ancestry, and authority for declaring each derived part.
+- **Watch for:** lost parent identity, missing or duplicate fragments, false
+  completeness, and expanded authority. More consumers alone do not require splitting.
+- **Disprove with:** missing-fragment, duplicate-fragment, altered-membership,
+  unauthorized-derived-claim, and partial-group tests.
 
 ## Aggregator
 

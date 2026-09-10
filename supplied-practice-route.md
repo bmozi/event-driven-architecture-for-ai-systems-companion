@@ -5,6 +5,28 @@ an employer's design or installing a broker. All policies, times, identifiers,
 and quantities are stipulated teaching inputs. No practitioner or production
 result is claimed. Try the task before reading the answer.
 
+## First decide whether events are needed
+
+A fictional library desk needs the current count of available cameras within
+five minutes. One team owns the desk and its authorized availability query.
+The desk does not need every intervening change. Compare a periodic query with
+an event-fed view before selecting patterns.
+
+An editorial answer is to refresh within the five-minute allowance, show the
+observation time, and mark the count unavailable when it is too old. The query
+must preserve access controls and have sufficient capacity. An event flow adds
+publication, replay, and projection ownership without a stated need here.
+
+Now change the requirements: separate services must process every stock change,
+react within thirty seconds while connected, and recover changes after one day
+offline. A current-state query cannot reconstruct those intervening changes.
+Evaluate durable publication and retained history, with explicit duplication,
+recovery, and retention rules. More services alone was not the deciding fact;
+the need for every change and offline recovery was. This is a design exercise,
+not an executed latency or delivery result.
+
+Continue with the hold case below to practice a stipulated event design.
+
 ## Supplied facts
 
 A library accepts patron P's request for book copy C as request R at 09:00.

@@ -11,8 +11,10 @@ a renamed field or changed format.
 Choose one message another team, system, partner, automation, or agent treats as
 important. Do not begin with the broker or schema.
 
-If you do not have a message to bring, use the [supplied library-hold case and
-worked answer](supplied-practice-route.md). Try it before adapting the forms.
+First use the [supplied query-versus-events decision and library-hold case](supplied-practice-route.md).
+It includes a periodic-query choice before the event exercise. A documented
+decision that events are unnecessary is a useful first result; continue below
+when a fact-publication need exists. Try the case before adapting the forms.
 For optional executable practice, the [portable event-pattern lab](labs/portable-event-pattern-lab/README.md)
 runs five small in-memory fixtures with the Python standard library.
 
@@ -48,6 +50,9 @@ is acceptable; invisible assumptions are not.
 Give the six lines to someone outside the producing team. Ask them to restate
 the fact, name one permitted reaction, and name one conclusion the message does
 not support.
+
+For a broader design review, use the [Gap-Closing Workbook](event-architecture-gap-closing-workbook.md)
+with Appendix D of the book.
 
 ## Your first result
 

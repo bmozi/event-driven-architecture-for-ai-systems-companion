@@ -27,6 +27,14 @@ when branches can multiply technical work or consequential actions.
 
 ## 2. Fan-out branch inventory
 
+First name the operation: fan-out delivers the same fact to independent
+consumers; splitting derives parts from a compound record. For fan-out, retain
+one event identity and distinguish delivery and reaction identities. For a
+splitter, record each fragment identity, parent, membership rule, and declaring
+authority. Both can multiply work, but consumer count does not establish a need
+to split the fact.
+
+
 | Branch | Selection rule | Child subject or reaction | Owner | Authority required | Expected multiplicity | Maximum credible multiplicity | Consequential action | Completion evidence |
 | --- | --- | --- | --- | --- | ---: | ---: | --- | --- |
 | | | | | | | | | |

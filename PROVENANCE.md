@@ -1,5 +1,18 @@
 # Provenance
 
+## September 9, 2026 book and companion alignment
+
+Author-directed alignment with the revised book separated fan-out from splitting
+in the cards and branch record, added a supplied query-versus-events decision,
+and exposed the existing Appendix D workbook through a portable book reference.
+The first reader route now permits a justified decision against an event flow.
+The library extension is fictional teaching material with an editorial answer;
+it is not an executed system or human learning result. Frozen participant
+packets and historical synthetic records were preserved. Two book-only August
+31 synthetic reports remain with their original private source context rather
+than being republished as current reader evidence. Human sessions: zero.
+
+
 ## September 5, 2026 local improvement alignment
 
 The user's instruction to improve the next book prompted a supplied fictional
