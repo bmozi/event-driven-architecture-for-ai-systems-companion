@@ -3,7 +3,7 @@
   "title": "Event-Driven Architecture for AI Systems Companion",
   "book_title": "Event-Driven Architecture for AI Systems",
   "repository": "https://github.com/bmozi/event-driven-architecture-for-ai-systems-companion",
-  "source_commit": "5d0a2e8b9600354c248ce22d52f90319237454b4",
+  "source_commit": "3de84a5a527c3c55c716cfdc41e712626779bade",
   "reader_value_packet_version": "1.2.6",
   "human_evidence_state": "PREPARED/UNRUN",
   "real_world_evidence_state": "UNRUN",
@@ -59,6 +59,6 @@
       ]
     }
   ],
-  "alignment_date": "2026-09-09",
-  "alignment_scope": "Revised reader lessons, active companion tools, shared examples, routes, and dependency integrity; human learning untested"
+  "alignment_date": "2026-09-23",
+  "alignment_scope": "Committed book source and active shared assets checked; distribution differences explicitly recorded; human learning untested"
 }

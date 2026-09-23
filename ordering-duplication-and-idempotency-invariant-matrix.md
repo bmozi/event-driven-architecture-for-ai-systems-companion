@@ -51,6 +51,12 @@ without completing every column in the applicable row.
 
 **Correction, supersession, or stale-write rule:**
 
+**Projection or binding action:** Can this reaction remain provisional? If it
+creates a commitment, name the authority that checks current revision,
+expiry, quantity, and permission together with the recorded commitment. State
+the unavailable-authority response and lookup identity for an unknown result.
+Local version checks cannot establish that no newer revision exists elsewhere.
+
 ## 4. Mutation plan and results
 
 Add concrete identifiers and schedules. “Duplicate test” is not sufficient.
@@ -61,6 +67,7 @@ Add concrete identifiers and schedules. “Duplicate test” is not sufficient.
 | Different message identifiers express the same intent | | | | | | unrun |
 | Duplicate arrives after deduplication retention expires | | | | | | unrun |
 | Newer subject version arrives before older version | | | | | | unrun |
+| Authority commits a release while its event is delayed | | | | | | unrun |
 | Related subjects arrive on different partitions | | | | | | unrun |
 | Two consumers race to commit the same effect | | | | | | unrun |
 | Effect commits but acknowledgment fails | | | | | | unrun |

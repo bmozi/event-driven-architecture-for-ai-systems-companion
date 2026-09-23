@@ -44,7 +44,7 @@ agents, notifications, projections, search indexes, data exports, and recovery
 or reconciliation paths.
 
 | Consumer or branch | Owner | Historical behavior | Present implementation revision | Reads allowed? | Internal state effect | External or human effect | Effect identity and idempotency | Replay mode |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | | | | | | | | | disabled / shadow / dry run / isolated commit / live |
 
 ## 4. Privacy, retention, and purpose counterconditions

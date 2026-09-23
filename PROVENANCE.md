@@ -1,5 +1,14 @@
 # Provenance
 
+## September 12, 2026 reader review corrections
+
+The invariant matrix now distinguishes provisional projection use from a binding
+commitment and includes an authority release whose event is delayed. It matches
+the book's revised Chapter 4/12 teaching boundary. README pilot administration
+moved verbatim to `FACILITATOR-PROTOCOL-HISTORY.md`; existing protocols and frozen
+packets did not change. Human learning remains untested. These are author-directed,
+AI-assisted instructional and navigation edits, not observed deployment outcomes.
+
 ## September 9, 2026 book and companion alignment
 
 Author-directed alignment with the revised book separated fan-out from splitting
@@ -204,3 +213,17 @@ and which validation or usability state actually changed.
 - **Boundary:** This is an editorial and license-consistency repair, not legal
   advice or legal review, practitioner validation, production fitness,
   retailer acceptance, or publication proof.
+
+
+## September 12, 2026 — Replay ledger rendering correction
+
+Corrected the table separator from ten columns to nine to match the replay ledger headers and body. No field or meaning removed. The embedded book copy is byte-identical; final EPUB native-table rendering and horizontal coverage were reviewed at three screen settings.
+
+
+## September 23, 2026 — committed source reconciliation
+
+John authorized review, commit and push of local book and companion work.
+The current source pin is `3de84a5a527c3c55c716cfdc41e712626779bade`. Shared-file comparison and the
+collection registry retain explicit distribution differences; the September 12
+facilitator relocations are now classified. Frozen study packets remain intact.
+This records repository alignment, not human learning or retailer publication.
