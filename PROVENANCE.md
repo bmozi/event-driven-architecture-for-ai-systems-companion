@@ -227,3 +227,11 @@ The current source pin is `3de84a5a527c3c55c716cfdc41e712626779bade`. Shared-fil
 collection registry retain explicit distribution differences; the September 12
 facilitator relocations are now classified. Frozen study packets remain intact.
 This records repository alignment, not human learning or retailer publication.
+
+## October 18, 2026 — Committed source alignment
+
+Current companion source pin: `634a2d8d3a817415b4b5b73a50eb86a885417aaf` in `architecting-with-events-in-the-age-of-ai`.
+The reviewed book revision is committed and synchronized. This entry supersedes
+the working-copy status above; earlier entries remain historical. Shared
+content and explicit distribution differences passed the collection validator.
+This records source alignment, not a reader trial or Amazon publication.

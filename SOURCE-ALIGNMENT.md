@@ -54,3 +54,11 @@ book-source file is missing from the standalone copy, normalized common files
 match unless explicitly classified, and standalone-only paths fit declared
 distribution categories. Repository validation and source alignment do not
 prove usability, correctness, loop safety, or publication readiness.
+
+## October 18, 2026 — Committed source alignment
+
+Current companion source pin: `634a2d8d3a817415b4b5b73a50eb86a885417aaf` in `architecting-with-events-in-the-age-of-ai`.
+The reviewed book revision is committed and synchronized. This entry supersedes
+the working-copy status above; earlier entries remain historical. Shared
+content and explicit distribution differences passed the collection validator.
+This records source alignment, not a reader trial or Amazon publication.

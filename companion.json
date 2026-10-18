@@ -3,7 +3,7 @@
   "title": "Event-Driven Architecture for AI Systems Companion",
   "book_title": "Event-Driven Architecture for AI Systems",
   "repository": "https://github.com/bmozi/event-driven-architecture-for-ai-systems-companion",
-  "source_commit": "3de84a5a527c3c55c716cfdc41e712626779bade",
+  "source_commit": "634a2d8d3a817415b4b5b73a50eb86a885417aaf",
   "reader_value_packet_version": "1.2.6",
   "human_evidence_state": "PREPARED/UNRUN",
   "real_world_evidence_state": "UNRUN",
