@@ -101,3 +101,12 @@ The five public companions follow the same evidence-bounded field-guide model:
 3. [Durable Workflows for AI Systems](https://github.com/bmozi/durable-workflows-for-ai-systems-companion)
 4. [Data Platform Architecture for AI Systems](https://github.com/bmozi/data-platform-architecture-for-ai-systems-companion)
 5. [Agentic Systems Architecture](https://github.com/bmozi/agentic-systems-architecture-companion)
+
+## Citation and corrections
+
+Use [CITATION.cff](CITATION.cff) to attribute this companion, and record the
+commit or release you actually used. Citation information does not change the
+existing licensing terms, book edition, or evidence status of these materials.
+Report corrections through the repository’s [Issues](https://github.com/bmozi/event-driven-architecture-for-ai-systems-companion/issues)
+with the affected file, expected result, actual result, and a safe example. Do
+not include credentials, confidential material, or personal records.

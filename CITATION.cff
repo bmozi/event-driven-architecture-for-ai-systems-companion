@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use these companion materials, please cite this repository and the revision you used."
+title: "Event-Driven Architecture for AI Systems — Companion"
+authors:
+  - family-names: Briggs
+    given-names: John
+url: "https://github.com/bmozi/event-driven-architecture-for-ai-systems-companion"
